@@ -372,14 +372,14 @@
 
 
 
-                    <StackPanel x:Name="StackGrid" VerticalAlignment="Bottom" Height="395" Margin="-10,-260,-752.667,-135" Grid.ColumnSpan="2" >
+                    <StackPanel x:Name="StackGrid" VerticalAlignment="Bottom" Height="395" Margin="-10,-240,-752.667,-135" Grid.ColumnSpan="2" >
                         <Label Visibility="Collapsed"  x:Name="LabelSelectedReports" Foreground="#ffffff" Content="Selected Reports: " Margin="20,75,1747,-5" FontFamily="EYInterstate" FontWeight="Bold" Height="24"/>
 
                         <Border Visibility="Collapsed" Name="BorderSelected"  CornerRadius="5" BorderThickness="1" BorderBrush="#ffffff" Margin="25,25,1244,5" Height="81">
                             <TextBox  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Foreground="White"  Background="#2E2E38" BorderThickness="0"  x:Name="PopText" FontWeight="Bold" TextWrapping="Wrap" MinHeight="20" Margin="8.667,8.667,18.333,8.667" FontFamily="Callibri" TextChanged="TokenInfoText_TextChanged"/>
                         </Border>
 
-                        <RadioButton FontWeight="Bold"  Name="GenerateMetadata" Width="200" Checked="GenerateMetadata_Checked" GroupName="UserType" Margin="-700,100,897.333,0" Foreground="#ffffff" Height="22" FontFamily="EYInterstate" >Generate Metadata</RadioButton>
+                        <RadioButton FontWeight="Bold"  Name="GenerateMetadata" Width="200" Checked="GenerateMetadata_Checked" GroupName="UserType" Margin="-700,82,897.333,0" Foreground="#ffffff" Height="22" FontFamily="EYInterstate" >Generate Metadata</RadioButton>
                         <Image Height="19" Margin="-770,0,897.333,0" Name="ProcessImage"  Source="Images/Help_EY_Color.png"  Width="16">
                             <Image.RenderTransform>
                                 <TransformGroup>
