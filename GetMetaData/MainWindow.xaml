@@ -120,7 +120,7 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 
 
-                        <Button x:Name="Logout" FontWeight="Bold" Height="30" Content="Sign Out" HorizontalAlignment="Right" Padding="5" Click="Logout_Click" Margin="5"   FontFamily="EYInterstate" Width="65" Background="Black" Foreground="White">
+                        <Button x:Name="Logout"  Visibility="Hidden" FontWeight="Bold" Height="30" Content="Sign Out" HorizontalAlignment="Right" Padding="5" Click="Logout_Click" Margin="5"   FontFamily="EYInterstate" Width="65" Background="Black" Foreground="White">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -143,7 +143,7 @@
 
                         </Button>
 
-                        <Button x:Name="SignOutButton" FontWeight="Bold" Height="30" Content="Reset" HorizontalAlignment="Right" Padding="5" Click="SignOutButton_Click" Margin="5"   FontFamily="EYInterstate" Width="65" Background="Black" Foreground="White">
+                        <Button x:Name="SignOutButton" FontWeight="Bold" Height="30" Content="Reset" HorizontalAlignment="Right" Padding="5" Click="SignOutButton_Click" Margin="19"   FontFamily="EYInterstate" Width="65" Background="Black" Foreground="White">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
