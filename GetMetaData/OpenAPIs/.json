@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:ng="" xmlns:tb="">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=2, width=device-width, height=device-height, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+  <meta name="vizportal-config" data-buildId="2022_1_110_yyzt7ptwdkc" data-staticAssetsUrlPrefix=""><link href="vendors-vizportal.css?fead790cd444bc8104fa" rel="stylesheet"><link href="vizportal.css?fead790cd444bc8104fa" rel="stylesheet"><script type="text/javascript" src="/javascripts/api/tableau-2.min.js?fead790cd444bc8104fa"></script><script type="text/javascript" src="jquery.min.js?fead790cd444bc8104fa"></script><script type="text/javascript" src="rsa.js?fead790cd444bc8104fa"></script><script type="text/javascript" src="underscore-min.js?fead790cd444bc8104fa"></script><script type="text/javascript" src="q.min.js?fead790cd444bc8104fa"></script><script type="text/javascript" src="canvas-to-blob.min.js?fead790cd444bc8104fa"></script><script type="text/javascript" src="js.cookie.min.js?fead790cd444bc8104fa"></script><script type="text/javascript" src="mousetrap.js?fead790cd444bc8104fa"></script><script type="text/javascript" src="core.min.js?fead790cd444bc8104fa"></script><script type="text/javascript" src="vendors-vizportal.js?fead790cd444bc8104fa"></script><script type="text/javascript" src="vizportal.js?fead790cd444bc8104fa"></script></head>
+  <body class="tb-body">
+    <div class="tb-app" id="app-root">
+    </div>
+  </body>
+</html>

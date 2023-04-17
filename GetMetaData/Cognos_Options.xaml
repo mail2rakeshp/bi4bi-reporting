@@ -1,0 +1,185 @@
+﻿<Window x:Class="GetMetaData.Cognos_Options"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GetMetaData"
+         xmlns:control="clr-namespace:GetMetaData.control"
+        mc:Ignorable="d"
+        Title="BI4BI" ResizeMode="NoResize" AllowsTransparency="True" VerticalAlignment="Bottom" 
+        Height="700"
+        Width="1116"
+        WindowState="Maximized" 
+        WindowStyle="None"
+        Name="WindowMainName" Background="#1E1E21" 
+        MouseDoubleClick="Window_Mouse_Double"
+        MaxHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}}"
+
+        ShowInTaskbar="True"
+        
+      
+        
+        >
+
+
+    <Window.Resources>
+        <Style x:Key="DGHeaderStyle" TargetType="{x:Type DataGrid}">
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DGCHeaderStyle}"/>
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+        </Style>
+        <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="#ffe600"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Callibri"/>
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="BorderThickness" Value="2"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,0.909" StartPoint="0.5,0.091">
+
+                        <GradientStop Color="#ffe600" Offset="0.488"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+    </Window.Resources>
+
+
+
+
+
+
+    <Grid>
+        <DockPanel Margin="0,33,0.333,0.333">
+
+            <Grid Margin="0,0,0,-0.333">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="106"/>
+                    <ColumnDefinition Width="128*"/>
+                    <ColumnDefinition Width="467*"/>
+                    <ColumnDefinition Width="44*"/>
+                    <ColumnDefinition Width="165*"/>
+                    <ColumnDefinition Width="0*"/>
+
+                </Grid.ColumnDefinitions>
+
+
+                <Grid  Background="#1E1E21"   VerticalAlignment="Top" Margin="0,-35,0,0" Height="30" Grid.ColumnSpan="6">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+                    <Button  Click="Minimize_Click" Content="&#xE949;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,5,15,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" Margin="0,0,40,-0.333" Grid.RowSpan="2" Width="41" Foreground="#ffffff" />
+                    <Button HorizontalAlignment="Right" Click="Close_Click" Content="&#xE106;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,0" Background="Transparent" BorderBrush="Transparent" Grid.RowSpan="2" Margin="0,0,0,-0.333" Width="42" Foreground="#ffffff" />
+                    <Image  HorizontalAlignment="right" VerticalAlignment="Top" Height="25" Margin="0,5,81,-0.333" RenderTransformOrigin="0.5,0.5" Source="Images/Help_ACL_Transparent.png" Width="39" Grid.RowSpan="2">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform />
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                        <Image.ToolTip>
+                            <TextBox Name="ImageToolTip" Background="Black" Foreground="#ffe600"></TextBox>
+                        </Image.ToolTip>
+                    </Image>
+                </Grid>
+            </Grid>
+        </DockPanel>
+        <Grid Margin="-2,-100,0,581" Background="#FF2E2E38" Height="80" HorizontalAlignment="Left" Width="2119">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition Width="557*"/>
+                <ColumnDefinition Width="64*"/>
+                <ColumnDefinition Width="79*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="180*"/>
+            </Grid.RowDefinitions>
+            <Image  HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Source="Images/EY_Logo.png" Width="90" Margin="5,-16,0,-20" Grid.ColumnSpan="2">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Separator HorizontalAlignment="Left" Margin="88,34,0,35" Height="20" Grid.ColumnSpan="2" Width="27">
+                <Separator.LayoutTransform>
+                    <RotateTransform Angle="90" />
+                </Separator.LayoutTransform>
+            </Separator>
+            <Label  HorizontalAlignment="Left" Background="#2E2E38" Foreground="#ffffff" FontSize="36" Content="BI4BI" Margin="107,0,0,0" Width="261" FontFamily="EYInterstate" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
+
+        </Grid>
+        <Label  Content="Cognos" FontSize="24" Foreground="#ffe600" x:Name="LabelUser" Margin="30,142,150,502" FontFamily="EYInterstate" FontWeight="Bold" />
+        <Label  Content="Please choose the relevant option from where the XML’s can be accessed" FontSize="14" Foreground="White" x:Name="LabelUser1" Margin="30,192,150,473" FontFamily="EYInterstate" FontWeight="Bold" />
+        <Button x:Name="button2" Width="363" FontSize="20" Content="" Margin="-400,190,700,275.333" FontWeight="Bold" Height="93" RenderTransformOrigin="0.475,1.355" Click="button1_Click" FontFamily="Callibri">
+            <Button.Background>
+                <ImageBrush ImageSource="/Databasebutton.PNG" Stretch="Fill"/>
+            </Button.Background>
+            <Button.Style >
+                <Style TargetType="{x:Type Button}" >
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border CornerRadius="5"  BorderBrush="Black" BorderThickness="1" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#ffe600"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+        </Button>
+        <Button x:Name="button2_Copy" Width="363" FontSize="20" Content="" Margin="-260,190,0,275.333" FontWeight="Bold" RenderTransformOrigin="0.475,1.355" Click="button2_Copy_Click" FontFamily="Callibri" Height="93">
+            <Button.Background>
+                <ImageBrush ImageSource="/XMLbutton.PNG"/>
+            </Button.Background>
+            <Button.Style >
+                <Style TargetType="{x:Type Button}" >
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border CornerRadius="5"  BorderBrush="Black" BorderThickness="1" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#ffe600"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+        </Button>
+
+    </Grid>
+
+
+</Window>
