@@ -40,6 +40,7 @@ namespace GetMetaData
             MyNotifyIcon.MouseDoubleClick +=
                 new System.Windows.Forms.MouseEventHandler(MyNotifyIcon_MouseDoubleClick);
             TokenInfo.Text = "Click on Get Reports to get Started";
+            Home.Visibility = Visibility.Visible;
         }
         public static string RunFromCmd(string rCodeFilePath)
         {
@@ -89,7 +90,7 @@ namespace GetMetaData
             Browse_Copy.Visibility = Visibility.Collapsed;
             Template_Browse.Visibility = Visibility.Collapsed;
             DestPath_Browse.Visibility = Visibility.Collapsed;
-            SignOut.Visibility = Visibility.Collapsed;
+            Home.Visibility = Visibility.Collapsed;
             GetReports.Visibility = Visibility.Collapsed;
             Info.Visibility = Visibility.Collapsed;
             GenerateDoc.Visibility = Visibility.Collapsed;
@@ -122,7 +123,7 @@ namespace GetMetaData
             Browse_Copy.Visibility = Visibility.Visible;
             Template_Browse.Visibility = Visibility.Visible;
             DestPath_Browse.Visibility = Visibility.Visible;
-            SignOut.Visibility = Visibility.Visible;
+            Home.Visibility = Visibility.Visible;
             GetReports.Visibility = Visibility.Visible;
             Info.Visibility = Visibility.Visible;
             GenerateDoc.Visibility = Visibility.Visible;
@@ -237,7 +238,7 @@ namespace GetMetaData
                 Browse_Copy.Visibility = Visibility.Collapsed;
                 Template_Browse.Visibility = Visibility.Collapsed;
                 DestPath_Browse.Visibility = Visibility.Collapsed;
-                SignOut.Visibility = Visibility.Collapsed;
+                Home.Visibility = Visibility.Visible;
                 GetReports.Visibility = Visibility.Collapsed;
                 Info.Visibility = Visibility.Collapsed;
                 GenerateDoc.Visibility = Visibility.Collapsed;
@@ -475,7 +476,7 @@ namespace GetMetaData
                 Browse_Copy.Visibility = Visibility.Visible;
                 Template_Browse.Visibility = Visibility.Visible;
                 DestPath_Browse.Visibility = Visibility.Visible;
-                SignOut.Visibility = Visibility.Visible;
+                Home.Visibility = Visibility.Visible;
                 GetReports.Visibility = Visibility.Visible;
                 Info.Visibility = Visibility.Visible;
                 GenerateDoc.Visibility = Visibility.Visible;
@@ -586,7 +587,7 @@ namespace GetMetaData
                 Browse_Copy.Visibility = Visibility.Collapsed;
                 Template_Browse.Visibility = Visibility.Collapsed;
                 DestPath_Browse.Visibility = Visibility.Collapsed;
-                SignOut.Visibility = Visibility.Collapsed;
+                Home.Visibility = Visibility.Visible;
                 GetReports.Visibility = Visibility.Collapsed;
                 Info.Visibility = Visibility.Collapsed;
                 GenerateDoc.Visibility = Visibility.Collapsed;
@@ -823,7 +824,7 @@ namespace GetMetaData
                 Browse_Copy.Visibility = Visibility.Visible;
                 Template_Browse.Visibility = Visibility.Visible;
                 DestPath_Browse.Visibility = Visibility.Visible;
-                SignOut.Visibility = Visibility.Visible;
+                Home.Visibility = Visibility.Visible;
                 GetReports.Visibility = Visibility.Visible;
                 Info.Visibility = Visibility.Visible;
                 GenerateDoc.Visibility = Visibility.Visible;
@@ -845,7 +846,7 @@ namespace GetMetaData
         private void SignOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            Window1 window1 = new Window1();
+            MainWindow window1 = new MainWindow();
             window1.ShowDialog();
         }
     }
