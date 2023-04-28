@@ -846,7 +846,7 @@ namespace GetMetaData
         private void SignOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            MainWindow window1 = new MainWindow();
+            PowerBi window1 = new PowerBi();
             window1.ShowDialog();
         }
     }

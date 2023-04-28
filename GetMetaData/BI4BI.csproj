@@ -242,7 +242,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="PowerBi.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -256,8 +256,8 @@
     <Compile Include="Control\LoadingAnimation.xaml.cs">
       <DependentUpon>LoadingAnimation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="PowerBi.xaml.cs">
+      <DependentUpon>PowerBi.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Login.xaml">

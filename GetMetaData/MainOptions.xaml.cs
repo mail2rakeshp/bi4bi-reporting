@@ -34,7 +34,7 @@ namespace GetMetaData
         
 
         Tableau Tableau = new Tableau();
-        MainWindow PowerBIDialog = new MainWindow();
+        PowerBi PowerBIDialog = new PowerBi();
         Qlikview Qlikview = new Qlikview();
 
         Cognos_Options cognos = new Cognos_Options();
