@@ -447,6 +447,10 @@ namespace GetMetaData
             e.Result = "all done";
             //If the process exits the loop, ensure that progress is set to 100%
             //Remember in the loop we set i < 100 so in theory the process will complete at 99%
+            ReqButton.Visibility = Visibility.Visible;
+            Show_by_Report.Visibility = Visibility.Visible;
+            CallGraphButton.Visibility = Visibility.Visible;
+            GenerateMetadata.Visibility = Visibility.Visible;
             backgroundWorker1.ReportProgress(100);
         }
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
@@ -1943,10 +1947,10 @@ namespace GetMetaData
             {
                 Animation.Visibility = Visibility.Visible;
                 ServerStack.Visibility = Visibility.Hidden;
-                button1.Visibility = Visibility.Visible;
-                ReqButton.Visibility = Visibility.Visible;
-                Show_by_Report.Visibility = Visibility.Visible;
-                CallGraphButton.Visibility = Visibility.Visible;
+                button1.Visibility = Visibility.Collapsed;
+                ReqButton.Visibility = Visibility.Collapsed;
+                Show_by_Report.Visibility = Visibility.Collapsed;
+                CallGraphButton.Visibility = Visibility.Collapsed;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 workspacename = ResultText.Text.ToString();
