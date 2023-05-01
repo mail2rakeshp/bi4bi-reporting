@@ -28,6 +28,10 @@ using System.Data.SqlClient;
 using GetMetaData;
 using System.Windows.Documents;
 using Microsoft.SqlServer;
+using Microsoft.SqlServer.Management.Smo;
+using static IronPython.Modules.PythonSocket;
+using System.Windows.Shapes;
+using Microsoft.Scripting.Hosting;
 
 
 namespace GetMetaData
@@ -625,7 +629,7 @@ namespace GetMetaData
 
                 SQLConnection.Open();
                 
-                string script = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"Scripts\","vw_Metadata.sql"));
+                string script = File.ReadAllText(System.IO.Path.Combine(Environment.CurrentDirectory, @"Scripts\","vw_Metadata.sql"));
 
                 // split script on GO command
                 IEnumerable<string> commandStrings = Regex.Split(script, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
@@ -637,7 +641,7 @@ namespace GetMetaData
                     }
                 }
                 
-                script = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"Scripts\", "vw_Metadata_Calculations.sql"));
+                script = File.ReadAllText(System.IO.Path.Combine(Environment.CurrentDirectory, @"Scripts\", "vw_Metadata_Calculations.sql"));
 
                 // split script on GO command
                 commandStrings = Regex.Split(script, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
@@ -649,7 +653,7 @@ namespace GetMetaData
                     }
                 }
                 
-                script = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"Scripts\", "vw_Metadata_Columns.sql"));
+                script = File.ReadAllText(System.IO.Path.Combine(Environment.CurrentDirectory, @"Scripts\", "vw_Metadata_Columns.sql"));
 
                 // split script on GO command
                 commandStrings = Regex.Split(script, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
@@ -661,7 +665,7 @@ namespace GetMetaData
                     }
                 }
                 
-                script = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"Scripts\", "vw_Metadata_STM.sql"));
+                script = File.ReadAllText(System.IO.Path.Combine(Environment.CurrentDirectory, @"Scripts\", "vw_Metadata_STM.sql"));
 
                 // split script on GO command
                 commandStrings = Regex.Split(script, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
@@ -671,6 +675,353 @@ namespace GetMetaData
                     {
                         new SqlCommand(commandString, SQLConnection).ExecuteNonQuery();
                     }
+                }
+
+
+
+                string scriptp = "\nimport urllib";
+                       scriptp += "\nimport pandas as pd";
+                scriptp += "\nimport numpy as np";
+                scriptp += "\nfrom sqlalchemy import create_engine";
+                scriptp += "\nimport pyodbc";
+                scriptp += "\nquoted = urllib.parse.quote_plus(\"DRIVER={SQL Server Native Client 11.0};SERVER=" + serverlabel.ToString() + ";DATABASE=Power BI Metadata;Trusted_Connection=yes;\")";
+                scriptp += "\nengine = create_engine('mssql+pyodbc:///?odbc_connect={}'.format(quoted), fast_executemany=True)";
+                scriptp += "\nconn_str = (\"DRIVER={SQL Server Native Client 11.0};SERVER=" + serverlabel.ToString() + ";DATABASE=Power BI Metadata;Trusted_Connection=yes;\")   ";
+                scriptp += "\ncnxn = pyodbc.connect(conn_str)";
+                scriptp += "\ncursor = cnxn.cursor()";
+                scriptp += "\ndata = pd.read_sql('''";
+                scriptp += "\nselect metadata.*,[Column Name] AS [Actual Source Column],";
+                scriptp += "\n CASE WHEN metadata.[Dataset Name]='Internal Date Table' AND metadata.[Calculated Tables Expression]='Yes' THEN 'Yes'";
+                scriptp += "\n  WHEN metadata.[Dataset Name]='Internal Date Table' AND metadata.[Calculated Tables Expression]='No' THEN 'No'";
+                scriptp += "\n  ELSE 'Yes' END AS [Flag_Inclusion]";
+                scriptp += "\n  from ";
+                scriptp += "\n(SELECT [Workspace]";
+                scriptp += "\n      ,[Report Name]";
+                scriptp += "\n      ,CASE WHEN [Dataset Name] like '%LocalDateTable%' THEN 'Internal Date Table' ";
+                scriptp += "\n	  WHEN [Dataset Name] like '%DateTableTemplate%' THEN 'Internal Date Table Template' ";
+                scriptp += "\n	  ELSE REPLACE(REPLACE([Dataset Name],'[',''),']','') END AS [Dataset Name]";
+                scriptp += "\n      ,[Column Name]";
+                scriptp += "\n      ,[Calculated Column Expression]";
+                scriptp += "\n      ,[Calculated Measure Expression]";
+                scriptp += "\n      ,[Calculated Table Expression]";
+                scriptp += "\n      ,[Source]";
+                scriptp += "\n      ,[Database Or Path]";
+                scriptp += "\n      ,[Query]";
+                scriptp += "\n      ,[DatabaseItem]";
+                scriptp += "\n	  ,CASE WHEN [From Table Name] like '%LocalDateTable%' THEN 'Internal Date Table' ";
+                scriptp += "\n	  WHEN [From Table Name] like '%DateTableTemplate%' THEN 'Internal Date Table Template'";
+                scriptp += "\n	  ELSE [From Table Name] ";
+                scriptp += "\n	  END AS [From Table Name]";
+                scriptp += "\n	  ,CASE WHEN [To Table Name] like '%LocalDateTable%' THEN 'Internal Date Table' ";
+                scriptp += "\n	  WHEN [To Table Name] like '%DateTableTemplate%' THEN 'Internal Date Table Template' ";
+                scriptp += "\n	  ELSE [To Table Name] ";
+                scriptp += "\n	  END AS [To Table Name]";
+                scriptp += "\n      ,[From Column Name]";
+                scriptp += "\n      ,[To Column Name]";
+                scriptp += "\n      ,[Refreshed Time]";
+                scriptp += "\n	  , CASE WHEN [From Table Name] IS NULL THEN 'No' ELSE 'Yes' END AS [Relationships Set]";
+                scriptp += "\n	  , CASE WHEN [Calculated Column Expression] IS NULL THEN 'No' ELSE 'Yes' END AS [Calculated Columns Expressions]";
+                scriptp += "\n	  , CASE WHEN [Calculated Measure Expression] IS NULL THEN 'No' ELSE 'Yes' END AS [Calculated Measures Expressions]";
+                scriptp += "\n	  , CASE WHEN [Calculated Table Expression] IS NULL THEN 'No' ELSE 'Yes' END AS [Calculated Tables Expression]";
+                scriptp += "\n	  ,CONCAT([Workspace]";
+                scriptp += "\n      ,[Report Name]";
+                scriptp += "\n      ,CASE WHEN [Dataset Name] like '%LocalDateTable%' THEN 'Internal Date Table' ";
+                scriptp += "\n	  WHEN [Dataset Name] like '%DateTableTemplate%' THEN 'Internal Date Table Template' ";
+                scriptp += "\n	  ELSE REPLACE(REPLACE([Dataset Name],'[',''),']','') END";
+                scriptp += "\n      ,[Column Name]) JOIN_WITH_Dictionary";
+              //  scriptp += "\n	  --,CHARINDEX('Table.RenameColumns',[Steps])";
+              //  scriptp += "\n--	  ,CASE WHEN CHARINDEX('Table.RenameColumns',[Steps])>0  and ";
+              //  scriptp += "\n--	  CHARINDEX('"'+[Column Name]+'"',Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+              //  scriptp += "\n--, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+              //  scriptp += "\n--,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+              //  scriptp += "\n--, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1) )>0  THEN 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+              //  scriptp += "\n--	  ELSE NULL END";
+                scriptp += "\n	  ,CASE WHEN CHARINDEX('Table.RenameColumns',[Steps])>0  and CHARINDEX('\"'+[Column Name]+'\"', CASE WHEN CHARINDEX('Table.RenameColumns',query)=0 AND CHARINDEX('Table.RenameColumns',[Steps])>0 THEN";
+                scriptp += "\n	  Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1) END )>0  ";
+                scriptp += "\nand [Calculated Column Expression] is null and [Calculated Measure Expression] is  null and [Calculated Table Expression] is  null and CHARINDEX('Table.RenameColumns',query)=0";
+                scriptp += "\nTHEN 	  ";
+                scriptp += "\nREVERSE(Substring(REVERSE(SUBSTRING(Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1)";
+                scriptp += "\n, 0, charindex('\"'+[Column Name]+ '\"}', Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1), 0)))";
+                scriptp += "\n, charindex('\"', REVERSE(SUBSTRING(Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1)";
+                scriptp += "\n, 0, charindex('\"'+[Column Name]+ '\"}', Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1), 0)))";
+                scriptp += "\n,charindex('\"', REVERSE(SUBSTRING(Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1)";
+                scriptp += "\n, 0, charindex('\"'+[Column Name]+ '\"}', Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1), 0)))";
+                scriptp += "\n,charindex('\"', REVERSE(SUBSTRING(Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1)";
+                scriptp += "\n, 0, charindex('\"'+[Column Name]+ '\"}', Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1), 0)))";
+                scriptp += "\n)))+1";
+                scriptp += "\n, charindex('\"', REVERSE(SUBSTRING(Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1)";
+                scriptp += "\n, 0, charindex('\"'+[Column Name]+ '\"}', Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1), 0)))";
+                scriptp += "\n,charindex('\"', REVERSE(SUBSTRING(Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1)";
+                scriptp += "\n, 0, charindex('\"'+[Column Name]+ '\"}', Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1), 0)))";
+                scriptp += "\n,charindex('\"', REVERSE(SUBSTRING(Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1)";
+                scriptp += "\n, 0, charindex('\"'+[Column Name]+ '\"}', Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1), 0)))";
+                scriptp += "\n,charindex('\"', REVERSE(SUBSTRING(Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1)";
+                scriptp += "\n, 0, charindex('\"'+[Column Name]+ '\"}', Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1), 0)))";
+                scriptp += "\n)))+1)-charindex('\"', REVERSE(SUBSTRING(Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1)";
+                scriptp += "\n, 0, charindex('\"'+[Column Name]+ '\"}', Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1), 0)))";
+                scriptp += "\n,charindex('\"', REVERSE(SUBSTRING(Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1)";
+                scriptp += "\n, 0, charindex('\"'+[Column Name]+ '\"}', Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1), 0)))";
+                scriptp += "\n,charindex('\"', REVERSE(SUBSTRING(Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1)";
+                scriptp += "\n, 0, charindex('\"'+[Column Name]+ '\"}', Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1), 0))))))-1))";
+                scriptp += "\nELSE [Column Name]";
+                scriptp += "\nEND [Source Column]";
+                scriptp += "\n,CASE WHEN CHARINDEX('Table.RenameColumns',[Steps])>0  and CHARINDEX('\"'+[Column Name]+'\"', CASE WHEN CHARINDEX('Table.RenameColumns',query)=0 AND CHARINDEX('Table.RenameColumns',[Steps])>0 THEN";
+                scriptp += "\n	  Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                scriptp += "\n,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                scriptp += "\n, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1) END )>0  ";
+                scriptp += "\nand [Calculated Column Expression] is null and [Calculated Measure Expression] is  null and [Calculated Table Expression] is  null and CHARINDEX('Table.RenameColumns',query)=0";
+                scriptp += "\nTHEN 'Yes' ELSE 'No' END AS [Change in Columns]";
+                scriptp += "\n  ,[Steps]";
+                scriptp += "\n--into #Metadata";
+                scriptp += "\n  FROM [Power BI Metadata].[dbo].[Metadata] (NOLOCK)";
+                scriptp += "\nWHERE ";
+                scriptp += "\n CHARINDEX('{\"'+[Column Name]+'\"}',[Steps])=0";
+                scriptp += "\n UNION ALL";
+                scriptp += "\n SELECT [Workspace]";
+                scriptp += "\n      ,[Report Name]";
+                scriptp += "\n      ,CASE WHEN [Dataset Name] like '%LocalDateTable%' THEN 'Internal Date Table' ";
+                scriptp += "\n	  WHEN [Dataset Name] like '%DateTableTemplate%' THEN 'Internal Date Table Template' ";
+                scriptp += "\n	  ELSE REPLACE(REPLACE([Dataset Name],'[',''),']','') END AS [Dataset Name]";
+                scriptp += "\n      ,[Column Name]";
+                scriptp += "\n      ,[Calculated Column Expression]";
+                scriptp += "\n      ,[Calculated Measure Expression]";
+                scriptp += "\n      ,[Calculated Table Expression]";
+                scriptp += "\n      ,[Source]";
+                scriptp += "\n      ,[Database Or Path]";
+                scriptp += "\n      ,[Query]";
+                scriptp += "\n      ,[DatabaseItem]";
+                scriptp += "\n	  ,CASE WHEN [From Table Name] like '%LocalDateTable%' THEN 'Internal Date Table' ";
+                scriptp += "\n	  WHEN [From Table Name] like '%DateTableTemplate%' THEN 'Internal Date Table Template'";
+                scriptp += "\n	  ELSE [From Table Name] ";
+                scriptp += "\n	  END AS [From Table Name]";
+                scriptp += "\n	  ,CASE WHEN [To Table Name] like '%LocalDateTable%' THEN 'Internal Date Table' ";
+                scriptp += "\n	  WHEN [To Table Name] like '%DateTableTemplate%' THEN 'Internal Date Table Template' ";
+                scriptp += "\n	  ELSE [To Table Name] ";
+                scriptp += "\n	  END AS [To Table Name]";
+                scriptp += "\n      ,[From Column Name]";
+                scriptp += "\n      ,[To Column Name]";
+                scriptp += "\n      ,[Refreshed Time]";
+                scriptp += "\n	  , CASE WHEN [From Table Name] IS NULL THEN 'No' ELSE 'Yes' END AS [Relationships Set]";
+                scriptp += "\n	  , CASE WHEN [Calculated Column Expression] IS NULL THEN 'No' ELSE 'Yes' END AS [Calculated Columns Expressions]";
+                scriptp += "\n	  , CASE WHEN [Calculated Measure Expression] IS NULL THEN 'No' ELSE 'Yes' END AS [Calculated Measures Expressions]";
+                scriptp += "\n	  , CASE WHEN [Calculated Table Expression] IS NULL THEN 'No' ELSE 'Yes' END AS [Calculated Tables Expression]";
+                scriptp += "\n	  ,CONCAT([Workspace]";
+                scriptp += "\n      ,[Report Name]";
+                scriptp += "\n      ,CASE WHEN [Dataset Name] like '%LocalDateTable%' THEN 'Internal Date Table' ";
+                scriptp += "\n	  WHEN [Dataset Name] like '%DateTableTemplate%' THEN 'Internal Date Table Template' ";
+                scriptp += "\n	  ELSE REPLACE(REPLACE([Dataset Name],'[',''),']','') END";
+                scriptp += "\n      ,[Column Name]) JOIN_WITH_Dictionary";
+                scriptp += "\n	, [Column Name]  AS [Source Column]";
+                scriptp += "\n , 'No' [Change in Columns] ";
+                scriptp += "\n  ,[Steps]";
+                scriptp += "\n  FROM [Power BI Metadata].[dbo].[Metadata] (NOLOCK)";
+                scriptp += "\nWHERE ";
+                scriptp += "\n CHARINDEX('{\"'+[Column Name]+'\"}',[Steps])<>0";
+                scriptp += "\n )  as metadata";
+                scriptp += "\n''', cnxn)";
+                scriptp += "\nworkspaces = data['Workspace'].unique().tolist()";
+                scriptp += "\nreport_name = data['Report Name'].unique().tolist()";
+                scriptp += "\nresult = []";
+                scriptp += "\nfor each_workspace in workspaces:";
+                scriptp += "\n    for each_report_name in report_name:";
+                scriptp += "\n        inner_column_name = []";
+                scriptp += "\n        inner_cce = []";
+                scriptp += "\n        inner_cme = []";
+                scriptp += "\n        inner_cte = []";
+                scriptp += "\n        inner_source = []";
+                scriptp += "\n        inner_dop = []";
+                scriptp += "\n        inner_query = []";
+                scriptp += "\n        temp_data = data[(data['Workspace'] == each_workspace) & (data['Report Name'] == each_report_name)]";
+                scriptp += "\n        for _, each_row in temp_data.iterrows():";
+                scriptp += "\n            inner_column_name.append(each_row['Column Name'])";
+                scriptp += "\n            inner_cce.append(each_row['Calculated Column Expression'])";
+                scriptp += "\n            inner_cme.append(each_row['Calculated Measure Expression'])";
+                scriptp += "\n            inner_cte.append(each_row['Calculated Table Expression'])";
+                scriptp += "\n            inner_source.append(each_row['Source'])";
+                scriptp += "\n            inner_dop.append(each_row['Database Or Path'])";
+                scriptp += "\n            inner_query.append(each_row['Query'])";
+                scriptp += "\n        inner_column_name = [i for i in inner_column_name if i is not None]";
+                scriptp += "\n        inner_cce = [i for i in inner_cce if i is not None]";
+                scriptp += "\n        inner_cme = [i for i in inner_cme if i is not None]";
+                scriptp += "\n        inner_cte = [i for i in inner_cte if i is not None]";
+                scriptp += "\n        inner_source = [i for i in inner_source if i is not None]";
+                scriptp += "\n        inner_dop = [i for i in inner_dop if i is not None]";
+                scriptp += "\n        inner_query = [i for i in inner_query if i is not None]";
+                scriptp += "\n        result.append([each_workspace, each_report_name, inner_column_name,";
+                scriptp += "\n                       inner_cce, inner_cme, inner_cte, inner_source, inner_dop, inner_query])";
+                scriptp += "\npercentage_table = []";
+                scriptp += "\nfor i in range(0, len(result)):";
+                scriptp += "\n    for j in range(i+1, len(result)):";
+                scriptp += "\n        column_per = 0";
+                scriptp += "\n        cce_per = 0";
+                scriptp += "\n        cme_per = 0";
+                scriptp += "\n        cte_per = 0";
+                scriptp += "\n        source_per = 0";
+                scriptp += "\n        dop_per = 0";
+                scriptp += "\n        query_per = 0";
+                scriptp += "\n        if result[i][0] == result[j][0]:";
+                scriptp += "\n            if result[i][2] == [] and result[j][2] == []:";
+                scriptp += "\n                column_per = np.nan";
+                scriptp += "\n            elif result[i][2] != [] or result[j][2] != []:";
+                scriptp += "\n                column_per = len(set(result[i][2]).intersection(set(result[j][2]))) / float(len(set(result[i][2] + result[j][2]))) * 100";
+                scriptp += "\n            if result[i][3] == [] and result[j][3] == []:";
+                scriptp += "\n                cce_per = np.nan";
+                scriptp += "\n            elif result[i][3] != [] or result[j][3] != []:";
+                scriptp += "\n                cce_per = len(set(result[i][3]).intersection(set(result[j][3]))) / float(len(set(result[i][3] + result[j][3]))) * 100";
+                scriptp += "\n            if result[i][4] == [] and result[j][4] == []:";
+                scriptp += "\n                cme_per = np.nan";
+                scriptp += "\n            elif result[i][4] != [] or result[j][4] != []:";
+                scriptp += "\n                cme_per = len(set(result[i][4]).intersection(set(result[j][4]))) / float(len(set(result[i][4] + result[j][4]))) * 100";
+                scriptp += "\n            if result[i][5] == [] and result[j][5] == []:";
+                scriptp += "\n                cte_per = np.nan";
+                scriptp += "\n            elif result[i][5] != [] or result[j][5] != []:";
+                scriptp += "\n                cte_per = len(set(result[i][5]).intersection(set(result[j][5]))) / float(len(set(result[i][5] + result[j][5]))) * 100";
+                scriptp += "\n            if result[i][6] == [] and result[j][6] == []:";
+                scriptp += "\n                source_per = np.nan";
+                scriptp += "\n            elif result[i][6] != [] or result[j][6] != []:";
+                scriptp += "\n                source_per = len(set(result[i][6]).intersection(set(result[j][6]))) / float(len(set(result[i][6] + result[j][6]))) * 100";
+                scriptp += "\n            if result[i][7] == [] and result[j][7] == []:";
+                scriptp += "\n                dop_per = np.nan";
+                scriptp += "\n            elif result[i][7] != [] or result[j][7] != []:";
+                scriptp += "\n                dop_per = len(set(result[i][7]).intersection(set(result[j][7]))) / float(len(set(result[i][7] + result[j][7]))) * 100";
+                scriptp += "\n            if result[i][8] == [] and result[j][8] == []:";
+                scriptp += "\n                query_per = np.nan";
+                scriptp += "\n            elif set(result[i][8]) == {'No Query Available'} and set(result[j][8]) == {'No Query Available'}:";
+                scriptp += "\n                query_per = np.nan";
+                scriptp += "\n            elif result[i][8] != [] or result[j][8] != []:";
+                scriptp += "\n                query_per = len(set(result[i][8]).intersection(set(result[j][8]))) / float(len(set(result[i][8] + result[j][8]))) * 100";
+                scriptp += "\n            percentage_table.append([result[i][0], result[i][1], result[j][1], column_per, cce_per, cme_per, cte_per, source_per, dop_per, query_per])";
+           //     scriptp += "\n percentage_table = []";
+
+                scriptp += "\npercentage_table_df = pd.DataFrame(percentage_table, columns = ['Workspace', 'Report A', 'Report B', 'Column Name', ";
+                scriptp += "\n                                                                'Calculated Column Expression',";
+                scriptp += "\n                                                                'Calculated Measure Expression', 'Calculated Table Expression',";
+                scriptp += "\n                                                                'Source', 'Database Or Path', 'Query'])";
+
+                scriptp += "\npercentage_table_df.to_sql('power_bi_report_match_percentage', schema='dbo',if_exists = 'replace', con = engine, index=False, index_label='myField')";
+
+                string pathp = Directory.GetCurrentDirectory() + @"\PythonFile\PowerBI_Process_Python.py";
+                File.SetAttributes(pathp, FileAttributes.Normal);
+                if (File.Exists(pathp))
+                {
+                    File.Delete(pathp);
+                }
+                using (StreamWriter writer = File.CreateText(pathp))
+                {
+                    writer.WriteLine(scriptp);
+                }
+                try
+                {
+                    string workingDirectory = Directory.GetCurrentDirectory() + @"\PythonFile";
+                    var process = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            RedirectStandardInput = true,
+                            UseShellExecute = false,
+                            RedirectStandardError = true,
+                            CreateNoWindow = true,
+                            WorkingDirectory = workingDirectory
+                        }
+
+
+                    };
+                    process.Start();
+
+
+                    using (var sw = process.StandardInput)
+                    {
+                        if (sw.BaseStream.CanWrite)
+                        {
+                           // string TextPython = "C:\\Users\\Rakesh.P\\Anaconda3";
+                            // Batch script to activate Anaconda
+                            //  sw.WriteLine(TextPython.Text + @"\Scripts\activate.bat");
+                           // sw.WriteLine("C:\\Users\\Rakesh.P\\Anaconda3\\Scripts\activate.bat");
+                            sw.WriteLine(@"C:\Users\Rakesh.P\Anaconda3\Scripts\activate.bat");
+                            // Activate your environment
+                            // sw.WriteLine("conda activate py3.9.7");
+                            // run your script. You can also pass in arguments
+                            sw.WriteLine("PowerBI_Process_Python.py");
+                        }
+                    }
+                    //string output = process.StandardOutput.ReadToEnd();
+
+                    process.WaitForExit();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
                 }
 
             }
@@ -1886,11 +2237,11 @@ namespace GetMetaData
                     //ComboBoxZone.SelectedValuePath = ds.Tables[0].Columns["CATALOG_NAME"].ToString();
                     //dataGrid1.Visibility = Visibility.Visible;
                     Animation.Visibility = Visibility.Collapsed;
-                    // StackGrid.Visibility = Visibility.Visible;
-                    //button1.Visibility = Visibility.Collapsed;
-                    //ReqButton.Visibility = Visibility.Collapsed;
-                    //Show_by_Report.Visibility = Visibility.Collapsed;
-                    //CallGraphButton.Visibility = Visibility.Collapsed;
+                     StackGrid.Visibility = Visibility.Visible;
+                    button1.Visibility = Visibility.Visible;
+                    ReqButton.Visibility = Visibility.Visible;
+                    Show_by_Report.Visibility = Visibility.Visible;
+                    CallGraphButton.Visibility = Visibility.Visible;
                     ServerStack.Visibility = Visibility.Visible;
                     GenerateMetadata.Visibility = Visibility.Collapsed;
                     Output.Visibility = Visibility.Collapsed;
@@ -2091,7 +2442,7 @@ namespace GetMetaData
             MessageBox.Show("Generating Report. Please Wait ....");
             // string file = @"Metadata Output.pbix";
             string fileName = "Metadata Output.pbix";
-            string path = Path.Combine(Environment.CurrentDirectory, @"Report\", fileName);
+            string path = System.IO.Path.Combine(Environment.CurrentDirectory, @"Report\", fileName);
             Process.Start(path);
             //MessageBox.Show(path);
 
@@ -2170,7 +2521,10 @@ namespace GetMetaData
             // This is where the processor intensive code should go
             //ShowSelectedReport();
             ExecuteMethodAsync();
+            //Python code to be added here
 
+
+            //Python code to be ended here
             // if we need any output to be used, put it in the DoWorkEventArgs object
             e.Result = "all done";
             //If the process exits the loop, ensure that progress is set to 100%
