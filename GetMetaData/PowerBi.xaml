@@ -114,7 +114,7 @@
             </Grid>
             <StackPanel  Name="StackBG" Margin="0,85,-1,0.666" Grid.ColumnSpan="7">
 
-                <StackPanel  Name="ServerStack" VerticalAlignment="Top"  Height="336" Margin="0,-10,0.333,0" >
+                <StackPanel  Name="ServerStack"  Height="387" Margin="0,-10,0.333,0" >
                     <Label Content="Home  >  PBI Workspace Extractor" FontSize="14" Foreground="White" x:Name="LabelUser2" Margin="0,5,0,2" FontFamily="EYInterstate" Height="27" HorizontalAlignment="Left" />
                     <Label Content="PBI Workspace Extractor" FontSize="24" Foreground="#FFFFE600" x:Name="LabelUser" Margin="0,5,0,0" FontFamily="EYInterstate" Height="36" HorizontalAlignment="Left" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -275,7 +275,7 @@
 
                     <StackPanel HorizontalAlignment="Left" Margin="0,0,0,0" Width="1500">
 
-                        <ComboBox DropDownClosed="ComboBoxZone_DropDownClosed" TextBoxBase.TextChanged="ddlCountry_TextChanged"  IsTextSearchEnabled="True"  StaysOpenOnEdit="True" SelectionChanged="ddlCountry_SelectionChanged" x:Name="ComboBoxZone" Width="400" FontWeight="Bold" Tag="This Value" Height="23"  Margin="0,0,1075,0">
+                        <ComboBox DropDownClosed="ComboBoxZone_DropDownClosed" TextBoxBase.TextChanged="ddlCountry_TextChanged"  IsTextSearchEnabled="True"  StaysOpenOnEdit="True" SelectionChanged="ddlCountry_SelectionChanged" x:Name="ComboBoxZone" Width="400" FontWeight="Bold" Tag="This Value" Height="23"  Margin="-4,0,1075,0">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <CheckBox Name="chkCountry" Width="220" Checked="AllCheckbocx_Checked" Unchecked="AllCheckbocx_Unchecked" Content="{Binding CATALOG_NAME}" IsChecked="{Binding Check_Status}">
@@ -296,7 +296,7 @@
 
 
 
-                        <Button  x:Name="Get_Database" Padding="5" Content="Get Reports" Height="22"   FontWeight="Bold" HorizontalAlignment="Left" Click="CallDatabaseList" Margin="410,-24,450,5" FontFamily="EYInterstate"  Width="135" Background="Black" Foreground="White">
+                        <Button  x:Name="Get_Database" Padding="5" Content="Get Reports" Height="25"   FontWeight="Bold" HorizontalAlignment="Left" Click="CallDatabaseList" Margin="410,-23,450,5" FontFamily="EYInterstate"  Width="135" Background="Black" Foreground="White">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -349,15 +349,33 @@
                     <Border Name="BorderServer" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="10,-335,491,-100" Height="28">
                         <TextBox Height="20"   Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="Server" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
                     </Border>
+                    <Label Content="Python Path* : " Foreground="White" x:Name="LabelDatabaseServer1" Margin="5,-80,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
+                    <Border Name="BorderServer1" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="8,-350,491,-100" Height="28">
+                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="TextPython" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
+                    </Border>
+                    <Button x:Name="Browse" Content="Browse" Margin="480,-140,-200,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="Callibri" Click="Browse_Click" Width="101" Foreground="White" Background="Black">
+                        <Button.Style >
+                            <Style TargetType="{x:Type Button}" >
 
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="0"  BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#ffe600"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
 
-
-
+                    </Button>
                 </StackPanel>
-
-
-
-
                 <control:LoadingAnimation Visibility="Collapsed"  x:Name="Animation" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="450,-200,492,149.667" Grid.Column="1" />
                 <StackPanel>
 
@@ -366,7 +384,8 @@
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="467*"/>
+                        <ColumnDefinition Width="92*"/>
+                        <ColumnDefinition Width="375*"/>
                         <ColumnDefinition Width="455*"/>
                         <ColumnDefinition Width="69*"/>
                         <ColumnDefinition Width="35*"/>
@@ -376,8 +395,8 @@
 
 
 
-                    <StackPanel x:Name="StackGrid" Grid.ColumnSpan="3" Height="140" Margin="0,0,69,45"   >
-                      
+                    <StackPanel x:Name="StackGrid" Grid.ColumnSpan="4" Height="140" Margin="0,10,69,45"   >
+
                         <Button x:Name="Show_by_Report"  Content="Load Data for Selected Report/Reports" Height="22"  FontWeight="Bold" Click="Show_By_Report" FontFamily="EYInterstate"  Width="234" Background="Black" Foreground="White" Margin="10,30,10,-30" HorizontalAlignment="Left">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >

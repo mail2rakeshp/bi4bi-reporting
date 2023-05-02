@@ -32,6 +32,8 @@ using Microsoft.SqlServer.Management.Smo;
 using static IronPython.Modules.PythonSocket;
 using System.Windows.Shapes;
 using Microsoft.Scripting.Hosting;
+using static Community.CsharpSqlite.Sqlite3;
+using IronPython.Modules;
 
 
 namespace GetMetaData
@@ -47,6 +49,7 @@ namespace GetMetaData
         string[] scopes = new string[] { "user.read" };
 
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
+        private static string PythonPath1;
         Microsoft.Office.Interop.Excel.Application excel;
         Microsoft.Office.Interop.Excel.Workbook workBook;
         Microsoft.Office.Interop.Excel.Worksheet workSheet;
@@ -450,12 +453,9 @@ namespace GetMetaData
             // if we need any output to be used, put it in the DoWorkEventArgs object
             e.Result = "all done";
             //If the process exits the loop, ensure that progress is set to 100%
-            //Remember in the loop we set i < 100 so in theory the process will complete at 99%
-            ReqButton.Visibility = Visibility.Visible;
-            Show_by_Report.Visibility = Visibility.Visible;
-            CallGraphButton.Visibility = Visibility.Visible;
-            GenerateMetadata.Visibility = Visibility.Visible;
+            //Remember in the loop we set i < 100 so in theory the process will complete at 99%         
             backgroundWorker1.ReportProgress(100);
+             
         }
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
@@ -557,10 +557,10 @@ namespace GetMetaData
             {
                 Animation.Visibility = Visibility.Visible;
                 ServerStack.Visibility = Visibility.Hidden;
-                button1.Visibility = Visibility.Visible;
-                ReqButton.Visibility = Visibility.Visible;
-                Show_by_Report.Visibility = Visibility.Visible;
-                CallGraphButton.Visibility = Visibility.Visible;
+                button1.Visibility = Visibility.Collapsed;
+                ReqButton.Visibility = Visibility.Collapsed;
+                Show_by_Report.Visibility = Visibility.Collapsed;
+                CallGraphButton.Visibility = Visibility.Collapsed;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 ComboBoxZone.Text = "";
@@ -575,7 +575,7 @@ namespace GetMetaData
 
 
 
-        private void ExecuteMethodAsync()
+        public void ExecuteMethodAsync()
         {
 
 
@@ -971,6 +971,7 @@ namespace GetMetaData
                 scriptp += "\npercentage_table_df.to_sql('power_bi_report_match_percentage', schema='dbo',if_exists = 'replace', con = engine, index=False, index_label='myField')";
 
                 string pathp = Directory.GetCurrentDirectory() + @"\PythonFile\PowerBI_Process_Python.py";
+               
                 File.SetAttributes(pathp, FileAttributes.Normal);
                 if (File.Exists(pathp))
                 {
@@ -978,51 +979,54 @@ namespace GetMetaData
                 }
                 using (StreamWriter writer = File.CreateText(pathp))
                 {
-                    writer.WriteLine(scriptp);
+                    writer.WriteLine(scriptp);                  
+                    
                 }
-                try
-                {
-                    string workingDirectory = Directory.GetCurrentDirectory() + @"\PythonFile";
-                    var process = new Process
-                    {
-                        StartInfo = new ProcessStartInfo
-                        {
-                            FileName = "cmd.exe",
-                            RedirectStandardInput = true,
-                            UseShellExecute = false,
-                            RedirectStandardError = true,
-                            CreateNoWindow = true,
-                            WorkingDirectory = workingDirectory
-                        }
+                run_cmd();
+                
+                /* try
+                 {
+                     string workingDirectory = Directory.GetCurrentDirectory() + @"\PythonFile";
+                     var process = new Process
+                     {
+                         StartInfo = new ProcessStartInfo
+                         {
+                             FileName = "cmd.exe",
+                             RedirectStandardInput = true,
+                             UseShellExecute = false,
+                             RedirectStandardError = true,
+                             CreateNoWindow = true,
+                             WorkingDirectory = workingDirectory
+                         }
 
 
-                    };
-                    process.Start();
+                     };
+                     process.Start();
 
 
-                    using (var sw = process.StandardInput)
-                    {
-                        if (sw.BaseStream.CanWrite)
-                        {
-                           // string TextPython = "C:\\Users\\Rakesh.P\\Anaconda3";
-                            // Batch script to activate Anaconda
-                            //  sw.WriteLine(TextPython.Text + @"\Scripts\activate.bat");
-                           // sw.WriteLine("C:\\Users\\Rakesh.P\\Anaconda3\\Scripts\activate.bat");
-                            sw.WriteLine(@"C:\Users\Rakesh.P\Anaconda3\Scripts\activate.bat");
-                            // Activate your environment
-                            // sw.WriteLine("conda activate py3.9.7");
-                            // run your script. You can also pass in arguments
-                            sw.WriteLine("PowerBI_Process_Python.py");
-                        }
-                    }
-                    //string output = process.StandardOutput.ReadToEnd();
+                     using (var sw = process.StandardInput)
+                     {
+                         if (sw.BaseStream.CanWrite)
+                         {
+                            // string TextPython = "C:\\Users\\Rakesh.P\\Anaconda3";
+                             // Batch script to activate Anaconda
+                             //  sw.WriteLine(TextPython.Text + @"\Scripts\activate.bat");
+                            // sw.WriteLine("C:\\Users\\Rakesh.P\\Anaconda3\\Scripts\activate.bat");
+                             sw.WriteLine(@"C:\Users\Rakesh.P\Anaconda3\Scripts\activate.bat");
+                             // Activate your environment
+                             // sw.WriteLine("conda activate py3.9.7");
+                             // run your script. You can also pass in arguments
+                             sw.WriteLine("PowerBI_Process_Python.py");
+                         }
+                     }
+                     //string output = process.StandardOutput.ReadToEnd();
 
-                    process.WaitForExit();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
-                }
+                     process.WaitForExit();
+                 }
+                 catch (Exception ex)
+                 {
+                     MessageBox.Show(ex.Message.ToString());
+                 } */
 
             }
             catch (SqlException er)
@@ -1032,8 +1036,10 @@ namespace GetMetaData
             finally
             {
                 SQLConnection.Close();
+
             }
 
+           
 
         }
 
@@ -1065,8 +1071,9 @@ namespace GetMetaData
             ResultText.Text = "";
             ResultText2.Text = "";
             Server.Text = "";
+            TextPython.Text = "";
 
-          //  GenerateMetadata.IsChecked = false;
+            //  GenerateMetadata.IsChecked = false;
             Output.IsChecked = false;
             Output.IsEnabled = false;
             GenerateMetadata.IsEnabled = true;
@@ -2401,7 +2408,50 @@ namespace GetMetaData
 
         }
 
+        private async void run_cmd()
+        {
+            try
+            {
+                //System.Threading.Thread.Sleep(10000);
+                string workingDirectory = Directory.GetCurrentDirectory() + @"\PythonFile";               
+                var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        RedirectStandardInput = true,
+                        UseShellExecute = false,
+                        RedirectStandardError = true,
+                        CreateNoWindow = true,
+                        WorkingDirectory = workingDirectory
+                    }
 
+
+                };
+                process.Start();
+               // System.Threading.Thread.Sleep(10000);
+                // string TextPython = "C:\\Users\\Rakesh.P\\Anaconda3";
+                using (var sw = process.StandardInput)
+                {
+                    if (sw.BaseStream.CanWrite)                    {
+                       
+                        sw.WriteLine(PythonPath1 + @"\Scripts\activate.bat");
+                        sw.WriteLine("python "+'"'+ workingDirectory+@"\PowerBI_Process_Python.py" + '"');
+                    }
+                }
+                //string output = process.StandardOutput.ReadToEnd();
+
+                process.WaitForExit();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+
+        }
 
         public async Task<string> GetHttpContentWithTokenCombo(string url, string token)
         {
@@ -2513,6 +2563,15 @@ namespace GetMetaData
             Animation.Visibility = Visibility.Collapsed;
             StackGrid.Visibility = Visibility.Visible;
             ServerStack.Visibility = Visibility.Visible;
+        }
+
+        public void Browse_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new System.Windows.Forms.FolderBrowserDialog();
+            dialog.ShowDialog();
+            TextPython.Text = dialog.SelectedPath;
+            PythonPath1 = TextPython.Text;
+
         }
 
         private void backgroundWorker3_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
