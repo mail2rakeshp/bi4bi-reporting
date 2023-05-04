@@ -483,6 +483,7 @@ namespace GetMetaData
                     ReqButton.Visibility = Visibility.Visible;
                     Show_by_Report.Visibility = Visibility.Visible;
                     CallGraphButton.Visibility = Visibility.Visible;
+                    SignOutButton.Visibility = Visibility.Visible;
                     GenerateMetadata.Visibility = Visibility.Collapsed;
                     Output.Visibility = Visibility.Collapsed;
                     Output.IsEnabled = true;
@@ -546,6 +547,7 @@ namespace GetMetaData
                 ReqButton.Visibility = Visibility.Collapsed;
                 Show_by_Report.Visibility = Visibility.Collapsed;
                 CallGraphButton.Visibility = Visibility.Collapsed;
+                SignOutButton.Visibility = Visibility.Collapsed;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 Output.IsEnabled = false;
@@ -561,6 +563,7 @@ namespace GetMetaData
                 ReqButton.Visibility = Visibility.Collapsed;
                 Show_by_Report.Visibility = Visibility.Collapsed;
                 CallGraphButton.Visibility = Visibility.Collapsed;
+                SignOutButton.Visibility = Visibility.Collapsed;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 ComboBoxZone.Text = "";
@@ -1086,9 +1089,9 @@ namespace GetMetaData
             ReqButton.Visibility = Visibility.Visible;
             Show_by_Report.Visibility = Visibility.Visible;
             CallGraphButton.Visibility = Visibility.Visible;
+            SignOutButton.Visibility = Visibility.Visible;
 
-            
-            
+
             BorderSelected.Visibility = Visibility.Collapsed;
             PopText.Visibility = Visibility.Collapsed;
             LabelSelectedReports.Visibility = Visibility.Collapsed;
@@ -2250,6 +2253,7 @@ namespace GetMetaData
                     Show_by_Report.Visibility = Visibility.Visible;
                     CallGraphButton.Visibility = Visibility.Visible;
                     ServerStack.Visibility = Visibility.Visible;
+                    SignOutButton.Visibility = Visibility.Visible;
                     GenerateMetadata.Visibility = Visibility.Collapsed;
                     Output.Visibility = Visibility.Collapsed;
 
@@ -2310,6 +2314,7 @@ namespace GetMetaData
                 Show_by_Report.Visibility = Visibility.Collapsed;
                 CallGraphButton.Visibility = Visibility.Collapsed;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
+                SignOutButton.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 workspacename = ResultText.Text.ToString();
                 backgroundWorker2.RunWorkerAsync();
@@ -2323,6 +2328,7 @@ namespace GetMetaData
                 Show_by_Report.Visibility = Visibility.Collapsed;
                 CallGraphButton.Visibility = Visibility.Collapsed;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
+                SignOutButton.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 workspacename = ResultText.Text.ToString();
                 workspacename1 = ResultText2.Text.ToString();
@@ -2616,6 +2622,7 @@ namespace GetMetaData
                     ReqButton.Visibility = Visibility.Visible;
                     Show_by_Report.Visibility = Visibility.Visible;
                     CallGraphButton.Visibility = Visibility.Visible;
+                    SignOutButton.Visibility = Visibility.Visible;
                     GenerateMetadata.Visibility = Visibility.Collapsed;
                     Output.Visibility = Visibility.Collapsed;
                     Output.IsEnabled = true;
@@ -2646,6 +2653,7 @@ namespace GetMetaData
                     ReqButton.Visibility = Visibility.Visible;
                     Show_by_Report.Visibility = Visibility.Visible;
                     CallGraphButton.Visibility = Visibility.Visible;
+                    SignOutButton.Visibility = Visibility.Visible;
                     GenerateMetadata.Visibility = Visibility.Collapsed;
                     Output.Visibility = Visibility.Collapsed;
                     Output.IsEnabled = false;
@@ -2663,7 +2671,7 @@ namespace GetMetaData
             ReqButton.Visibility = Visibility.Visible;
             Show_by_Report.Visibility = Visibility.Visible;
             CallGraphButton.Visibility = Visibility.Visible;
-
+            SignOutButton.Visibility = Visibility.Visible;
             //MessageBox.Show("");
             itemCombo = items;
             workspacename = ResultText.Text.ToString();
@@ -2679,6 +2687,7 @@ namespace GetMetaData
                 ReqButton.Visibility = Visibility.Visible;
                 Show_by_Report.Visibility = Visibility.Visible;
                 CallGraphButton.Visibility = Visibility.Visible;
+                SignOutButton.Visibility = Visibility.Visible;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 Output.IsEnabled = false;
@@ -2694,6 +2703,7 @@ namespace GetMetaData
                 ReqButton.Visibility = Visibility.Collapsed;
                 Show_by_Report.Visibility = Visibility.Collapsed;
                 CallGraphButton.Visibility = Visibility.Collapsed;
+                SignOutButton.Visibility = Visibility.Collapsed;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 BorderSelected.Visibility = Visibility.Collapsed;
@@ -3235,7 +3245,7 @@ namespace GetMetaData
             Show_by_Report.Visibility = Visibility.Visible;
             button1.Visibility = Visibility.Visible;
             ReqButton.Visibility = Visibility.Visible;
-
+            SignOutButton.Visibility = Visibility.Visible;
 
 
 
@@ -3278,6 +3288,7 @@ namespace GetMetaData
             Show_by_Report.Visibility = Visibility.Visible;
             button1.Visibility = Visibility.Visible;
             ReqButton.Visibility = Visibility.Visible;
+            SignOutButton.Visibility = Visibility.Visible;
 
         }
 
@@ -3953,7 +3964,15 @@ namespace GetMetaData
             this.Close();
         }
 
-        
+        private void Server_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextPython_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 
     public class DDL_Report

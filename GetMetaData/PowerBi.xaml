@@ -112,7 +112,7 @@
 
 
             </Grid>
-            <StackPanel  Name="StackBG" Margin="0,85,-1,0.666" Grid.ColumnSpan="7">
+            <StackPanel  Name="StackBG" Margin="0,120,-1,0.666" Grid.ColumnSpan="7">
 
                 <StackPanel  Name="ServerStack"  Height="387" Margin="0,-10,0.333,0" >
                     <Label Content="Home  >  PBI Workspace Extractor" FontSize="14" Foreground="White" x:Name="LabelUser2" Margin="0,5,0,2" FontFamily="EYInterstate" Height="27" HorizontalAlignment="Left" />
@@ -143,45 +143,24 @@
 
                         </Button>
 
-                        <Button x:Name="SignOutButton" FontWeight="Bold" Height="30" Content="Reset" HorizontalAlignment="Right" Padding="5" Click="SignOutButton_Click" Margin="5"   FontFamily="EYInterstate" Width="65" Background="Black" Foreground="White">
-                            <Button.Style >
-                                <Style TargetType="{x:Type Button}" >
 
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border CornerRadius="0"  BorderBrush="#ffffff" BorderThickness="1" Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#ffe600"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-
-                        </Button>
 
                     </StackPanel>
                     <Label Content="Workspace Connection" Foreground="White" x:Name="LabelServer" Margin="5,-160,865.667,-105" FontFamily="EYInterstate" FontWeight="Bold" Height="26" />
-                    <Border Name="Border1" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,-15,491,15" Height="27">
-                        <TextBox    Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="ResultText" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-.333,8.667,-1.667" FontFamily="Sergoe Ui" TextChanged="ResultText_TextChanged" Height="19"/>
+                    <Border Width="610" Name="Border1" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="8,-15,0,15" Height="27"  HorizontalAlignment="Left">
+                        <TextBox  Width="610" Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="ResultText" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="5,0,0,0" FontFamily="Sergoe Ui" TextChanged="ResultText_TextChanged" Height="19"/>
                     </Border>
 
 
 
-                    <Border Visibility="Collapsed"  Name="Server2Bord"  CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,0,491,5" Height="27">
+                    <Border Width="610" Visibility="Collapsed"  Name="Server2Bord"  CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,0,491,5" Height="27" HorizontalAlignment="Left">
                         <TextBox Visibility="Collapsed" Foreground="White" Background="#2E2E38"  BorderThickness="0" x:Name="ResultText2"   FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="8.667,-1.333,4.667,-1.667" FontFamily="Sergoe Ui" TextChanged="ResultText2_TextChanged" Height="19"/>
                     </Border>
-                    <Border Visibility="Collapsed" Name="Server3Bord" CornerRadius="5" BorderThickness="1" BorderBrush="#ffffff" Margin="5,5,491,5" Height="27">
+                    <Border Width="610" Visibility="Collapsed" Name="Server3Bord" CornerRadius="5" BorderThickness="1" BorderBrush="#ffffff" Margin="5,5,491,5" Height="27">
                         <TextBox Foreground="White" Background="#000000"  Visibility="Collapsed" BorderThickness="0" x:Name="ResultText3"   Height="19" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,3,8.667,8.333" FontFamily="EYInterstate" TextChanged="ResultText3_TextChanged"/>
                     </Border>
 
-                    <Button  x:Name="AddServer"  Content="Add Workspace Connection" HorizontalAlignment="Left" Margin="6,0,0,0" FontWeight="Bold" Width="200" Height="23" RenderTransformOrigin="0.5,0.5" Click="AddServer_Click" FontFamily="Callibri" Background="Black" Foreground="White" >
+                    <Button  x:Name="AddServer" Visibility="Collapsed"  Content="Add Workspace Connection" HorizontalAlignment="Left" Margin="10,0,0,0" FontWeight="Bold" Width="200" Height="23" RenderTransformOrigin="0.5,0.5" Click="AddServer_Click" FontFamily="Callibri" Background="Black" Foreground="White" >
                         <Button.Style >
                             <Style TargetType="{x:Type Button}" >
 
@@ -275,7 +254,7 @@
 
                     <StackPanel HorizontalAlignment="Left" Margin="0,0,0,0" Width="1500">
 
-                        <ComboBox DropDownClosed="ComboBoxZone_DropDownClosed" TextBoxBase.TextChanged="ddlCountry_TextChanged"  IsTextSearchEnabled="True"  StaysOpenOnEdit="True" SelectionChanged="ddlCountry_SelectionChanged" x:Name="ComboBoxZone" Width="400" FontWeight="Bold" Tag="This Value" Height="23"  Margin="-4,0,1075,0">
+                        <ComboBox DropDownClosed="ComboBoxZone_DropDownClosed" TextBoxBase.TextChanged="ddlCountry_TextChanged"  IsTextSearchEnabled="True"  StaysOpenOnEdit="True" SelectionChanged="ddlCountry_SelectionChanged" x:Name="ComboBoxZone" Width="610" FontWeight="Bold" Tag="This Value" Height="23"  Margin="8,0,1075,0">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <CheckBox Name="chkCountry" Width="220" Checked="AllCheckbocx_Checked" Unchecked="AllCheckbocx_Unchecked" Content="{Binding CATALOG_NAME}" IsChecked="{Binding Check_Status}">
@@ -296,14 +275,14 @@
 
 
 
-                        <Button  x:Name="Get_Database" Padding="5" Content="Get Reports" Height="25"   FontWeight="Bold" HorizontalAlignment="Left" Click="CallDatabaseList" Margin="410,-23,450,5" FontFamily="EYInterstate"  Width="135" Background="Black" Foreground="White">
+                        <Button  x:Name="Get_Database" Padding="5" Content="Get Reports" Height="25"   FontWeight="Bold" HorizontalAlignment="Left" Click="CallDatabaseList" Margin="430,-23,4,5" FontFamily="EYInterstate"  Width="135" Background="Black" Foreground="White">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border CornerRadius="0"   Margin="10,0,-15,0" BorderBrush="#ffffff" BorderThickness="1" Background="{TemplateBinding Background}">
+                                                <Border CornerRadius="0"   Margin="9,1,-14,1" BorderBrush="#ffffff" BorderThickness="1" Background="{TemplateBinding Background}">
                                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                 </Border>
                                             </ControlTemplate>
@@ -346,14 +325,14 @@
 
                     </WrapPanel>
                     <Label Content="EnterTarget SQL server here: " Foreground="#ffffff" x:Name="LabelDatabaseServer" Margin="8,10,723.667,139" FontFamily="Sergoe Ui" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
-                    <Border Name="BorderServer" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="10,-335,491,-100" Height="28">
-                        <TextBox Height="20"   Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="Server" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
+                    <Border Name="BorderServer" Width="610" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="10,-335,0,-100" Height="28" HorizontalAlignment="Left">
+                        <TextBox Height="20"   Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="Server" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui" TextChanged="Server_TextChanged"/>
                     </Border>
                     <Label Content="Python Path* : " Foreground="White" x:Name="LabelDatabaseServer1" Margin="5,-80,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
-                    <Border Name="BorderServer1" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="8,-350,491,-100" Height="28">
-                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="TextPython" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
+                    <Border Name="BorderServer1" Width="610" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="7,-380,491,-130" Height="28" HorizontalAlignment="Left">
+                        <TextBox Height="20"   Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="TextPython" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui" TextChanged="TextPython_TextChanged" />
                     </Border>
-                    <Button x:Name="Browse" Content="Browse" Margin="480,-140,-200,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="Callibri" Click="Browse_Click" Width="101" Foreground="White" Background="Black">
+                    <Button x:Name="Browse" Content="Browse" Margin="640,-140,3,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="Callibri" Click="Browse_Click" Width="135" Foreground="White" Background="Black" HorizontalAlignment="Left">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}" >
 
@@ -397,7 +376,7 @@
 
                     <StackPanel x:Name="StackGrid" Grid.ColumnSpan="4" Height="140" Margin="0,10,69,45"   >
 
-                        <Button x:Name="Show_by_Report"  Content="Load Data for Selected Report/Reports" Height="22"  FontWeight="Bold" Click="Show_By_Report" FontFamily="EYInterstate"  Width="234" Background="Black" Foreground="White" Margin="10,30,10,-30" HorizontalAlignment="Left">
+                        <Button x:Name="Show_by_Report"  Content="Load Data for Selected Report/Reports" Height="22"  FontWeight="Bold" Click="Show_By_Report" FontFamily="EYInterstate"  Width="234" Background="Black" Foreground="White" Margin="10,90,0,-31" HorizontalAlignment="Left">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -419,7 +398,7 @@
                             </Button.Style>
 
                         </Button>
-                        <Button  x:Name="CallGraphButton"   Width="150" FontWeight="Bold" Height="22" Content="Load Data for All Reports"  Click="CallGraphButton_Click" Margin="260,10,9,10" FontFamily="EYInterstate"  Background="Black" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Hidden" Padding="1,1,1,1" HorizontalAlignment="Left" >
+                        <Button  x:Name="CallGraphButton"   Width="150" FontWeight="Bold" Height="22" Content="Load Data for All Reports"  Click="CallGraphButton_Click" Margin="255,10,9,10" FontFamily="EYInterstate"  Background="Black" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Hidden" Padding="1,1,1,1" HorizontalAlignment="Left" >
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -441,7 +420,7 @@
                             </Button.Style>
 
                         </Button>
-                        <Button x:Name="button1" Margin="-295,-33,0,10" Content="Generate Power BI Report" FontWeight="Bold" Width="150" Height="22" Click="button1_Click" FontFamily="EYInterstate" Background="Black" Foreground="White">
+                        <Button x:Name="button1" Margin="420,-33,0,10" Content="Generate Power BI Report" FontWeight="Bold" Width="150" Height="23" Click="button1_Click" FontFamily="EYInterstate" Background="Black" Foreground="White" HorizontalAlignment="Left">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -464,7 +443,29 @@
 
                         </Button>
 
-                        <Button x:Name="ReqButton" Margin="-295,-33,-370,10" Content="Requirement Document Generator" Width="200" FontWeight="Bold" Height="23"   FontFamily="EYInterstate" Click="ReqButton_Click" Background="Black" Foreground="White">
+                        <Button x:Name="ReqButton" Margin="580,-33,-370,10" Content="Requirement Document Generator" Width="200" FontWeight="Bold" Height="23"   FontFamily="EYInterstate" Click="ReqButton_Click" Background="Black" Foreground="White" HorizontalAlignment="Left">
+                            <Button.Style >
+                                <Style TargetType="{x:Type Button}" >
+
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border CornerRadius="0"  BorderBrush="#ffffff" BorderThickness="1" Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#ffe600"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                        </Button>
+                        <Button x:Name="SignOutButton" FontWeight="Bold" Height="23" Content="Reset" HorizontalAlignment="Left" Padding="5" Click="SignOutButton_Click" Margin="793,-35,0,10"   FontFamily="EYInterstate" Width="65" Background="Black" Foreground="White" >
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
