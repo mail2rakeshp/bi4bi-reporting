@@ -168,8 +168,8 @@
     <Compile Include="Cognos_Options.xaml.cs">
       <DependentUpon>Cognos_Options.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Document Generator.xaml.cs">
-      <DependentUpon>Document Generator.xaml</DependentUpon>
+    <Compile Include="DocumentGeneratorPBI.xaml.cs">
+      <DependentUpon>DocumentGeneratorPBI.xaml</DependentUpon>
     </Compile>
     <Compile Include="Document_Generator_ACL.xaml.cs">
       <DependentUpon>Document_Generator_ACL.xaml</DependentUpon>
@@ -222,7 +222,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Document Generator.xaml">
+    <Page Include="DocumentGeneratorPBI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -221,12 +221,12 @@ namespace GetMetaData
             //string SQLServervar = "IN3040866W1\\SQLEXPRESS";
             string SQLServervar = SQLTB.Text.ToString();//.Replace("\\", "\\\\");
             string path = Directory.GetCurrentDirectory() + @"\PythonFile\Document_Generator.py";
-          //  if (PythonPathText.Text.Equals("") || TemplatePathText.Text.Equals("") || DestPath.Text.Equals("") || String.IsNullOrEmpty(ComboBoxZone.Text))
-     //       {
-        //        MessageBox.Show("Please enter the mandatory fields and try again");
-        //    }
-         //   else
-          //  {
+            if (PythonPathText.Text.Equals("") || TemplatePathText.Text.Equals("") || DestPath.Text.Equals("") || String.IsNullOrEmpty(ComboBoxZone.Text))
+            {
+                MessageBox.Show("Please enter the mandatory fields and try again");
+            }
+            else
+            {
                 LabelServer.Visibility = Visibility.Collapsed;
                 ComboBoxZone.Visibility = Visibility.Collapsed;
                 LabelPythonPath.Visibility = Visibility.Collapsed;
@@ -238,7 +238,7 @@ namespace GetMetaData
                 Browse_Copy.Visibility = Visibility.Collapsed;
                 Template_Browse.Visibility = Visibility.Collapsed;
                 DestPath_Browse.Visibility = Visibility.Collapsed;
-                Home.Visibility = Visibility.Visible;
+                Home.Visibility = Visibility.Collapsed;
                 GetReports.Visibility = Visibility.Collapsed;
                 Info.Visibility = Visibility.Collapsed;
                 GenerateDoc.Visibility = Visibility.Collapsed;
@@ -482,7 +482,7 @@ namespace GetMetaData
                 GenerateDoc.Visibility = Visibility.Visible;
                 GenerateDocAll.Visibility = Visibility.Visible;
                 Animation.Visibility = Visibility.Collapsed;
-         //   }
+            }
             
         
         }
@@ -570,12 +570,12 @@ namespace GetMetaData
             //string SQLServervar = "IN3040866W1\\SQLEXPRESS";
             string SQLServervar = SQLTB.Text.ToString();//.Replace("\\", "\\\\");
             string path = Directory.GetCurrentDirectory() + @"\PythonFile\Document_Generator.py";
-          //  if (PythonPathText.Text.Equals("") || TemplatePathText.Text.Equals("") || DestPath.Text.Equals("") || String.IsNullOrEmpty(ComboBoxZone.Text))
-        //    {
-         //       MessageBox.Show("Please enter the mandatory fields and try again");
-         //   }
-          //  else
-          //  {
+            if (PythonPathText.Text.Equals("") || TemplatePathText.Text.Equals("") || DestPath.Text.Equals("") || String.IsNullOrEmpty(ComboBoxZone.Text))
+            {
+                MessageBox.Show("Please enter the mandatory fields and try again");
+            }
+            else
+            {
                 LabelServer.Visibility = Visibility.Collapsed;
                 ComboBoxZone.Visibility = Visibility.Collapsed;
                 LabelPythonPath.Visibility = Visibility.Collapsed;
@@ -587,7 +587,7 @@ namespace GetMetaData
                 Browse_Copy.Visibility = Visibility.Collapsed;
                 Template_Browse.Visibility = Visibility.Collapsed;
                 DestPath_Browse.Visibility = Visibility.Collapsed;
-                Home.Visibility = Visibility.Visible;
+                Home.Visibility = Visibility.Collapsed;
                 GetReports.Visibility = Visibility.Collapsed;
                 Info.Visibility = Visibility.Collapsed;
                 GenerateDoc.Visibility = Visibility.Collapsed;
@@ -855,7 +855,7 @@ namespace GetMetaData
                 GenerateDoc.Visibility = Visibility.Visible;
                 GenerateDocAll.Visibility = Visibility.Visible;
                 Animation.Visibility = Visibility.Collapsed;
-           // }
+            }
         }
 
         private void GetReports_Click(object sender, RoutedEventArgs e)

@@ -146,7 +146,7 @@
 
 
                     </StackPanel>
-                    <Label Content="Workspace Connection" Foreground="White" x:Name="LabelServer" Margin="5,-160,865.667,-105" FontFamily="EYInterstate" FontWeight="Bold" Height="26" />
+                    <Label Content="Workspace Connection *" Foreground="White" x:Name="LabelServer" Margin="5,-160,865.667,-105" FontFamily="EYInterstate" FontWeight="Bold" Height="26" />
                     <Border Width="610" Name="Border1" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="8,-15,0,15" Height="27"  HorizontalAlignment="Left">
                         <TextBox  Width="610" Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="ResultText" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="5,0,0,0" FontFamily="Sergoe Ui" TextChanged="ResultText_TextChanged" Height="19"/>
                     </Border>
@@ -324,11 +324,11 @@
                         <Label x:Name="MeasuresLabel"/>
 
                     </WrapPanel>
-                    <Label Content="EnterTarget SQL server here: " Foreground="#ffffff" x:Name="LabelDatabaseServer" Margin="8,10,723.667,139" FontFamily="Sergoe Ui" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
+                    <Label Content="Enter target SQL server *: " Foreground="#ffffff" x:Name="LabelDatabaseServer" Margin="8,10,723.667,139" FontFamily="Sergoe Ui" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
                     <Border Name="BorderServer" Width="610" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="10,-335,0,-100" Height="28" HorizontalAlignment="Left">
                         <TextBox Height="20"   Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="Server" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui" TextChanged="Server_TextChanged"/>
                     </Border>
-                    <Label Content="Python Path* : " Foreground="White" x:Name="LabelDatabaseServer1" Margin="5,-80,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
+                    <Label Content="Python Path * : " Foreground="White" x:Name="LabelDatabaseServer1" Margin="5,-80,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
                     <Border Name="BorderServer1" Width="610" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="7,-380,491,-130" Height="28" HorizontalAlignment="Left">
                         <TextBox Height="20"   Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="TextPython" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui" TextChanged="TextPython_TextChanged" />
                     </Border>

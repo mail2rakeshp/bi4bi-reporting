@@ -117,9 +117,9 @@
 
 
             </Grid>
-            <StackPanel  Name="StackBG" Margin="0,5,-1,0.666" Grid.ColumnSpan="7">
+            <StackPanel VerticalAlignment="Top" Name="StackBG" Margin="5,-70,-10,10" Grid.ColumnSpan="7">
 
-                <StackPanel  Name="ServerStack"  Height="666" Background="#1E1E21"  VerticalAlignment="Top" Margin="30,170,30,0" >
+                <StackPanel  Name="ServerStack"  Height="666" Background="#1E1E21"  VerticalAlignment="Top" Margin="5,170,0,0" >
                     <Label Content="Home  >  Document Generator" FontSize="14" Foreground="White" x:Name="LabelUser2" Margin="0,5,0,2" FontFamily="EYInterstate" Height="27" HorizontalAlignment="Left" />
                     <Label Content="Document Generator" FontSize="24" Foreground="#FFFFE600" x:Name="LabelUser" Margin="0,5,0,0" FontFamily="EYInterstate" Height="36" HorizontalAlignment="Left" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
@@ -150,11 +150,11 @@
                     <Label Content="Report:" Foreground="White" x:Name="LabelServer" Margin="0,10,865.667,-5" FontFamily="EYInterstate" FontWeight="Bold" Height="26" />
                     <TextBox Visibility="Collapsed" Foreground="#ffe600" x:Name="SQLTB" Margin="8,0,865.667,-5" FontFamily="Sergoe Ui" FontWeight="Bold" Height="26" />
 
-                    <ComboBox  x:Name="ComboBoxZone" FontWeight="Bold" Tag="This Value" Height="22" ItemsSource="{Binding}" Margin="5,10,852,0"/>
-                    <Border Visibility="Collapsed" Height="28" Name="BorderPasswordShow" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,-520,767.333,-281.333" Grid.Row="1">
+                    <ComboBox  x:Name="ComboBoxZone" FontWeight="Bold" Tag="This Value" Height="22" ItemsSource="{Binding}" Margin="5,10,82,0" Width="610" HorizontalAlignment="left"/>
+                    <Border Visibility="Collapsed" Height="28" Name="BorderPasswordShow" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,-320,4,-100" Grid.Row="1">
                         <TextBox  Height="20" Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="PasswordShow" FontWeight="Bold" MinHeight="10" Margin="4.667,2.667,8.667,8.667" FontFamily="Sergoe Ui"  />
                     </Border>
-                    <Button x:Name="GetReports" Content="Get Reports" Margin="-220,-25,-123,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Width="101" Click="GetReports_Click" Background="Black" Foreground="White">
+                    <Button x:Name="GetReports" Content="Get Reports" HorizontalAlignment="left" Margin="640,-25,170,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Width="101" Click="GetReports_Click" Background="Black" Foreground="White">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}" >
 
@@ -176,7 +176,7 @@
                         </Button.Style>
 
                     </Button>
-                    <Button x:Name="Home" Visibility="Hidden" HorizontalAlignment="Right" Content="Home" Margin="187,-250,16.333,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355" Width="65" FontFamily="EYInterstate" Click="SignOut_Click" Foreground="White" Background="Black">
+                    <Button x:Name="Home" Visibility="Hidden" HorizontalAlignment="Left" Content="Home" Margin="160,9,16.333,-445" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355" Width="65" FontFamily="EYInterstate" Click="SignOut_Click" Foreground="White" Background="Black">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}" >
 
@@ -198,18 +198,18 @@
                         </Button.Style>
 
                     </Button>
-                    <Label Content="Python Path * " Foreground="White" x:Name="LabelPythonPath" Margin="0,-170,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
-                    <Border Name="BorderPythonPath" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,-320,490.667,-100" Height="28">
-                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="PythonPathText" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
+                    <Label Content="Python Path * " Foreground="White" x:Name="LabelPythonPath" Margin="0,-170,1,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
+                    <Border Name="BorderPythonPath" CornerRadius="0" BorderThickness="1" Width="610" BorderBrush="#ffffff" HorizontalAlignment="left" Margin="5,-320,4,-100" Height="28" >
+                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="PythonPathText" FontWeight="Bold" TextWrapping="Wrap" FontFamily="Sergoe Ui"/>
                     </Border>
-                    <Button x:Name="Browse_Copy" Content="Browse" Margin="500,-125,-123,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Click="Browse_Click" Width="101" Foreground="White" Background="Black">
+                    <Button x:Name="Browse_Copy" Content="Browse" HorizontalAlignment="Left" Margin="640,-125,150,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Click="Browse_Click"  Foreground="White" Background="Black" >
                         <Button.Style >
                             <Style TargetType="{x:Type Button}" >
 
                                 <Setter Property="Template">
                                     <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type Button}">
-                                            <Border CornerRadius="0"  BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
+                                        <ControlTemplate TargetType="{x:Type Button}" >
+                                            <Border CornerRadius="0" Width="101" BorderBrush="white" Height="27" HorizontalAlignment="left" BorderThickness="1" Background="{TemplateBinding Background}">
                                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             </Border>
                                         </ControlTemplate>
@@ -224,18 +224,18 @@
                         </Button.Style>
 
                     </Button>
-                    <Label Content="Document Template Path * " Foreground="White" x:Name="TemplatePath" Margin="0,-150,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
-                    <Border Name="BorderTemplatePAth" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,-320,490.667,-100" Height="28">
+                    <Label Content="Document Template Path * " Foreground="White" x:Name="TemplatePath" Margin="0,-150,73.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
+                    <Border Name="BorderTemplatePAth" CornerRadius="0" BorderThickness="1" Width="610" BorderBrush="#ffffff" HorizontalAlignment="left" Margin="5,-320,4,-100" Height="28">
                         <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="TemplatePathText" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
                     </Border>
-                    <Button x:Name="Template_Browse" Content="Browse" Margin="500,-125,-123,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Width="101" Click="Template_Browse_Click" Background="Black" Foreground="White">
+                    <Button x:Name="Template_Browse" Content="Browse" HorizontalAlignment="Left" Margin="640,-125,150,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Click="Browse_Click"  Foreground="White" Background="Black">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}" >
 
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="{x:Type Button}">
-                                            <Border CornerRadius="0"  BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
+                                            <Border CornerRadius="0" Width="101" BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
                                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             </Border>
                                         </ControlTemplate>
@@ -255,7 +255,7 @@
              
 
                      <Label Content="Destination Document Path * " Foreground="White" x:Name="DestinationPath" Margin="0,-150,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
-                    <Border Name="DestinationPathText" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,-320,490.667,-100" Height="28">
+                    <Border Name="DestinationPathText" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,-320,07,-100" Height="28" Width="610" HorizontalAlignment="left">
                         <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="DestPath" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
                     </Border>
                     
@@ -264,14 +264,14 @@
                         <TextBox IsEnabled="False"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="TokenInfo" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,8.667,8.667,8.667" FontFamily="Sergoe Ui"/>
                     </Border>
 
-                    <Button x:Name="DestPath_Browse" Content="Browse" Margin="500,-125,-123,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Width="101" Click="DestPath_Browse_Click" Background="Black" Foreground="White">
+                    <Button x:Name="DestPath_Browse" Content="Browse" HorizontalAlignment="Left" Margin="640,-125,150,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Click="Browse_Click"  Foreground="White" Background="Black">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}" >
 
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="{x:Type Button}">
-                                            <Border CornerRadius="0"  BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
+                                            <Border CornerRadius="0" Width="101"  BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
                                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             </Border>
                                         </ControlTemplate>

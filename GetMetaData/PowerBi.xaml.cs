@@ -34,6 +34,8 @@ using System.Windows.Shapes;
 using Microsoft.Scripting.Hosting;
 using static Community.CsharpSqlite.Sqlite3;
 using IronPython.Modules;
+using static IronPython.Modules._ast;
+using static IronPython.SQLite.PythonSQLite;
 
 
 namespace GetMetaData
@@ -59,8 +61,8 @@ namespace GetMetaData
         string[] items1;
         string[] items2;
         string[] itemCombo;
-        string workspacename="";
-        string workspacename1="";
+        string workspacename = "";
+        string workspacename1 = "";
         string serverlabel = "";
         BackgroundWorker backgroundWorker1 = new BackgroundWorker();
         BackgroundWorker backgroundWorker2 = new BackgroundWorker();
@@ -194,7 +196,7 @@ namespace GetMetaData
 
             // ((CheckBox)sender).IsChecked = true;
             items = listreports.ToArray();
-            items1= listreports1.ToArray();
+            items1 = listreports1.ToArray();
 
             selectedItems = items;
             //popup1.Visibility = Visibility.Visible;
@@ -205,7 +207,7 @@ namespace GetMetaData
             LabelSelectedReports.Visibility = Visibility.Visible;
             PopText.Text = toDisplay;
 
-       }
+        }
 
         private void AllCheckbocx_Checked_1(object sender, RoutedEventArgs e)
         {
@@ -443,8 +445,6 @@ namespace GetMetaData
 
 
 
-
-
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             // This is where the processor intensive code should go
@@ -455,7 +455,7 @@ namespace GetMetaData
             //If the process exits the loop, ensure that progress is set to 100%
             //Remember in the loop we set i < 100 so in theory the process will complete at 99%         
             backgroundWorker1.ReportProgress(100);
-             
+
         }
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
@@ -516,8 +516,8 @@ namespace GetMetaData
                     GenerateMetadata.Visibility = Visibility.Visible;
                     Output.Visibility = Visibility.Collapsed;
                     Output.IsEnabled = false;
-                 //   GenerateMetadata.IsEnabled = true;
-                  //  GenerateMetadata.IsChecked = true;
+                    //   GenerateMetadata.IsEnabled = true;
+                    //  GenerateMetadata.IsChecked = true;
 
                     MessageBox.Show("Issues Found in the Metadata Process. Please contact the administrator for further clarification");
 
@@ -540,19 +540,19 @@ namespace GetMetaData
             {
 
 
-                MessageBox.Show("Enter The Local Host Server Name");
+                MessageBox.Show("Enter the mandatory fields");
                 Animation.Visibility = Visibility.Collapsed;
                 ServerStack.Visibility = Visibility.Visible;
-                button1.Visibility = Visibility.Collapsed;
-                ReqButton.Visibility = Visibility.Collapsed;
-                Show_by_Report.Visibility = Visibility.Collapsed;
-                CallGraphButton.Visibility = Visibility.Collapsed;
-                SignOutButton.Visibility = Visibility.Collapsed;
+                button1.Visibility = Visibility.Visible;
+                ReqButton.Visibility = Visibility.Visible;
+                Show_by_Report.Visibility = Visibility.Visible;
+                CallGraphButton.Visibility = Visibility.Visible;
+                SignOutButton.Visibility = Visibility.Visible;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 Output.IsEnabled = false;
-               // GenerateMetadata.IsEnabled = true;
-              //  GenerateMetadata.IsChecked = false;
+                // GenerateMetadata.IsEnabled = true;
+                //  GenerateMetadata.IsChecked = false;
 
             }
             else
@@ -569,9 +569,8 @@ namespace GetMetaData
                 ComboBoxZone.Text = "";
                 WindowMainName.Height = 766;
                 backgroundWorker1.RunWorkerAsync();
-              
-            }
 
+            }
 
         }
 
@@ -625,14 +624,14 @@ namespace GetMetaData
             CalcCnt = (Int32)CmdCntCalc.ExecuteScalar();
             SQLConnection.Close();
 
-            
+
 
             try
             {
 
                 SQLConnection.Open();
-                
-                string script = File.ReadAllText(System.IO.Path.Combine(Environment.CurrentDirectory, @"Scripts\","vw_Metadata.sql"));
+
+                string script = File.ReadAllText(System.IO.Path.Combine(Environment.CurrentDirectory, @"Scripts\", "vw_Metadata.sql"));
 
                 // split script on GO command
                 IEnumerable<string> commandStrings = Regex.Split(script, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
@@ -643,7 +642,7 @@ namespace GetMetaData
                         new SqlCommand(commandString, SQLConnection).ExecuteNonQuery();
                     }
                 }
-                
+
                 script = File.ReadAllText(System.IO.Path.Combine(Environment.CurrentDirectory, @"Scripts\", "vw_Metadata_Calculations.sql"));
 
                 // split script on GO command
@@ -655,7 +654,7 @@ namespace GetMetaData
                         new SqlCommand(commandString, SQLConnection).ExecuteNonQuery();
                     }
                 }
-                
+
                 script = File.ReadAllText(System.IO.Path.Combine(Environment.CurrentDirectory, @"Scripts\", "vw_Metadata_Columns.sql"));
 
                 // split script on GO command
@@ -667,7 +666,7 @@ namespace GetMetaData
                         new SqlCommand(commandString, SQLConnection).ExecuteNonQuery();
                     }
                 }
-                
+
                 script = File.ReadAllText(System.IO.Path.Combine(Environment.CurrentDirectory, @"Scripts\", "vw_Metadata_STM.sql"));
 
                 // split script on GO command
@@ -683,7 +682,7 @@ namespace GetMetaData
 
 
                 string scriptp = "\nimport urllib";
-                       scriptp += "\nimport pandas as pd";
+                scriptp += "\nimport pandas as pd";
                 scriptp += "\nimport numpy as np";
                 scriptp += "\nfrom sqlalchemy import create_engine";
                 scriptp += "\nimport pyodbc";
@@ -692,6 +691,16 @@ namespace GetMetaData
                 scriptp += "\nconn_str = (\"DRIVER={SQL Server Native Client 11.0};SERVER=" + serverlabel.ToString() + ";DATABASE=Power BI Metadata;Trusted_Connection=yes;\")   ";
                 scriptp += "\ncnxn = pyodbc.connect(conn_str)";
                 scriptp += "\ncursor = cnxn.cursor()";
+                scriptp += "\ntable_names = []";
+                scriptp += "\nfor row in cursor.tables():";
+                scriptp += "\n  if row.table_type == 'TABLE':";
+                scriptp += "\n      table_names.append(row.table_name)";
+                scriptp += "\nif 'trace_xe_action_map' in table_names: table_names.remove('trace_xe_action_map')";
+                scriptp += "\nif 'trace_xe_event_map' in table_names: table_names.remove('trace_xe_event_map')";
+                scriptp += "\nfor each_table in table_names:";
+                scriptp += "\n    df = pd.read_sql('select * from ' + each_table, cnxn)";
+                scriptp += "\n    df = df.drop_duplicates()";
+                scriptp += "\n    df.to_sql(each_table, schema = 'dbo', if_exists = 'replace', con = engine, index = False)";
                 scriptp += "\ndata = pd.read_sql('''";
                 scriptp += "\nselect metadata.*,[Column Name] AS [Actual Source Column],";
                 scriptp += "\n CASE WHEN metadata.[Dataset Name]='Internal Date Table' AND metadata.[Calculated Tables Expression]='Yes' THEN 'Yes'";
@@ -732,13 +741,13 @@ namespace GetMetaData
                 scriptp += "\n	  WHEN [Dataset Name] like '%DateTableTemplate%' THEN 'Internal Date Table Template' ";
                 scriptp += "\n	  ELSE REPLACE(REPLACE([Dataset Name],'[',''),']','') END";
                 scriptp += "\n      ,[Column Name]) JOIN_WITH_Dictionary";
-              //  scriptp += "\n	  --,CHARINDEX('Table.RenameColumns',[Steps])";
-              //  scriptp += "\n--	  ,CASE WHEN CHARINDEX('Table.RenameColumns',[Steps])>0  and ";
-              //  scriptp += "\n--	  CHARINDEX('"'+[Column Name]+'"',Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
-              //  scriptp += "\n--, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
-              //  scriptp += "\n--,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
-              //  scriptp += "\n--, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1) )>0  THEN 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
-              //  scriptp += "\n--	  ELSE NULL END";
+                //  scriptp += "\n	  --,CHARINDEX('Table.RenameColumns',[Steps])";
+                //  scriptp += "\n--	  ,CASE WHEN CHARINDEX('Table.RenameColumns',[Steps])>0  and ";
+                //  scriptp += "\n--	  CHARINDEX('"'+[Column Name]+'"',Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                //  scriptp += "\n--, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
+                //  scriptp += "\n--,charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                //  scriptp += "\n--, (charindex('})', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))-1) )>0  THEN 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
+                //  scriptp += "\n--	  ELSE NULL END";
                 scriptp += "\n	  ,CASE WHEN CHARINDEX('Table.RenameColumns',[Steps])>0  and CHARINDEX('\"'+[Column Name]+'\"', CASE WHEN CHARINDEX('Table.RenameColumns',query)=0 AND CHARINDEX('Table.RenameColumns',[Steps])>0 THEN";
                 scriptp += "\n	  Substring('Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ),charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) )";
                 scriptp += "\n, (charindex('Table.RenameColumns', 'Table.RenameColumns'+SUBSTRING(Steps,charindex('Table.Renamecolumns',Steps) + LEN('Table.Renamecolumns'), LEN(Steps) ), 1)))";
@@ -964,7 +973,7 @@ namespace GetMetaData
                 scriptp += "\n            elif result[i][8] != [] or result[j][8] != []:";
                 scriptp += "\n                query_per = len(set(result[i][8]).intersection(set(result[j][8]))) / float(len(set(result[i][8] + result[j][8]))) * 100";
                 scriptp += "\n            percentage_table.append([result[i][0], result[i][1], result[j][1], column_per, cce_per, cme_per, cte_per, source_per, dop_per, query_per])";
-           //     scriptp += "\n percentage_table = []";
+                //     scriptp += "\n percentage_table = []";
 
                 scriptp += "\npercentage_table_df = pd.DataFrame(percentage_table, columns = ['Workspace', 'Report A', 'Report B', 'Column Name', ";
                 scriptp += "\n                                                                'Calculated Column Expression',";
@@ -974,7 +983,7 @@ namespace GetMetaData
                 scriptp += "\npercentage_table_df.to_sql('power_bi_report_match_percentage', schema='dbo',if_exists = 'replace', con = engine, index=False, index_label='myField')";
 
                 string pathp = Directory.GetCurrentDirectory() + @"\PythonFile\PowerBI_Process_Python.py";
-               
+
                 File.SetAttributes(pathp, FileAttributes.Normal);
                 if (File.Exists(pathp))
                 {
@@ -982,11 +991,11 @@ namespace GetMetaData
                 }
                 using (StreamWriter writer = File.CreateText(pathp))
                 {
-                    writer.WriteLine(scriptp);                  
-                    
+                    writer.WriteLine(scriptp);
+
                 }
                 run_cmd();
-                
+
                 /* try
                  {
                      string workingDirectory = Directory.GetCurrentDirectory() + @"\PythonFile";
@@ -1034,7 +1043,7 @@ namespace GetMetaData
             }
             catch (SqlException er)
             {
-    
+
             }
             finally
             {
@@ -1042,7 +1051,7 @@ namespace GetMetaData
 
             }
 
-           
+
 
         }
 
@@ -1095,7 +1104,7 @@ namespace GetMetaData
             BorderSelected.Visibility = Visibility.Collapsed;
             PopText.Visibility = Visibility.Collapsed;
             LabelSelectedReports.Visibility = Visibility.Collapsed;
-            
+
 
 
         }
@@ -1160,87 +1169,79 @@ namespace GetMetaData
 
                 try
                 {
+                     
+                                     
+                        foreach (string item in items1)
+                        {
+                            //AdomdConnection connection = new AdomdConnection();
+                            // connection.ConnectionString = GetConnectionString(ResultText.Text, item.Row[0].ToString());
+                            // connection.Open();
+                            //MessageBox.Show(item.ToString());  
+                            //DataTable dt = new DataTable();
+                            AdomdConnection connection = new AdomdConnection();
+                            connection.ConnectionString = GetConnectionString(workspacename.ToString(), item.ToString());
+                            connection.Open();
+                            string queryString = "";
 
 
-                    //  ComboBoxZone.DataContext = null;
-                    // ComboBoxZone.ItemsSource = null;
-                    //ComboBoxZone.Text = "";
-                    //   Animation.Visibility = Visibility.Visible;
-                    // ServerStack.Visibility = Visibility.Hidden;
-                    //StackGrid.Visibility = Visibility.Hidden;
-                    //items = new string[ComboBoxZone.Items.Count];
+
+                            int pos = workspacename.ToString().LastIndexOf("/") + 1;
+                            //MessageBox.Show(workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + " - " + item.ToString());
+                            // WorkspaceLabel.Content = "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace]";
+                            queryString = "SELECT DISTINCT " + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace], [CATALOG_NAME] AS [Report Name], [DIMENSION_UNIQUE_NAME] AS [Dataset Name], LEVEL_CAPTION AS [Column Name] FROM $System.MDSchema_levels WHERE CUBE_NAME  ='Model' AND level_origin=2 AND LEVEL_NAME <> '(All)' order by [DIMENSION_UNIQUE_NAME]   ";
+                            //queryString = check(query);
+                            AdomdCommand cmd = connection.CreateCommand();
+                            cmd.CommandText = queryString;
+                            AdomdDataAdapter ad = new AdomdDataAdapter(queryString, connection);
+                            ad.Fill(dt);
 
 
-                    foreach (string item in items1)
-                    {
-                        //AdomdConnection connection = new AdomdConnection();
-                        // connection.ConnectionString = GetConnectionString(ResultText.Text, item.Row[0].ToString());
-                        // connection.Open();
-                        //MessageBox.Show(item.ToString());  
-                        //DataTable dt = new DataTable();
-                        AdomdConnection connection = new AdomdConnection();
-                        connection.ConnectionString = GetConnectionString(workspacename.ToString(), item.ToString());
-                        connection.Open();
-                        string queryString = "";
+                            DataTable dt2 = new DataTable();
+                            string queryString1 = "select DISTINCT" + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace], DATABASE_NAME as [Report Name],'['+[TABLE]+']' AS [Dataset Name],OBJECT AS [Column Name],EXPRESSION AS [Calculated Column Expression] from $SYSTEM.DISCOVER_CALC_DEPENDENCY WHERE OBJECT_TYPE = 'CALC_COLUMN' ";
+                            AdomdCommand cmd1 = connection.CreateCommand();
+                            cmd1.CommandText = queryString1;
+                            AdomdDataAdapter ad1 = new AdomdDataAdapter(queryString1, connection);
+                            ad1.Fill(dt2);
 
-                        
-
-                        int pos = workspacename.ToString().LastIndexOf("/") + 1;
-                        //MessageBox.Show(workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + " - " + item.ToString());
-                        // WorkspaceLabel.Content = "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace]";
-                        queryString = "SELECT DISTINCT " + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace], [CATALOG_NAME] AS [Report Name], [DIMENSION_UNIQUE_NAME] AS [Dataset Name], LEVEL_CAPTION AS [Column Name] FROM $System.MDSchema_levels WHERE CUBE_NAME  ='Model' AND level_origin=2 AND LEVEL_NAME <> '(All)' order by [DIMENSION_UNIQUE_NAME]   ";
-                        //queryString = check(query);
-                        AdomdCommand cmd = connection.CreateCommand();
-                        cmd.CommandText = queryString;
-                        AdomdDataAdapter ad = new AdomdDataAdapter(queryString, connection);
-                        ad.Fill(dt);
-
-
-                        DataTable dt2 = new DataTable();
-                        string queryString1 = "select DISTINCT" + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace], DATABASE_NAME as [Report Name],'['+[TABLE]+']' AS [Dataset Name],OBJECT AS [Column Name],EXPRESSION AS [Calculated Column Expression] from $SYSTEM.DISCOVER_CALC_DEPENDENCY WHERE OBJECT_TYPE = 'CALC_COLUMN' ";
-                        AdomdCommand cmd1 = connection.CreateCommand();
-                        cmd1.CommandText = queryString1;
-                        AdomdDataAdapter ad1 = new AdomdDataAdapter(queryString1, connection);
-                        ad1.Fill(dt2);
-
-                        dt2.PrimaryKey = new DataColumn[] {
+                            dt2.PrimaryKey = new DataColumn[] {
                         dt2.Columns["Report Name"],dt2.Columns["Dataset Name"],dt2.Columns["Column Name"] };
 
 
-                        dt.Merge(dt2);
-                        //  dt.DefaultView.Sort = "Dataset Name ASC";
+                            dt.Merge(dt2);
+                            //  dt.DefaultView.Sort = "Dataset Name ASC";
 
-                        DataTable dt4 = new DataTable();
-                        string queryString3 = "select DISTINCT " + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace],  DATABASE_NAME as [Report Name],'['+[TABLE]+']' AS [Dataset Name],OBJECT AS [Column Name],EXPRESSION AS [Calculated Measure Expression] from $SYSTEM.DISCOVER_CALC_DEPENDENCY WHERE OBJECT_TYPE = 'MEASURE' ";
-                        AdomdCommand cmd3 = connection.CreateCommand();
-                        cmd3.CommandText = queryString3;
-                        AdomdDataAdapter ad3 = new AdomdDataAdapter(queryString3, connection);
-                        ad3.Fill(dt4);
-
-
-
-                        dt.Merge(dt4);
-                        //   dt.DefaultView.Sort = "Dataset Name ASC";
+                            DataTable dt4 = new DataTable();
+                            string queryString3 = "select DISTINCT " + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace],  DATABASE_NAME as [Report Name],'['+[TABLE]+']' AS [Dataset Name],OBJECT AS [Column Name],EXPRESSION AS [Calculated Measure Expression] from $SYSTEM.DISCOVER_CALC_DEPENDENCY WHERE OBJECT_TYPE = 'MEASURE' ";
+                            AdomdCommand cmd3 = connection.CreateCommand();
+                            cmd3.CommandText = queryString3;
+                            AdomdDataAdapter ad3 = new AdomdDataAdapter(queryString3, connection);
+                            ad3.Fill(dt4);
 
 
 
+                            dt.Merge(dt4);
+                            //   dt.DefaultView.Sort = "Dataset Name ASC";
 
-                        DataTable dt3 = new DataTable();
-                        string queryString2 = "select DISTINCT " + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace],DATABASE_NAME as [Report Name],'['+[TABLE]+']' AS [Dataset Name],OBJECT AS [Column Name],EXPRESSION AS [Calculated Table Expression] from $SYSTEM.DISCOVER_CALC_DEPENDENCY WHERE OBJECT_TYPE = 'CALC_TABLE' ";
-                        AdomdCommand cmd2 = connection.CreateCommand();
-                        cmd2.CommandText = queryString2;
-                        AdomdDataAdapter ad2 = new AdomdDataAdapter(queryString2, connection);
-                        ad2.Fill(dt3);
 
-                        dt3.PrimaryKey = new DataColumn[] {
+
+
+                            DataTable dt3 = new DataTable();
+                            string queryString2 = "select DISTINCT " + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace],DATABASE_NAME as [Report Name],'['+[TABLE]+']' AS [Dataset Name],OBJECT AS [Column Name],EXPRESSION AS [Calculated Table Expression] from $SYSTEM.DISCOVER_CALC_DEPENDENCY WHERE OBJECT_TYPE = 'CALC_TABLE' ";
+                            AdomdCommand cmd2 = connection.CreateCommand();
+                            cmd2.CommandText = queryString2;
+                            AdomdDataAdapter ad2 = new AdomdDataAdapter(queryString2, connection);
+                            ad2.Fill(dt3);
+
+                            dt3.PrimaryKey = new DataColumn[] {
                         dt3.Columns["Report Name"],dt3.Columns["Dataset Name"],dt3.Columns["Column Name"] };
 
 
-                        dt.Merge(dt3);
+                            dt.Merge(dt3);
 
-                        // dt.DefaultView.Sort = "DatasetName ASC";
+                            // dt.DefaultView.Sort = "DatasetName ASC";
 
-                    }
+                        }
+                   
                     foreach (string item in items1)
                     {
                         AdomdConnection connection = new AdomdConnection();
@@ -1336,15 +1337,15 @@ namespace GetMetaData
                         dt.Columns["ReportName"].ColumnName = "Report Name";
                         dt.Columns["ColumnName"].ColumnName = "Column Name";
                         dt.Columns["DatasetName"].ColumnName = "Dataset Name";*/
-            //dt.Columns["Source"].ColumnName = "Source";
-            //dt.Columns["Path"].ColumnName = "Database Or Path";
-            //dt.Columns["Query"].ColumnName = "Advance Editor Steps";
+                        //dt.Columns["Source"].ColumnName = "Source";
+                        //dt.Columns["Path"].ColumnName = "Database Or Path";
+                        //dt.Columns["Query"].ColumnName = "Advance Editor Steps";
 
-            //dt.DefaultView.Sort = "DatasetName ASC";
+                        //dt.DefaultView.Sort = "DatasetName ASC";
 
 
 
-            pos = workspacename.ToString().LastIndexOf("/") + 1;
+                        pos = workspacename.ToString().LastIndexOf("/") + 1;
 
 
                         dt3 = new DataTable();
@@ -1576,6 +1577,7 @@ namespace GetMetaData
 
                     }
                 }
+            
                 catch (Exception e)
                 {
                     MessageBox.Show(e.Message.ToString());
@@ -1583,7 +1585,7 @@ namespace GetMetaData
             }
             if (workspacename1 != "")
             {
-                
+
 
                 try
                 {
@@ -1609,7 +1611,7 @@ namespace GetMetaData
                         connection.ConnectionString = GetConnectionString(workspacename1.ToString(), item.ToString());
                         connection.Open();
                         string queryString = "";
-                        
+
 
 
                         int pos = workspacename1.ToString().LastIndexOf("/") + 1;
@@ -1677,7 +1679,7 @@ namespace GetMetaData
                         //Combo 1
 
                         int pos = workspacename1.ToString().LastIndexOf("/") + 1;
-                       // MessageBox.Show(item.ToString());
+                        // MessageBox.Show(item.ToString());
 
                         DataTable dt3 = new DataTable();
                         string queryString2 = "select DISTINCT " + "'" + workspacename1.ToString().Substring(pos, workspacename1.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace]," + "'" + item.ToString() + "' as [Report Name],TableID,QueryDefinition FROM $SYSTEM.TMSCHEMA_PARTITIONS ";
@@ -2019,22 +2021,22 @@ namespace GetMetaData
             }
 
 
-                    createsqltable(dt, "Metadata");
+            createsqltable(dt, "Metadata");
 
-                    createsqltableUsage(dtUsage, "Dictionary_Usage");
-                    createsqltableUsage(dtUsage1, "User_Hierarchy");
-                    createsqltableUsage(dtUsage2, "Hierarchy");
-                    createsqltableUsage(dtUsage3, "Data_Size");
-                    createsqltableUsage(dtUsage4, "Relationships_Size");
-                    createsqltableUsage(dtUsage5, "Last_Update");
-                    createsqltableUsage(dtUsage6, "TMSchema_Table");
-                    createsqltableUsage(dtUsage7, "TMSchema_Columns");
-                    createsqltableUsage(dtUsage8, "TMSchema_Relationships");
+            createsqltableUsage(dtUsage, "Dictionary_Usage");
+            createsqltableUsage(dtUsage1, "User_Hierarchy");
+            createsqltableUsage(dtUsage2, "Hierarchy");
+            createsqltableUsage(dtUsage3, "Data_Size");
+            createsqltableUsage(dtUsage4, "Relationships_Size");
+            createsqltableUsage(dtUsage5, "Last_Update");
+            createsqltableUsage(dtUsage6, "TMSchema_Table");
+            createsqltableUsage(dtUsage7, "TMSchema_Columns");
+            createsqltableUsage(dtUsage8, "TMSchema_Relationships");
 
-                          
-                
 
-            
+
+
+
         }
 
 
@@ -2084,6 +2086,8 @@ namespace GetMetaData
                     DataSet ds = new DataSet();
                     ad.Fill(ds, "DBSCHEMA_CATALOGS");
                     comboBoxName.ItemsSource = ds.Tables[0].DefaultView;
+                    comboBoxName.SelectedIndex = 1;
+                    comboBoxName.SelectedValue= ds.Tables[0].Columns["CATALOG_NAME"].ToString();
                     comboBoxName.DisplayMemberPath = ds.Tables[0].Columns["CATALOG_NAME"].ToString();
                     comboBoxName.SelectedValuePath = ds.Tables[0].Columns["CATALOG_NAME"].ToString();
 
@@ -2247,7 +2251,7 @@ namespace GetMetaData
                     //ComboBoxZone.SelectedValuePath = ds.Tables[0].Columns["CATALOG_NAME"].ToString();
                     //dataGrid1.Visibility = Visibility.Visible;
                     Animation.Visibility = Visibility.Collapsed;
-                     StackGrid.Visibility = Visibility.Visible;
+                    StackGrid.Visibility = Visibility.Visible;
                     button1.Visibility = Visibility.Visible;
                     ReqButton.Visibility = Visibility.Visible;
                     Show_by_Report.Visibility = Visibility.Visible;
@@ -2259,10 +2263,10 @@ namespace GetMetaData
 
                     if (GenerateMetadata.IsChecked == true)
                     {
-                     //   button1.Visibility = Visibility.Visible;
-                      //  ReqButton.Visibility = Visibility.Visible;
-                      //  Show_by_Report.Visibility = Visibility.Visible;
-                       // CallGraphButton.Visibility = Visibility.Visible;
+                        //   button1.Visibility = Visibility.Visible;
+                        //  ReqButton.Visibility = Visibility.Visible;
+                        //  Show_by_Report.Visibility = Visibility.Visible;
+                        // CallGraphButton.Visibility = Visibility.Visible;
                     }
                 }
                 else if (ResultText.Text != "" && ResultText2.Text != "" && ResultText3.Visibility == Visibility.Collapsed)
@@ -2282,10 +2286,10 @@ namespace GetMetaData
 
                     if (GenerateMetadata.IsChecked == true)
                     {
-                       // button1.Visibility = Visibility.Collapsed;
-                       // ReqButton.Visibility = Visibility.Collapsed;
-                      //  Show_by_Report.Visibility = Visibility.Visible;
-                       // CallGraphButton.Visibility = Visibility.Visible;
+                        // button1.Visibility = Visibility.Collapsed;
+                        // ReqButton.Visibility = Visibility.Collapsed;
+                        //  Show_by_Report.Visibility = Visibility.Visible;
+                        // CallGraphButton.Visibility = Visibility.Visible;
                     }
                 }
             }
@@ -2301,11 +2305,11 @@ namespace GetMetaData
             {
                 MessageBox.Show("Enter Valid Workspace connection");
             }
-            else if (ResultText.Visibility==Visibility.Visible && ResultText2.Visibility == Visibility.Visible && ResultText3.Visibility == Visibility.Collapsed && ResultText.Text==ResultText2.Text)
+            else if (ResultText.Visibility == Visibility.Visible && ResultText2.Visibility == Visibility.Visible && ResultText3.Visibility == Visibility.Collapsed && ResultText.Text == ResultText2.Text)
             {
                 MessageBox.Show("Workspace 1 and Workspace 2 looks similar. Try using different workspaces for better results.");
             }
-            else if (ResultText.Text!="" && ResultText2.Visibility == Visibility.Collapsed && ResultText3.Visibility == Visibility.Collapsed)
+            else if (ResultText.Text != "" && ResultText2.Visibility == Visibility.Collapsed && ResultText3.Visibility == Visibility.Collapsed)
             {
                 Animation.Visibility = Visibility.Visible;
                 ServerStack.Visibility = Visibility.Hidden;
@@ -2319,7 +2323,7 @@ namespace GetMetaData
                 workspacename = ResultText.Text.ToString();
                 backgroundWorker2.RunWorkerAsync();
             }
-            else if (ResultText.Text != "" && ResultText2.Text !="" && ResultText3.Visibility == Visibility.Collapsed)
+            else if (ResultText.Text != "" && ResultText2.Text != "" && ResultText3.Visibility == Visibility.Collapsed)
             {
                 Animation.Visibility = Visibility.Visible;
                 ServerStack.Visibility = Visibility.Hidden;
@@ -2340,7 +2344,7 @@ namespace GetMetaData
 
         private async void BindBox()
         {
-            if (workspacename!="" && workspacename1=="")
+            if (workspacename != "" && workspacename1 == "")
             {
 
                 try
@@ -2419,7 +2423,7 @@ namespace GetMetaData
             try
             {
                 //System.Threading.Thread.Sleep(10000);
-                string workingDirectory = Directory.GetCurrentDirectory() + @"\PythonFile";               
+                string workingDirectory = Directory.GetCurrentDirectory() + @"\PythonFile";
                 var process = new Process
                 {
                     StartInfo = new ProcessStartInfo
@@ -2435,14 +2439,15 @@ namespace GetMetaData
 
                 };
                 process.Start();
-               // System.Threading.Thread.Sleep(10000);
+                // System.Threading.Thread.Sleep(10000);
                 // string TextPython = "C:\\Users\\Rakesh.P\\Anaconda3";
                 using (var sw = process.StandardInput)
                 {
-                    if (sw.BaseStream.CanWrite)                    {
-                       
+                    if (sw.BaseStream.CanWrite)
+                    {
+
                         sw.WriteLine(PythonPath1 + @"\Scripts\activate.bat");
-                        sw.WriteLine("python "+'"'+ workingDirectory+@"\PowerBI_Process_Python.py" + '"');
+                        sw.WriteLine("python " + '"' + workingDirectory + @"\PowerBI_Process_Python.py" + '"');
                     }
                 }
                 //string output = process.StandardOutput.ReadToEnd();
@@ -2497,7 +2502,7 @@ namespace GetMetaData
             ServerStack.Visibility = Visibility.Hidden;
             MessageBox.Show("Generating Report. Please Wait ....");
             // string file = @"Metadata Output.pbix";
-            string fileName = "Metadata Output.pbix";
+            string fileName = "BI4BI - Power BI.pbix";
             string path = System.IO.Path.Combine(Environment.CurrentDirectory, @"Report\", fileName);
             Process.Start(path);
             //MessageBox.Show(path);
@@ -2657,8 +2662,8 @@ namespace GetMetaData
                     GenerateMetadata.Visibility = Visibility.Collapsed;
                     Output.Visibility = Visibility.Collapsed;
                     Output.IsEnabled = false;
-                 //   GenerateMetadata.IsEnabled = false;
-                  //  GenerateMetadata.IsChecked = false;
+                    //   GenerateMetadata.IsEnabled = false;
+                    //  GenerateMetadata.IsChecked = false;
 
                     MessageBox.Show("Issues Found in the Metadata Process. Please contact the administrator for further clarification");
 
@@ -2667,7 +2672,7 @@ namespace GetMetaData
         }
         private async void Show_By_Report(object sender, RoutedEventArgs e)
         {
-            button1.Visibility = Visibility.Collapsed;
+            button1.Visibility = Visibility.Visible;
             ReqButton.Visibility = Visibility.Visible;
             Show_by_Report.Visibility = Visibility.Visible;
             CallGraphButton.Visibility = Visibility.Visible;
@@ -2678,9 +2683,8 @@ namespace GetMetaData
             serverlabel = Server.Text.ToString();
             if (String.IsNullOrEmpty(serverlabel.ToString()))
             {
-
-
-                MessageBox.Show("Enter The Local Host Server Name");
+                                        
+                MessageBox.Show("Enter the mandatory fields");
                 Animation.Visibility = Visibility.Collapsed;
                 ServerStack.Visibility = Visibility.Visible;
                 button1.Visibility = Visibility.Visible;
@@ -2691,12 +2695,26 @@ namespace GetMetaData
                 GenerateMetadata.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 Output.IsEnabled = false;
-                GenerateMetadata.IsEnabled = true;
-                GenerateMetadata.IsChecked = false;
+                //GenerateMetadata.IsEnabled = true;
+                // GenerateMetadata.IsChecked = false;
 
             }
-            else
-            {
+            else if (items == null )
+                {
+                    MessageBox.Show("Please select atleast one report from the reports dropdown");
+                    Animation.Visibility = Visibility.Collapsed;
+                    ServerStack.Visibility = Visibility.Visible;
+                    button1.Visibility = Visibility.Visible;
+                    ReqButton.Visibility = Visibility.Visible;
+                    Show_by_Report.Visibility = Visibility.Visible;
+                    CallGraphButton.Visibility = Visibility.Visible;
+                    SignOutButton.Visibility = Visibility.Visible;
+                    GenerateMetadata.Visibility = Visibility.Collapsed;
+                    Output.Visibility = Visibility.Collapsed;
+                    Output.IsEnabled = false;
+            }
+                else
+                {
                 Animation.Visibility = Visibility.Visible;
                 ServerStack.Visibility = Visibility.Hidden;
                 button1.Visibility = Visibility.Collapsed;
@@ -2706,14 +2724,13 @@ namespace GetMetaData
                 SignOutButton.Visibility = Visibility.Collapsed;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
-                BorderSelected.Visibility = Visibility.Collapsed;
-                LabelSelectedReports.Visibility = Visibility.Collapsed;
                 ComboBoxZone.Text = "";
                 WindowMainName.Height = 766;
                 backgroundWorker3.RunWorkerAsync();
             }
+            }
 
-        }
+        
 
         private async void ShowSelectedReport()
         {
@@ -3134,7 +3151,7 @@ namespace GetMetaData
 
 
 
-               
+
 
 
 
@@ -3239,7 +3256,7 @@ namespace GetMetaData
             LabelReport.Content = "Reports in the order of above text boxes";
             GenerateMetadata.Margin = new Thickness(-700, 40, 897.333, 0);
 
-          //  GenerateMetadata.IsChecked = false;
+            //  GenerateMetadata.IsChecked = false;
             Output.IsChecked = false;
             CallGraphButton.Visibility = Visibility.Visible;
             Show_by_Report.Visibility = Visibility.Visible;
@@ -3282,7 +3299,7 @@ namespace GetMetaData
             //  ServerStack.Visibility = Visibility.Visible;
             Get_Database.Margin = new Thickness(240, -22, 450, 0);
             GenerateMetadata.Margin = new Thickness(-700, 20, 897.333, 0);
-          //  GenerateMetadata.IsChecked = false;
+            //  GenerateMetadata.IsChecked = false;
             Output.IsChecked = false;
             CallGraphButton.Visibility = Visibility.Visible;
             Show_by_Report.Visibility = Visibility.Visible;
@@ -3701,7 +3718,7 @@ namespace GetMetaData
              table += ") ";
              table += "END";*/
 
-            string table = "\n IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='TMSchema_Relationships') BEGIN DROP TABLE TMSchema_Relationships END";
+            string table = "\n IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='TMSchema_Relationships') BEGIN ";
             table += "\n CREATE TABLE [dbo].[TMSchema_Relationships](";
             table += "\n 	[Workspace] [varchar](max) NULL,";
             table += "\n 	[Report Name] [varchar](max) NULL,";
@@ -3714,38 +3731,38 @@ namespace GetMetaData
             table += "\n 	[ToCardinality] [varchar](max) NULL,";
             table += "\n 	[IsActive] [varchar](max) NULL,";
             table += "\n 	[CrossFilteringBehavior] [varchar](max) NULL";
-            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
-            table += "\n IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='TMSchema_Columns') BEGIN DROP TABLE TMSchema_Columns END";
+            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY] END";
+            table += "\n IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='TMSchema_Columns') BEGIN";
             table += "\n CREATE TABLE [dbo].[TMSchema_Columns](";
             table += "\n 	[Workspace] [varchar](max) NULL,";
             table += "\n 	[Report Name] [varchar](max) NULL,";
             table += "\n 	[Table ID] [varchar](max) NULL,";
             table += "\n 	[Column ID] [varchar](max) NULL,";
             table += "\n 	[Column Name] [varchar](max) NULL";
-            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
-            table += "\n IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='TMSchema_Table') BEGIN DROP TABLE TMSchema_Table END";
+            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY] END";
+            table += "\n IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='TMSchema_Table') BEGIN ";
             table += "\n CREATE TABLE [dbo].[TMSchema_Table](";
             table += "\n 	[Workspace] [varchar](max) NULL,";
             table += "\n 	[Report Name] [varchar](max) NULL,";
             table += "\n 	[Table ID] [varchar](max) NULL,";
             table += "\n 	[Table Name] [varchar](max) NULL";
-            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
-            table += "\n IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='Last_Update') BEGIN DROP TABLE Last_Update END";
+            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY] END";
+            table += "\n IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='Last_Update') BEGIN ";
             table += "\n CREATE TABLE [dbo].[Last_Update](";
             table += "\n 	[Workspace] [varchar](max) NULL,";
             table += "\n 	[Report Name] [varchar](max) NULL,";
             table += "\n 	[Table Name] [varchar](max) NULL,";
             table += "\n 	[RefreshedTime] [varchar](max) NULL";
-            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
-            table += "\n IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='Relationships_Size') BEGIN DROP TABLE Relationships_Size END";
+            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY] END";
+            table += "\n IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='Relationships_Size') BEGIN";
             table += "\n CREATE TABLE [dbo].[Relationships_Size](";
             table += "\n 	[Workspace] [varchar](max) NULL,";
             table += "\n 	[Report Name] [varchar](max) NULL,";
             table += "\n 	[TABLE_NAME] [varchar](max) NULL,";
             table += "\n 	[RELATIONSHIP_ID] [varchar](max) NULL,";
             table += "\n 	[USED_SIZE] [varchar](max) NULL";
-            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
-            table += "\n IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='Data_Size') BEGIN DROP TABLE Data_Size END";
+            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY] END";
+            table += "\n IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='Data_Size') BEGIN";
             table += "\n CREATE TABLE [dbo].[Data_Size](";
             table += "\n 	[Workspace] [varchar](max) NULL,";
             table += "\n 	[Report Name] [varchar](max) NULL,";
@@ -3760,8 +3777,8 @@ namespace GetMetaData
             table += "\n 	[BITS_COUNT] [varchar](max) NULL,";
             table += "\n 	[BOOKMARK_BITS_COUNT] [varchar](max) NULL,";
             table += "\n 	[VERTIPAQ_STATE] [varchar](max) NULL";
-            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
-            table += "\n IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='Hierarchy') BEGIN DROP TABLE Hierarchy END";
+            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY] END";
+            table += "\n IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='Hierarchy') BEGIN";
             table += "\n CREATE TABLE [dbo].[Hierarchy](";
             table += "\n 	[Workspace] [varchar](max) NULL,";
             table += "\n 	[Report Name] [varchar](max) NULL,";
@@ -3771,8 +3788,8 @@ namespace GetMetaData
             table += "\n 	[TABLE_PARTITION_NUMBER] [varchar](max) NULL,";
             table += "\n 	[USED_SIZE] [varchar](max) NULL,";
             table += "\n 	[COLUMN_HIERARCHY_ID] [varchar](max) NULL";
-            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
-            table += "\n IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='User_Hierarchy') BEGIN DROP TABLE User_Hierarchy END";
+            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY] END";
+            table += "\n IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='User_Hierarchy') BEGIN ";
             table += "\n CREATE TABLE [dbo].[User_Hierarchy](";
             table += "\n 	[Workspace] [varchar](max) NULL,";
             table += "\n 	[Report Name] [varchar](max) NULL,";
@@ -3780,8 +3797,8 @@ namespace GetMetaData
             table += "\n 	[STRUCTURE_NAME] [varchar](max) NULL,";
             table += "\n 	[USED_SIZE] [varchar](max) NULL,";
             table += "\n 	[HIERARCHY_ID] [varchar](max) NULL";
-            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
-            table += "\n IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='Dictionary_Usage') BEGIN DROP TABLE Dictionary_Usage END";
+            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY] END";
+            table += "\n IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='Dictionary_Usage') BEGIN";
             table += "\n CREATE TABLE [dbo].[Dictionary_Usage](";
             table += "\n 	[Workspace] [varchar](max) NULL,";
             table += "\n 	[Report Name] [varchar](max) NULL,";
@@ -3791,8 +3808,8 @@ namespace GetMetaData
             table += "\n 	[Data Type] [varchar](max) NULL,";
             table += "\n 	[DICTIONARY_SIZE_BYTES] [varchar](max) NULL,";
             table += "\n 	[COLUMN_ENCODING_INT] [varchar](max) NULL";
-            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
-            table += "\n IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='Metadata') BEGIN DROP TABLE Metadata END";
+            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY] END";
+            table += "\n IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='Metadata') BEGIN";
             table += "\n CREATE TABLE [dbo].[Metadata](";
             table += "\n 	[Workspace] [varchar](max) NULL,";
             table += "\n 	[Report Name] [varchar](max) NULL,";
@@ -3811,7 +3828,7 @@ namespace GetMetaData
             table += "\n 	[To Table Name] [varchar](max) NULL,";
             table += "\n 	[To Column Name] [varchar](max) NULL,";
             table += "\n 	[Refreshed Time] [varchar](max) NULL";
-            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
+            table += "\n ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY] END";
 
             //string table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[Metadata]";
             InsertQuery(table, strconnection.ToString());
@@ -3842,7 +3859,7 @@ namespace GetMetaData
              table += ") ";
              table += "END";*/
 
-            if (tablename.Equals("Dictionary_Usage"))
+       /*   if (tablename.Equals("Dictionary_Usage"))
             {
                 table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[Dictionary_Usage]";
             }
@@ -3878,9 +3895,9 @@ namespace GetMetaData
             if (tablename.Equals("TMSchema_Relationships"))
             {
                 table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[TMSchema_Relationships]";
-            }
+            } */
 
-            InsertQuery(table, strconnection);
+           // InsertQuery(table, strconnection);
             CopyData(strconnection, dt, tablename);
         }
         public void InsertQuery(string qry, string connection)
@@ -3896,39 +3913,57 @@ namespace GetMetaData
             cmd.ExecuteNonQuery();
             _connection.Close();
         }
-        public static void CopyData(string connStr, DataTable dt, string tablename)
+        public void CopyData(string connStr, DataTable dt, string tablename)
         {
-            using (SqlBulkCopy bulkCopy =
-            new SqlBulkCopy(connStr, SqlBulkCopyOptions.TableLock))
+            try
             {
-                bulkCopy.DestinationTableName = tablename;
-                bulkCopy.WriteToServer(dt);
+                using (SqlBulkCopy bulkCopy =
+                new SqlBulkCopy(connStr, SqlBulkCopyOptions.TableLock))
+                {
+                    bulkCopy.DestinationTableName = tablename;
+                    bulkCopy.WriteToServer(dt);
+                }
+                MessageBox.Show("Data loaded to the " + Server.Text.ToString());
             }
+            catch (Exception ex)
+            {
+               
+            }
+           
         }
 
         private void ReqButton_Click(object sender, RoutedEventArgs e)
         {
             int result = 0;
 
-            string connectionstring = "Data Source=" + serverlabel.ToString().ToString() + "; Integrated Security=true; Initial Catalog=Power BI Metadata"; ; //your connectionstring    
+            string connectionstring = "Data Source=" + serverlabel.ToString() + "; Integrated Security=true; Initial Catalog=Power BI Metadata"; ; //your connectionstring    
 
-            using (SqlConnection conn = new SqlConnection(connectionstring))
+
+            if (serverlabel.ToString().Equals(""))
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("select COUNT(*) from dbo.Metadata", conn);
-                result = (int)cmd.ExecuteScalar();
-                conn.Close();
-            }
-            if (serverlabel.ToString().ToString().Equals("") || result == 0)
-            {
-                MessageBox.Show("Either the Metadata is not extracted or the SQL Server details is blank");
+                MessageBox.Show("Click Load Data Options to populate the data base-> Then click the document generator");
             }
             else
             {
-                Document_Generator objWelcome = new Document_Generator();
-                objWelcome.SQLTB.Text = serverlabel.ToString();
-                objWelcome.Show(); //Sending value from one form to another form.
-                Close();
+
+                using (SqlConnection conn = new SqlConnection(connectionstring))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("select COUNT(*) from dbo.Metadata", conn);
+                    result = (int)cmd.ExecuteScalar();
+                    conn.Close();
+                }
+                if (serverlabel.ToString().ToString().Equals("") || result == 0)
+                {
+                    MessageBox.Show("Either the Metadata is not extracted or the SQL Server details is blank");
+                }
+                else
+                {
+                    Document_Generator objWelcome = new Document_Generator();
+                    objWelcome.SQLTB.Text = serverlabel.ToString();
+                    objWelcome.Show(); //Sending value from one form to another form.
+                    Close();
+                }
             }
         }
 
@@ -3936,16 +3971,16 @@ namespace GetMetaData
         {
             //button1.Visibility = Visibility.Collapsed;
             //ReqButton.Visibility = Visibility.Collapsed;
-           // Show_by_Report.Visibility = Visibility.Visible;
-           // CallGraphButton.Visibility = Visibility.Visible;
+            // Show_by_Report.Visibility = Visibility.Visible;
+            // CallGraphButton.Visibility = Visibility.Visible;
         }
 
         private void Output_Checked(object sender, RoutedEventArgs e)
         {
-         //   Show_by_Report.Visibility = Visibility.Collapsed;
-           // CallGraphButton.Visibility = Visibility.Collapsed;
-          //  button1.Visibility = Visibility.Visible;
-          //  ReqButton.Visibility = Visibility.Visible;
+            //   Show_by_Report.Visibility = Visibility.Collapsed;
+            // CallGraphButton.Visibility = Visibility.Collapsed;
+            //  button1.Visibility = Visibility.Visible;
+            //  ReqButton.Visibility = Visibility.Visible;
         }
 
         private void ComboBoxZone_DropDownClosed(object sender, EventArgs e)
