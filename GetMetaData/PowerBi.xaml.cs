@@ -2691,8 +2691,7 @@ namespace GetMetaData
                 SignOutButton.Visibility = Visibility.Collapsed;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
-                ComboBoxZone.Text = "";
-                WindowMainName.Height = 766;
+                Output.IsEnabled = false;
                 backgroundWorker3.RunWorkerAsync();
             }
         }

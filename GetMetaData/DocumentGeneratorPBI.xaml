@@ -117,7 +117,7 @@
 
 
             </Grid>
-            <StackPanel VerticalAlignment="Top" Name="StackBG" Margin="5,-70,-10,10" Grid.ColumnSpan="7">
+            <StackPanel VerticalAlignment="Top" Name="StackBG" Margin="5,0,-10,0" Grid.ColumnSpan="7">
 
                 <StackPanel  Name="ServerStack"  Height="666" Background="#1E1E21"  VerticalAlignment="Top" Margin="5,170,0,0" >
                     <Label Content="Home  >  Document Generator" FontSize="14" Foreground="White" x:Name="LabelUser2" Margin="0,5,0,2" FontFamily="EYInterstate" Height="27" HorizontalAlignment="Left" />
