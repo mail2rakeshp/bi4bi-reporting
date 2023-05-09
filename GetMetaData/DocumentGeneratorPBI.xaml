@@ -228,7 +228,7 @@
                     <Border Name="BorderTemplatePAth" CornerRadius="0" BorderThickness="1" Width="610" BorderBrush="#ffffff" HorizontalAlignment="left" Margin="5,-320,4,-100" Height="28">
                         <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="TemplatePathText" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
                     </Border>
-                    <Button x:Name="Template_Browse" Content="Browse" HorizontalAlignment="Left" Margin="640,-125,150,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Click="Browse_Click"  Foreground="White" Background="Black">
+                    <Button x:Name="Template_Browse" Content="Browse" HorizontalAlignment="Left" Margin="640,-125,150,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Click="Template_Browse_Click"  Foreground="White" Background="Black">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}" >
 
@@ -264,7 +264,7 @@
                         <TextBox IsEnabled="False"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="TokenInfo" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,8.667,8.667,8.667" FontFamily="Sergoe Ui"/>
                     </Border>
 
-                    <Button x:Name="DestPath_Browse" Content="Browse" HorizontalAlignment="Left" Margin="640,-125,150,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Click="Browse_Click"  Foreground="White" Background="Black">
+                    <Button x:Name="DestPath_Browse" Content="Browse" HorizontalAlignment="Left" Margin="640,-125,150,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Click="DestPath_Browse_Click"  Foreground="White" Background="Black">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}" >
 

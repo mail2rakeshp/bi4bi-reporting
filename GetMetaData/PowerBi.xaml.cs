@@ -157,6 +157,18 @@ namespace GetMetaData
         }
         private void ddlCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            view.RowFilter = string.Format("CATALOG_NAME Like '%{0}%'", ComboBoxZone.Text.ToString());
+            if (ComboBoxZone.Text.ToString() != "")
+            {
+                ComboBoxZone.ItemsSource = view;
+                ComboBoxZone.SelectedItem = selectedItems;
+
+            }
+            else
+            {
+
+                ComboBoxZone.ItemsSource = ds.Tables[0].DefaultView;
+            }
 
         }
 
@@ -167,12 +179,8 @@ namespace GetMetaData
             view.RowFilter = string.Format("CATALOG_NAME Like '%{0}%'", ComboBoxZone.Text.ToString());
             if (ComboBoxZone.Text.ToString() != "")
             {
-                // view.RowFilter = string.Format("CATALOG_NAME Like '%{0}%'", ComboBoxZone.Text.ToString());
                 ComboBoxZone.ItemsSource = view;
-
                 ComboBoxZone.SelectedItem = selectedItems;
-
-
 
             }
             else
@@ -1169,79 +1177,79 @@ namespace GetMetaData
 
                 try
                 {
-                     
-                                     
-                        foreach (string item in items1)
-                        {
-                            //AdomdConnection connection = new AdomdConnection();
-                            // connection.ConnectionString = GetConnectionString(ResultText.Text, item.Row[0].ToString());
-                            // connection.Open();
-                            //MessageBox.Show(item.ToString());  
-                            //DataTable dt = new DataTable();
-                            AdomdConnection connection = new AdomdConnection();
-                            connection.ConnectionString = GetConnectionString(workspacename.ToString(), item.ToString());
-                            connection.Open();
-                            string queryString = "";
+
+
+                    foreach (string item in items1)
+                    {
+                        //AdomdConnection connection = new AdomdConnection();
+                        // connection.ConnectionString = GetConnectionString(ResultText.Text, item.Row[0].ToString());
+                        // connection.Open();
+                        //MessageBox.Show(item.ToString());  
+                        //DataTable dt = new DataTable();
+                        AdomdConnection connection = new AdomdConnection();
+                        connection.ConnectionString = GetConnectionString(workspacename.ToString(), item.ToString());
+                        connection.Open();
+                        string queryString = "";
 
 
 
-                            int pos = workspacename.ToString().LastIndexOf("/") + 1;
-                            //MessageBox.Show(workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + " - " + item.ToString());
-                            // WorkspaceLabel.Content = "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace]";
-                            queryString = "SELECT DISTINCT " + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace], [CATALOG_NAME] AS [Report Name], [DIMENSION_UNIQUE_NAME] AS [Dataset Name], LEVEL_CAPTION AS [Column Name] FROM $System.MDSchema_levels WHERE CUBE_NAME  ='Model' AND level_origin=2 AND LEVEL_NAME <> '(All)' order by [DIMENSION_UNIQUE_NAME]   ";
-                            //queryString = check(query);
-                            AdomdCommand cmd = connection.CreateCommand();
-                            cmd.CommandText = queryString;
-                            AdomdDataAdapter ad = new AdomdDataAdapter(queryString, connection);
-                            ad.Fill(dt);
+                        int pos = workspacename.ToString().LastIndexOf("/") + 1;
+                        //MessageBox.Show(workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + " - " + item.ToString());
+                        // WorkspaceLabel.Content = "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace]";
+                        queryString = "SELECT DISTINCT " + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace], [CATALOG_NAME] AS [Report Name], [DIMENSION_UNIQUE_NAME] AS [Dataset Name], LEVEL_CAPTION AS [Column Name] FROM $System.MDSchema_levels WHERE CUBE_NAME  ='Model' AND level_origin=2 AND LEVEL_NAME <> '(All)' order by [DIMENSION_UNIQUE_NAME]   ";
+                        //queryString = check(query);
+                        AdomdCommand cmd = connection.CreateCommand();
+                        cmd.CommandText = queryString;
+                        AdomdDataAdapter ad = new AdomdDataAdapter(queryString, connection);
+                        ad.Fill(dt);
 
 
-                            DataTable dt2 = new DataTable();
-                            string queryString1 = "select DISTINCT" + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace], DATABASE_NAME as [Report Name],'['+[TABLE]+']' AS [Dataset Name],OBJECT AS [Column Name],EXPRESSION AS [Calculated Column Expression] from $SYSTEM.DISCOVER_CALC_DEPENDENCY WHERE OBJECT_TYPE = 'CALC_COLUMN' ";
-                            AdomdCommand cmd1 = connection.CreateCommand();
-                            cmd1.CommandText = queryString1;
-                            AdomdDataAdapter ad1 = new AdomdDataAdapter(queryString1, connection);
-                            ad1.Fill(dt2);
+                        DataTable dt2 = new DataTable();
+                        string queryString1 = "select DISTINCT" + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace], DATABASE_NAME as [Report Name],'['+[TABLE]+']' AS [Dataset Name],OBJECT AS [Column Name],EXPRESSION AS [Calculated Column Expression] from $SYSTEM.DISCOVER_CALC_DEPENDENCY WHERE OBJECT_TYPE = 'CALC_COLUMN' ";
+                        AdomdCommand cmd1 = connection.CreateCommand();
+                        cmd1.CommandText = queryString1;
+                        AdomdDataAdapter ad1 = new AdomdDataAdapter(queryString1, connection);
+                        ad1.Fill(dt2);
 
-                            dt2.PrimaryKey = new DataColumn[] {
+                        dt2.PrimaryKey = new DataColumn[] {
                         dt2.Columns["Report Name"],dt2.Columns["Dataset Name"],dt2.Columns["Column Name"] };
 
 
-                            dt.Merge(dt2);
-                            //  dt.DefaultView.Sort = "Dataset Name ASC";
+                        dt.Merge(dt2);
+                        //  dt.DefaultView.Sort = "Dataset Name ASC";
 
-                            DataTable dt4 = new DataTable();
-                            string queryString3 = "select DISTINCT " + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace],  DATABASE_NAME as [Report Name],'['+[TABLE]+']' AS [Dataset Name],OBJECT AS [Column Name],EXPRESSION AS [Calculated Measure Expression] from $SYSTEM.DISCOVER_CALC_DEPENDENCY WHERE OBJECT_TYPE = 'MEASURE' ";
-                            AdomdCommand cmd3 = connection.CreateCommand();
-                            cmd3.CommandText = queryString3;
-                            AdomdDataAdapter ad3 = new AdomdDataAdapter(queryString3, connection);
-                            ad3.Fill(dt4);
-
-
-
-                            dt.Merge(dt4);
-                            //   dt.DefaultView.Sort = "Dataset Name ASC";
+                        DataTable dt4 = new DataTable();
+                        string queryString3 = "select DISTINCT " + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace],  DATABASE_NAME as [Report Name],'['+[TABLE]+']' AS [Dataset Name],OBJECT AS [Column Name],EXPRESSION AS [Calculated Measure Expression] from $SYSTEM.DISCOVER_CALC_DEPENDENCY WHERE OBJECT_TYPE = 'MEASURE' ";
+                        AdomdCommand cmd3 = connection.CreateCommand();
+                        cmd3.CommandText = queryString3;
+                        AdomdDataAdapter ad3 = new AdomdDataAdapter(queryString3, connection);
+                        ad3.Fill(dt4);
 
 
 
+                        dt.Merge(dt4);
+                        //   dt.DefaultView.Sort = "Dataset Name ASC";
 
-                            DataTable dt3 = new DataTable();
-                            string queryString2 = "select DISTINCT " + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace],DATABASE_NAME as [Report Name],'['+[TABLE]+']' AS [Dataset Name],OBJECT AS [Column Name],EXPRESSION AS [Calculated Table Expression] from $SYSTEM.DISCOVER_CALC_DEPENDENCY WHERE OBJECT_TYPE = 'CALC_TABLE' ";
-                            AdomdCommand cmd2 = connection.CreateCommand();
-                            cmd2.CommandText = queryString2;
-                            AdomdDataAdapter ad2 = new AdomdDataAdapter(queryString2, connection);
-                            ad2.Fill(dt3);
 
-                            dt3.PrimaryKey = new DataColumn[] {
+
+
+                        DataTable dt3 = new DataTable();
+                        string queryString2 = "select DISTINCT " + "'" + workspacename.ToString().Substring(pos, workspacename.ToString().Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace],DATABASE_NAME as [Report Name],'['+[TABLE]+']' AS [Dataset Name],OBJECT AS [Column Name],EXPRESSION AS [Calculated Table Expression] from $SYSTEM.DISCOVER_CALC_DEPENDENCY WHERE OBJECT_TYPE = 'CALC_TABLE' ";
+                        AdomdCommand cmd2 = connection.CreateCommand();
+                        cmd2.CommandText = queryString2;
+                        AdomdDataAdapter ad2 = new AdomdDataAdapter(queryString2, connection);
+                        ad2.Fill(dt3);
+
+                        dt3.PrimaryKey = new DataColumn[] {
                         dt3.Columns["Report Name"],dt3.Columns["Dataset Name"],dt3.Columns["Column Name"] };
 
 
-                            dt.Merge(dt3);
+                        dt.Merge(dt3);
 
-                            // dt.DefaultView.Sort = "DatasetName ASC";
+                        // dt.DefaultView.Sort = "DatasetName ASC";
 
-                        }
-                   
+                    }
+
                     foreach (string item in items1)
                     {
                         AdomdConnection connection = new AdomdConnection();
@@ -1577,7 +1585,7 @@ namespace GetMetaData
 
                     }
                 }
-            
+
                 catch (Exception e)
                 {
                     MessageBox.Show(e.Message.ToString());
@@ -2074,7 +2082,7 @@ namespace GetMetaData
 
             try
             {
-                if (ResultText.Text != "" && ResultText2.Visibility == Visibility.Collapsed)
+                if (ResultText.Text != "" )
                 {
                     AdomdConnection connection = new AdomdConnection();
                     connection.ConnectionString = GetConnectionStringForCombo(ResultText.Text);
@@ -2085,9 +2093,7 @@ namespace GetMetaData
                     AdomdDataAdapter ad = new AdomdDataAdapter(queryString, connection);
                     DataSet ds = new DataSet();
                     ad.Fill(ds, "DBSCHEMA_CATALOGS");
-                    comboBoxName.ItemsSource = ds.Tables[0].DefaultView;
-                    comboBoxName.SelectedIndex = 1;
-                    comboBoxName.SelectedValue= ds.Tables[0].Columns["CATALOG_NAME"].ToString();
+                    comboBoxName.ItemsSource = ds.Tables["DBSCHEMA_CATALOGS"].DefaultView;                               
                     comboBoxName.DisplayMemberPath = ds.Tables[0].Columns["CATALOG_NAME"].ToString();
                     comboBoxName.SelectedValuePath = ds.Tables[0].Columns["CATALOG_NAME"].ToString();
 
@@ -2297,13 +2303,13 @@ namespace GetMetaData
 
         private async void CallDatabaseList(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(ResultText.Text) && ResultText2.Visibility == Visibility.Collapsed && ResultText3.Visibility == Visibility.Collapsed)
+            if (String.IsNullOrEmpty(ResultText.Text) )
             {
-                MessageBox.Show("Enter Valid Workspace connection");
+                MessageBox.Show("Enter valid workspace URL");
             }
             else if ((String.IsNullOrEmpty(ResultText.Text) || String.IsNullOrEmpty(ResultText2.Text)) && ResultText2.Visibility == Visibility.Visible && ResultText3.Visibility == Visibility.Collapsed)
             {
-                MessageBox.Show("Enter Valid Workspace connection");
+                MessageBox.Show("Enter valid workspace URL");
             }
             else if (ResultText.Visibility == Visibility.Visible && ResultText2.Visibility == Visibility.Visible && ResultText3.Visibility == Visibility.Collapsed && ResultText.Text == ResultText2.Text)
             {
@@ -2344,7 +2350,7 @@ namespace GetMetaData
 
         private async void BindBox()
         {
-            if (workspacename != "" && workspacename1 == "")
+            if (workspacename != "")
             {
 
                 try
@@ -2368,50 +2374,12 @@ namespace GetMetaData
                     //MessageBox.Show("Connection String should be valid");
                 }
             }
-            else if (workspacename != "" && workspacename1 != "")
+            else 
             {
 
-                try
-                {
-                    AdomdConnection connection = new AdomdConnection();
-                    connection.ConnectionString = GetConnectionStringForCombo(workspacename.ToString());
-                    connection.Open();
-                    string queryString = "SELECT DISTINCT [CATALOG_NAME] FROM $System.DBSCHEMA_CATALOGS;";
-                    AdomdCommand cmd = connection.CreateCommand();
-                    cmd.CommandText = queryString;
-                    AdomdDataAdapter ad = new AdomdDataAdapter(queryString, connection);
-                    ds = new DataSet();
-                    ad.Fill(ds, "DBSCHEMA_CATALOGS");
+                MessageBox.Show("Enter valid workspace URL");
 
 
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
-                    //MessageBox.Show("Connection String should be valid");
-                }
-
-                try
-                {
-                    AdomdConnection connection = new AdomdConnection();
-                    connection.ConnectionString = GetConnectionStringForCombo(workspacename1.ToString());
-                    connection.Open();
-                    string queryString = "SELECT DISTINCT [CATALOG_NAME] FROM $System.DBSCHEMA_CATALOGS;";
-                    AdomdCommand cmd = connection.CreateCommand();
-                    cmd.CommandText = queryString;
-                    AdomdDataAdapter ad = new AdomdDataAdapter(queryString, connection);
-                    ds1 = new DataSet();
-                    ad.Fill(ds1, "DBSCHEMA_CATALOGS");
-
-
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
-                    //MessageBox.Show("Connection String should be valid");
-                }
             }
 
 
@@ -2677,13 +2645,12 @@ namespace GetMetaData
             Show_by_Report.Visibility = Visibility.Visible;
             CallGraphButton.Visibility = Visibility.Visible;
             SignOutButton.Visibility = Visibility.Visible;
-            //MessageBox.Show("");
             itemCombo = items;
             workspacename = ResultText.Text.ToString();
             serverlabel = Server.Text.ToString();
             if (String.IsNullOrEmpty(serverlabel.ToString()))
             {
-                                        
+
                 MessageBox.Show("Enter the mandatory fields");
                 Animation.Visibility = Visibility.Collapsed;
                 ServerStack.Visibility = Visibility.Visible;
@@ -2699,22 +2666,22 @@ namespace GetMetaData
                 // GenerateMetadata.IsChecked = false;
 
             }
-            else if (items == null )
-                {
-                    MessageBox.Show("Please select atleast one report from the reports dropdown");
-                    Animation.Visibility = Visibility.Collapsed;
-                    ServerStack.Visibility = Visibility.Visible;
-                    button1.Visibility = Visibility.Visible;
-                    ReqButton.Visibility = Visibility.Visible;
-                    Show_by_Report.Visibility = Visibility.Visible;
-                    CallGraphButton.Visibility = Visibility.Visible;
-                    SignOutButton.Visibility = Visibility.Visible;
-                    GenerateMetadata.Visibility = Visibility.Collapsed;
-                    Output.Visibility = Visibility.Collapsed;
-                    Output.IsEnabled = false;
+            else if (items == null)
+            {
+                MessageBox.Show("Please select atleast one report from the reports dropdown");
+                Animation.Visibility = Visibility.Collapsed;
+                ServerStack.Visibility = Visibility.Visible;
+                button1.Visibility = Visibility.Visible;
+                ReqButton.Visibility = Visibility.Visible;
+                Show_by_Report.Visibility = Visibility.Visible;
+                CallGraphButton.Visibility = Visibility.Visible;
+                SignOutButton.Visibility = Visibility.Visible;
+                GenerateMetadata.Visibility = Visibility.Collapsed;
+                Output.Visibility = Visibility.Collapsed;
+                Output.IsEnabled = false;
             }
-                else
-                {
+            else
+            {
                 Animation.Visibility = Visibility.Visible;
                 ServerStack.Visibility = Visibility.Hidden;
                 button1.Visibility = Visibility.Collapsed;
@@ -2728,9 +2695,9 @@ namespace GetMetaData
                 WindowMainName.Height = 766;
                 backgroundWorker3.RunWorkerAsync();
             }
-            }
+        }
 
-        
+
 
         private async void ShowSelectedReport()
         {
@@ -3859,45 +3826,45 @@ namespace GetMetaData
              table += ") ";
              table += "END";*/
 
-       /*   if (tablename.Equals("Dictionary_Usage"))
-            {
-                table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[Dictionary_Usage]";
-            }
-            if (tablename.Equals("User_Hierarchy"))
-            {
-                table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[User_Hierarchy]";
-            }
-            if (tablename.Equals("Hierarchy"))
-            {
-                table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[Hierarchy]";
-            }
-            if (tablename.Equals("Data_Size"))
-            {
-                table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[Data_Size]";
-            }
+            /*   if (tablename.Equals("Dictionary_Usage"))
+                 {
+                     table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[Dictionary_Usage]";
+                 }
+                 if (tablename.Equals("User_Hierarchy"))
+                 {
+                     table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[User_Hierarchy]";
+                 }
+                 if (tablename.Equals("Hierarchy"))
+                 {
+                     table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[Hierarchy]";
+                 }
+                 if (tablename.Equals("Data_Size"))
+                 {
+                     table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[Data_Size]";
+                 }
 
-            if (tablename.Equals("Relationships_Size"))
-            {
-                table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[Relationships_Size]";
-            }
-            if (tablename.Equals("Last_Update"))
-            {
-                table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[Last_Update]";
-            }
-            if (tablename.Equals("TMSchema_Table"))
-            {
-                table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[TMSchema_Table]";
-            }
-            if (tablename.Equals("TMSchema_Columns"))
-            {
-                table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[TMSchema_Columns]";
-            }
-            if (tablename.Equals("TMSchema_Relationships"))
-            {
-                table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[TMSchema_Relationships]";
-            } */
+                 if (tablename.Equals("Relationships_Size"))
+                 {
+                     table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[Relationships_Size]";
+                 }
+                 if (tablename.Equals("Last_Update"))
+                 {
+                     table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[Last_Update]";
+                 }
+                 if (tablename.Equals("TMSchema_Table"))
+                 {
+                     table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[TMSchema_Table]";
+                 }
+                 if (tablename.Equals("TMSchema_Columns"))
+                 {
+                     table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[TMSchema_Columns]";
+                 }
+                 if (tablename.Equals("TMSchema_Relationships"))
+                 {
+                     table = "TRUNCATE TABLE [Power BI Metadata].[dbo].[TMSchema_Relationships]";
+                 } */
 
-           // InsertQuery(table, strconnection);
+            // InsertQuery(table, strconnection);
             CopyData(strconnection, dt, tablename);
         }
         public void InsertQuery(string qry, string connection)
@@ -3927,9 +3894,9 @@ namespace GetMetaData
             }
             catch (Exception ex)
             {
-               
+
             }
-           
+
         }
 
         private void ReqButton_Click(object sender, RoutedEventArgs e)

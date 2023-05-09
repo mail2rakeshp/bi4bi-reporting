@@ -16,37 +16,43 @@
         "Entry"
         {
         "MsmKey" = "8:_01A03551327FACD726FB9A24B8441A3D"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_066A28A76B3CA66302BC183F24450C5F"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_088B93218EBA9288F5BBCB72EAB6C39E"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_08CEEA699EA8C424E11286D4167EF92E"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_0B4E41BC7090A3B0203892768F4D973B"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0BC742B4085747E9B9C113064D0562CE"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_0C01D0ADA0F1DA2D197AEE9C535E2447"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,49 +64,49 @@
         "Entry"
         {
         "MsmKey" = "8:_0DB94132EE9DC74141A2A1CF525D6651"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_124E5496F1BC482CAB64C2F55CEE30FD"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_15A5BDD4569645038C816516AEF71D74"
+        "MsmKey" = "8:_14E4B16316114887BFCB1C23BCB6E076"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_174A9CD3C286329B03634A8900FF27A1"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_1AAF78EDB6F04491A33A6C88E9BC727F"
+        "MsmKey" = "8:_1BB51F5CD0754A678444DB3F23391DB5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_22ACDC5FD8954345B09EF5939CB0F61A"
+        "MsmKey" = "8:_1DB2A88DEA064A29ACFD6B04B1976160"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_2D595EBC1B9347EEA9E7A89F552BAA75"
+        "MsmKey" = "8:_1F6F026FF4FC4BEA80509EEC96D7341D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_298D434CBF134028971E3DA35F50DEFF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_2D621E5D49CF4FCD9088CC43532D4C31"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -118,37 +124,37 @@
         "Entry"
         {
         "MsmKey" = "8:_2E0D2AC7447630373CB24F2E4CDC55B5"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_359FEC177E0B44F6B97A834F466E5EE2"
+        "MsmKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_393F40CEBF1A25560B02097969A86579"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_3A20E976CD80BE34215C8C7B7C0893F7"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_3B00E1D88FD40EB9A7F08FE575B3152C"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_412E89A2B86EC6A3E68C4A10BE72A271"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -160,25 +166,25 @@
         "Entry"
         {
         "MsmKey" = "8:_415436B00A31715BC509C21EC18DBB6B"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_42ED05AC6D0D4722B28FF84AD9E34EED"
+        "MsmKey" = "8:_46B5D8A97E9B4F12B3B4DF9921E476D0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_49A7DF950AFF9569F88A2D674297E2C8"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4DF0EA40E47DDD34F311E6D1D453EE41"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -189,152 +195,134 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_50946A7947C04290B03560FFA0D7874C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_50CD8B76F1D84BA8808C7BAC1060A369"
+        "MsmKey" = "8:_5274BA5BCE7B47B8A5C443520A4E47F3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5328E9D191F211448747E4E18D5ED127"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5560D57B7CC0A2A594F944DEDE812E0E"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_55AC5E8CD0D343B8ABE7C855286E14AF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_57E352F4B2B644758504663BECA1298C"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_58DB9CA73A69C9F3A3AC24ABFE302930"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5988DB9A2C361F34C865FCBE1567DAF5"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5A1BD9B5BD2E49AEB9DDD40600386EEE"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5C57E100442EF6F0708CEA43A14BB967"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5F5652D58F904750C7ED64F41945CC63"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6262123D98EE4C6295730EC18958739C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6624E353C7094493A579885C50AABB58"
+        "MsmKey" = "8:_65585D918D004BCA8F453D4855C4A48E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_68C1804D164A60EE591EA648CA75B748"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6B7F7CAB1E4B409C9AD7E80BF0F5E0C2"
+        "MsmKey" = "8:_6B1C538809D04933B7D91B96297387E4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6F2A74EA2B0F4F849A35E6605327BF33"
+        "MsmKey" = "8:_6E50059EB70F454D8B9BD9FC371928BE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6F789505CA064FA3818EB449C4CAE1EF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_70387D842A174C6D8B7D04FECED9A8D0"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_73DD23542E5247BE8214A3BDEF75F625"
+        "MsmKey" = "8:_7236F9C9EC74449294C844FFDF6BE008"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_74041512B341CE2CC0BE98529874367E"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_76327045D31076D6461E18FCD835C33D"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_7A69AC3AAE114782BE2AA1D7D508F9E4"
+        "MsmKey" = "8:_77444E19537640A59152CA2EFF5D9B24"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_84E9DCED334940D78FDA00C0210CAEF0"
+        "MsmKey" = "8:_7CA3F1C700294E1D9928BB442155686D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_8609D2324AA347DDB621E0255C971F4F"
+        "MsmKey" = "8:_8066F42C71474689816D1948575A8782"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_82DBC7538B7C42AAA4CFBEB937CC8830"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_83B89915C4D54CCABB1318D6433CE8D2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_89D371913B0DB384F97BF274245797C3"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8F414A25882C4CB2901685E8A63221C5"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -345,13 +333,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9287A1036008C30EDB2F8C9FD2515B12"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "MsmKey" = "8:_91813DCB05F641DD902B69E160112239"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "MsmKey" = "8:_9236EFC95849460DA8EE2FFCD13F25BE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9287A1036008C30EDB2F8C9FD2515B12"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_92A393F004A64047BCFE22877E237966"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -388,19 +388,19 @@
         "Entry"
         {
         "MsmKey" = "8:_97E268CA4DB8CA1218BDE7524D19DE20"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_98C09069C8C54CCFB8CD11DC46939D08"
+        "MsmKey" = "8:_9BF567AB909C415993E96987F46E0795"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9C0C9220C97E6FFD9DEF7281B75F49BC"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -412,43 +412,55 @@
         "Entry"
         {
         "MsmKey" = "8:_A0D890FC040A76FC826D473ADF01045C"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A24E140F07114235BF8A3D92B30DCDA0"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A342ABA49B384B73630DB10AD324D633"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A5EB3552F80005945FCA949540496E23"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_A71216494D36447EB8A17C78FA7C91D0"
+        "MsmKey" = "8:_AAA5BD3DAB9442458C38E61006CD5C9F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_ABE7C2F1AEBB4357B7952357704DE3FF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_AD14015D9860E8DF9DFD5F9D829F6289"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_AD812AD736BF5751EC640E01B72BF7E2"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_ADA4AB00264DDCFD4F3A977910867A54"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -460,25 +472,25 @@
         "Entry"
         {
         "MsmKey" = "8:_AF5127DB96B770E862562498F51826C6"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_AF8ADF684DF74AFA82651EE54BE6475F"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B1B7561CAC898DA2149BE14F0096D6E5"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B5BF34148471F145C950BDC944B3D8E4"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -508,19 +520,19 @@
         "Entry"
         {
         "MsmKey" = "8:_B7CA9F23D3393CA0041B7A10384EFF80"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B923641B31562466599603073EE32141"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_BA7238419E6DBA95912E2DE73B8EF77C"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -532,13 +544,31 @@
         "Entry"
         {
         "MsmKey" = "8:_BBCCD6A649264436D5D9D19C9500C5D0"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BDFAEF0FC49A4D5C8DFE6214F148F488"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BF6288C344B6418098E7C69110685D35"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BFEC963FC00841689F1C599BD5CE3248"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_C1D97321AA93773BF608D130F0C2BF7E"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -550,55 +580,67 @@
         "Entry"
         {
         "MsmKey" = "8:_C1DCDA18443B8DD0DF076E963A44E1F9"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C66BE60BC7A9427EB05E80E448084123"
+        "MsmKey" = "8:_C1F1D87D380340899BBB9E4A0845416A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_CAFF2C9544EA45C2DE46DDB89106DD33"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CBA91137149A41FF8D288E8295BB4256"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_CF89EEEBE7CEFECD09B0CFAE7A0AC2F9"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_D0BEE826782400617690CAFC7B4DED66"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_D45B31A767FBB56EC120437F056E49F0"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DB230D85F496428EBB628D7F3F440A96"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_DB8FF9A8F8F02FD7C1BB01A3E1A98DBD"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_DD11E6EC07C0B314AA6BBABD66390311"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_DDD428571A7F88688866EE157A607718"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -616,61 +658,85 @@
         "Entry"
         {
         "MsmKey" = "8:_DF5E3807E7E02910B8A7C0881E13834A"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E615F6F809064AFE84A35E78018BED53"
+        "MsmKey" = "8:_E1D7C35860B447CD9CC8862B4FC71DE6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E4256F119C3549C2B31829E3D78E26F0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E8B6933151714EEC997BF30B61E55C22"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EC56422E7A7935D7ED8576AC789DC6D7"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_ED0DF80E6EA746959DE9F8EAB6BC2580"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EE573090E97E48889A9A88D65092645C"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EF524D87D4B4AEAFB9463EFA6B0FEA57"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EFC3B6C2605652764EEF864A7618D632"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F17DF3B819274A9B9217927D94F8696E"
+        "MsmKey" = "8:_F03924FB4D6946C78105D8828BBFFB6E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F2D86EB7F1AF41C9949299691FF84C79"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F3301249C89D3A6775A0D1BF4438F071"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F3466E1FD2B34777B5105FB6E79E8946"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F5E91AF97C99AA6D62365AB20296D83A"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F88F5177468727C99013E0EF153A5AB0"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -693,62 +759,44 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F9288AC29B48468F9AFD68E844F0B35E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FA241B3FE359436189976EBE97B88D48"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FA87B73DF3484B5EB6FAF768D88B4CDC"
+        "MsmKey" = "8:_FB11C83FEAC84E6788670402B58D8113"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_FBA47DC4FD236C24A88DA50EE7881151"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_FC2C65E9DDED139E4E0C16D0C55ADCC4"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_FD2185CA00289411D59CB195CFD8518E"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_FDDE0C9485B4F03AF37A067FAD5EEA9A"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FDED27CE1D30456F8B0268E874E94BE3"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_FF262CB7D76160809B88AEE47D5631A2"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_FFED12DE77789A0AAFC7E91B960549BF"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -760,7 +808,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+        "OwnerKey" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1409,6 +1457,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0BC742B4085747E9B9C113064D0562CE"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\PowerBI_Process_Python.py"
+            "TargetName" = "8:PowerBI_Process_Python.py"
+            "Tag" = "8:"
+            "Folder" = "8:_AA6E5B3FBE354984B276FA279D26025C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0C01D0ADA0F1DA2D197AEE9C535E2447"
             {
             "AssemblyRegister" = "3:1"
@@ -1471,32 +1539,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_124E5496F1BC482CAB64C2F55CEE30FD"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_14E4B16316114887BFCB1C23BCB6E076"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Scripts\\vw_Metadata_STM.sql"
-            "TargetName" = "8:vw_Metadata_STM.sql"
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\BI4BI - Power BI.pbix"
+            "TargetName" = "8:BI4BI - Power BI.pbix"
             "Tag" = "8:"
-            "Folder" = "8:_1EDE9214839145F5912CDA0BE019FCE0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_15A5BDD4569645038C816516AEF71D74"
-            {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\Cognos Metadata.pbix"
-            "TargetName" = "8:Cognos Metadata.pbix"
-            "Tag" = "8:"
-            "Folder" = "8:_E2C675A5033840FB87FB675ECE929E2F"
+            "Folder" = "8:_6D004B990BEB445CA2FCE0DAFAB45A05"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1542,12 +1590,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1AAF78EDB6F04491A33A6C88E9BC727F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1BB51F5CD0754A678444DB3F23391DB5"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\PowerBI_Tables.sql"
-            "TargetName" = "8:PowerBI_Tables.sql"
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Scripts\\vw_Metadata_STM.sql"
+            "TargetName" = "8:vw_Metadata_STM.sql"
             "Tag" = "8:"
-            "Folder" = "8:_518FF3160D9F4B3C8F85078B67FE6DA9"
+            "Folder" = "8:_C49CDF720EC7485ABD8125D179AB58D9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1562,17 +1610,17 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_22ACDC5FD8954345B09EF5939CB0F61A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1DB2A88DEA064A29ACFD6B04B1976160"
             {
-            "SourcePath" = "8:..\\GetMetaData\\Resources\\Transparent_ACL_Final_Icon_1.ico"
-            "TargetName" = "8:Transparent_ACL_Final_Icon_1.ico"
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Cognos_Process_Python.py"
+            "TargetName" = "8:Cognos_Process_Python.py"
             "Tag" = "8:"
-            "Folder" = "8:_24B8BC698D934DEBB89190A384810EDF"
+            "Folder" = "8:_AA6E5B3FBE354984B276FA279D26025C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -1582,12 +1630,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2D595EBC1B9347EEA9E7A89F552BAA75"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1F6F026FF4FC4BEA80509EEC96D7341D"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Cognos_CSV_Python.py"
-            "TargetName" = "8:Cognos_CSV_Python.py"
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\Tableau Metadata.pbix"
+            "TargetName" = "8:Tableau Metadata.pbix"
             "Tag" = "8:"
-            "Folder" = "8:_70AB1F2117164F6182FC9AEC78F12D47"
+            "Folder" = "8:_6D004B990BEB445CA2FCE0DAFAB45A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_298D434CBF134028971E3DA35F50DEFF"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\BI4BI - Microstrategy.pbix"
+            "TargetName" = "8:BI4BI - Microstrategy.pbix"
+            "Tag" = "8:"
+            "Folder" = "8:_6D004B990BEB445CA2FCE0DAFAB45A05"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1662,26 +1730,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_359FEC177E0B44F6B97A834F466E5EE2"
-            {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Python_File.py"
-            "TargetName" = "8:Python_File.py"
-            "Tag" = "8:"
-            "Folder" = "8:_70AB1F2117164F6182FC9AEC78F12D47"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_393F40CEBF1A25560B02097969A86579"
@@ -1839,12 +1887,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_42ED05AC6D0D4722B28FF84AD9E34EED"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_46B5D8A97E9B4F12B3B4DF9921E476D0"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Sample XML\\Sample.xml"
-            "TargetName" = "8:Sample.xml"
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\Template.pbix"
+            "TargetName" = "8:Template.pbix"
             "Tag" = "8:"
-            "Folder" = "8:_1381838CBCA54AB08A91B3554BCCB99E"
+            "Folder" = "8:_6D004B990BEB445CA2FCE0DAFAB45A05"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1921,32 +1969,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_50946A7947C04290B03560FFA0D7874C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5274BA5BCE7B47B8A5C443520A4E47F3"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\OBIEE_Python.py"
-            "TargetName" = "8:OBIEE_Python.py"
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Sample XML\\Sample.xml"
+            "TargetName" = "8:Sample.xml"
             "Tag" = "8:"
-            "Folder" = "8:_70AB1F2117164F6182FC9AEC78F12D47"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_50CD8B76F1D84BA8808C7BAC1060A369"
-            {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\Metadata Output.pbix"
-            "TargetName" = "8:Metadata Output.pbix"
-            "Tag" = "8:"
-            "Folder" = "8:_E2C675A5033840FB87FB675ECE929E2F"
+            "Folder" = "8:_20010D3FA848422E92D70970EC226182"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2021,46 +2049,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_55AC5E8CD0D343B8ABE7C855286E14AF"
-            {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Tableau_Python.py"
-            "TargetName" = "8:Tableau_Python.py"
-            "Tag" = "8:"
-            "Folder" = "8:_70AB1F2117164F6182FC9AEC78F12D47"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_57E352F4B2B644758504663BECA1298C"
-            {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\MicroStrategy_Process_Python.py"
-            "TargetName" = "8:MicroStrategy_Process_Python.py"
-            "Tag" = "8:"
-            "Folder" = "8:_70AB1F2117164F6182FC9AEC78F12D47"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_58DB9CA73A69C9F3A3AC24ABFE302930"
@@ -2218,32 +2206,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6262123D98EE4C6295730EC18958739C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_65585D918D004BCA8F453D4855C4A48E"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Scripts\\vw_Metadata_Calculations.sql"
-            "TargetName" = "8:vw_Metadata_Calculations.sql"
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\OBIEE_Python.py"
+            "TargetName" = "8:OBIEE_Python.py"
             "Tag" = "8:"
-            "Folder" = "8:_1EDE9214839145F5912CDA0BE019FCE0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6624E353C7094493A579885C50AABB58"
-            {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Cognos_Python.py"
-            "TargetName" = "8:Cognos_Python.py"
-            "Tag" = "8:"
-            "Folder" = "8:_70AB1F2117164F6182FC9AEC78F12D47"
+            "Folder" = "8:_AA6E5B3FBE354984B276FA279D26025C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2289,12 +2257,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6B7F7CAB1E4B409C9AD7E80BF0F5E0C2"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6B1C538809D04933B7D91B96297387E4"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Scripts\\vw_Metadata_Columns.sql"
-            "TargetName" = "8:vw_Metadata_Columns.sql"
+            "SourcePath" = "8:..\\GetMetaData\\Final.ico"
+            "TargetName" = "8:Final.ico"
             "Tag" = "8:"
-            "Folder" = "8:_1EDE9214839145F5912CDA0BE019FCE0"
+            "Folder" = "8:_518FF3160D9F4B3C8F85078B67FE6DA9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2309,12 +2277,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6F2A74EA2B0F4F849A35E6605327BF33"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6E50059EB70F454D8B9BD9FC371928BE"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\Tableau Metadata.pbix"
-            "TargetName" = "8:Tableau Metadata.pbix"
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Qlikview_Python_File.py"
+            "TargetName" = "8:Qlikview_Python_File.py"
             "Tag" = "8:"
-            "Folder" = "8:_E2C675A5033840FB87FB675ECE929E2F"
+            "Folder" = "8:_AA6E5B3FBE354984B276FA279D26025C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2329,52 +2297,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6F789505CA064FA3818EB449C4CAE1EF"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7236F9C9EC74449294C844FFDF6BE008"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\Template.pbix"
-            "TargetName" = "8:Template.pbix"
+            "SourcePath" = "8:..\\GetMetaData\\Resources\\Icon1.ico"
+            "TargetName" = "8:Icon1.ico"
             "Tag" = "8:"
-            "Folder" = "8:_E2C675A5033840FB87FB675ECE929E2F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_70387D842A174C6D8B7D04FECED9A8D0"
-            {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\Qlikview Metadata.pbix"
-            "TargetName" = "8:Qlikview Metadata.pbix"
-            "Tag" = "8:"
-            "Folder" = "8:_E2C675A5033840FB87FB675ECE929E2F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_73DD23542E5247BE8214A3BDEF75F625"
-            {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\PowerBI_Tables.sql"
-            "TargetName" = "8:PowerBI_Tables.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_70AB1F2117164F6182FC9AEC78F12D47"
+            "Folder" = "8:_C0B9F8C64D0047028B6AFF4D5F3098CF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2451,12 +2379,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7A69AC3AAE114782BE2AA1D7D508F9E4"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_77444E19537640A59152CA2EFF5D9B24"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Scripts\\vw_Metadata.sql"
-            "TargetName" = "8:vw_Metadata.sql"
+            "SourcePath" = "8:..\\GetMetaData\\Resources\\Final ACL.ico"
+            "TargetName" = "8:Final ACL.ico"
             "Tag" = "8:"
-            "Folder" = "8:_1EDE9214839145F5912CDA0BE019FCE0"
+            "Folder" = "8:_C0B9F8C64D0047028B6AFF4D5F3098CF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2471,12 +2399,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_84E9DCED334940D78FDA00C0210CAEF0"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7CA3F1C700294E1D9928BB442155686D"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Document_Generator.py"
-            "TargetName" = "8:Document_Generator.py"
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\Qlikview Metadata.pbix"
+            "TargetName" = "8:Qlikview Metadata.pbix"
             "Tag" = "8:"
-            "Folder" = "8:_70AB1F2117164F6182FC9AEC78F12D47"
+            "Folder" = "8:_6D004B990BEB445CA2FCE0DAFAB45A05"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2491,12 +2419,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8609D2324AA347DDB621E0255C971F4F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8066F42C71474689816D1948575A8782"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\BI4BI - Cognos.pbix"
-            "TargetName" = "8:BI4BI - Cognos.pbix"
+            "SourcePath" = "8:..\\GetMetaData\\Resources\\Final.ico"
+            "TargetName" = "8:Final.ico"
             "Tag" = "8:"
-            "Folder" = "8:_E2C675A5033840FB87FB675ECE929E2F"
+            "Folder" = "8:_C0B9F8C64D0047028B6AFF4D5F3098CF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_82DBC7538B7C42AAA4CFBEB937CC8830"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\Metadata Output.pbix"
+            "TargetName" = "8:Metadata Output.pbix"
+            "Tag" = "8:"
+            "Folder" = "8:_6D004B990BEB445CA2FCE0DAFAB45A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_83B89915C4D54CCABB1318D6433CE8D2"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Tableau_Python.py"
+            "TargetName" = "8:Tableau_Python.py"
+            "Tag" = "8:"
+            "Folder" = "8:_AA6E5B3FBE354984B276FA279D26025C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2542,6 +2510,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8F414A25882C4CB2901685E8A63221C5"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\Resources\\Transparent_ACL_Icon.ico"
+            "TargetName" = "8:Transparent_ACL_Icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_C0B9F8C64D0047028B6AFF4D5F3098CF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_91781D0A9635D95CBDB2AE5324C08872"
             {
             "AssemblyRegister" = "3:1"
@@ -2571,6 +2559,46 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_91813DCB05F641DD902B69E160112239"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Scripts\\vw_Metadata_Calculations.sql"
+            "TargetName" = "8:vw_Metadata_Calculations.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_C49CDF720EC7485ABD8125D179AB58D9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9236EFC95849460DA8EE2FFCD13F25BE"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\Final_Icon.ico"
+            "TargetName" = "8:Final_Icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_518FF3160D9F4B3C8F85078B67FE6DA9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9287A1036008C30EDB2F8C9FD2515B12"
@@ -2604,6 +2632,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_92A393F004A64047BCFE22877E237966"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\BI4BI - OBIEE.pbix"
+            "TargetName" = "8:BI4BI - OBIEE.pbix"
+            "Tag" = "8:"
+            "Folder" = "8:_6D004B990BEB445CA2FCE0DAFAB45A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_97E268CA4DB8CA1218BDE7524D19DE20"
             {
             "AssemblyRegister" = "3:1"
@@ -2635,12 +2683,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_98C09069C8C54CCFB8CD11DC46939D08"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9BF567AB909C415993E96987F46E0795"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\BI4BI - OBIEE.pbix"
-            "TargetName" = "8:BI4BI - OBIEE.pbix"
+            "SourcePath" = "8:..\\GetMetaData\\Final_Icon.ico"
+            "TargetName" = "8:Final_Icon.ico"
             "Tag" = "8:"
-            "Folder" = "8:_E2C675A5033840FB87FB675ECE929E2F"
+            "Folder" = "8:_24B8BC698D934DEBB89190A384810EDF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2717,6 +2765,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A24E140F07114235BF8A3D92B30DCDA0"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Cognos_CSV_Python.py"
+            "TargetName" = "8:Cognos_CSV_Python.py"
+            "Tag" = "8:"
+            "Folder" = "8:_AA6E5B3FBE354984B276FA279D26025C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A342ABA49B384B73630DB10AD324D633"
             {
             "AssemblyRegister" = "3:1"
@@ -2779,12 +2847,32 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A71216494D36447EB8A17C78FA7C91D0"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AAA5BD3DAB9442458C38E61006CD5C9F"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Cognos_Process_Python.py"
-            "TargetName" = "8:Cognos_Process_Python.py"
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Scripts\\vw_Metadata.sql"
+            "TargetName" = "8:vw_Metadata.sql"
             "Tag" = "8:"
-            "Folder" = "8:_70AB1F2117164F6182FC9AEC78F12D47"
+            "Folder" = "8:_C49CDF720EC7485ABD8125D179AB58D9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ABE7C2F1AEBB4357B7952357704DE3FF"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Document_Generator.py"
+            "TargetName" = "8:Document_Generator.py"
+            "Tag" = "8:"
+            "Folder" = "8:_AA6E5B3FBE354984B276FA279D26025C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3140,6 +3228,66 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BDFAEF0FC49A4D5C8DFE6214F148F488"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\Cognos Metadata.pbix"
+            "TargetName" = "8:Cognos Metadata.pbix"
+            "Tag" = "8:"
+            "Folder" = "8:_6D004B990BEB445CA2FCE0DAFAB45A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BF6288C344B6418098E7C69110685D35"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Cognos_Python.py"
+            "TargetName" = "8:Cognos_Python.py"
+            "Tag" = "8:"
+            "Folder" = "8:_AA6E5B3FBE354984B276FA279D26025C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BFEC963FC00841689F1C599BD5CE3248"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\Final.ico"
+            "TargetName" = "8:Final.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_24B8BC698D934DEBB89190A384810EDF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C1D97321AA93773BF608D130F0C2BF7E"
             {
             "AssemblyRegister" = "3:1"
@@ -3202,12 +3350,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C66BE60BC7A9427EB05E80E448084123"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C1F1D87D380340899BBB9E4A0845416A"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\BI4BI - MicroStrategy.pbix"
-            "TargetName" = "8:BI4BI - MicroStrategy.pbix"
+            "SourcePath" = "8:..\\GetMetaData\\Resources\\Transparent_ACL_Final_Icon_1.ico"
+            "TargetName" = "8:Transparent_ACL_Final_Icon_1.ico"
             "Tag" = "8:"
-            "Folder" = "8:_E2C675A5033840FB87FB675ECE929E2F"
+            "Folder" = "8:_C0B9F8C64D0047028B6AFF4D5F3098CF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3251,6 +3399,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CBA91137149A41FF8D288E8295BB4256"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Document_Generator_for_all_MS.py"
+            "TargetName" = "8:Document_Generator_for_all_MS.py"
+            "Tag" = "8:"
+            "Folder" = "8:_AA6E5B3FBE354984B276FA279D26025C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CF89EEEBE7CEFECD09B0CFAE7A0AC2F9"
@@ -3344,6 +3512,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DB230D85F496428EBB628D7F3F440A96"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\BI4BI - Tableau.pbix"
+            "TargetName" = "8:BI4BI - Tableau.pbix"
+            "Tag" = "8:"
+            "Folder" = "8:_6D004B990BEB445CA2FCE0DAFAB45A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DB8FF9A8F8F02FD7C1BB01A3E1A98DBD"
@@ -3470,17 +3658,57 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E615F6F809064AFE84A35E78018BED53"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E1D7C35860B447CD9CC8862B4FC71DE6"
             {
-            "SourcePath" = "8:..\\GetMetaData\\Resources\\Final_Icon.ico"
-            "TargetName" = "8:Final_Icon.ico"
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Document_Generator_MS.py"
+            "TargetName" = "8:Document_Generator_MS.py"
             "Tag" = "8:"
-            "Folder" = "8:_24B8BC698D934DEBB89190A384810EDF"
+            "Folder" = "8:_AA6E5B3FBE354984B276FA279D26025C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E4256F119C3549C2B31829E3D78E26F0"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\BI4BI - Cognos.pbix"
+            "TargetName" = "8:BI4BI - Cognos.pbix"
+            "Tag" = "8:"
+            "Folder" = "8:_6D004B990BEB445CA2FCE0DAFAB45A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E8B6933151714EEC997BF30B61E55C22"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\Resources\\Latest_Icon.ico"
+            "TargetName" = "8:Latest_Icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_C0B9F8C64D0047028B6AFF4D5F3098CF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3519,6 +3747,46 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ED0DF80E6EA746959DE9F8EAB6BC2580"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\Resources\\New_Icon_1.ico"
+            "TargetName" = "8:New_Icon_1.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_C0B9F8C64D0047028B6AFF4D5F3098CF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EE573090E97E48889A9A88D65092645C"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\MicroStrategy_Process_Python.py"
+            "TargetName" = "8:MicroStrategy_Process_Python.py"
+            "Tag" = "8:"
+            "Folder" = "8:_AA6E5B3FBE354984B276FA279D26025C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EF524D87D4B4AEAFB9463EFA6B0FEA57"
@@ -3583,12 +3851,32 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F17DF3B819274A9B9217927D94F8696E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F03924FB4D6946C78105D8828BBFFB6E"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\BI4BI - Power BI.pbix"
-            "TargetName" = "8:BI4BI - Power BI.pbix"
+            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Scripts\\vw_Metadata_Columns.sql"
+            "TargetName" = "8:vw_Metadata_Columns.sql"
             "Tag" = "8:"
-            "Folder" = "8:_E2C675A5033840FB87FB675ECE929E2F"
+            "Folder" = "8:_C49CDF720EC7485ABD8125D179AB58D9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F2D86EB7F1AF41C9949299691FF84C79"
+            {
+            "SourcePath" = "8:..\\GetMetaData\\Resources\\Final_Icon.ico"
+            "TargetName" = "8:Final_Icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_C0B9F8C64D0047028B6AFF4D5F3098CF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3632,26 +3920,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F3466E1FD2B34777B5105FB6E79E8946"
-            {
-            "SourcePath" = "8:..\\GetMetaData\\Resources\\Final.ico"
-            "TargetName" = "8:Final.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_24B8BC698D934DEBB89190A384810EDF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F5E91AF97C99AA6D62365AB20296D83A"
@@ -3716,52 +3984,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F9288AC29B48468F9AFD68E844F0B35E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FB11C83FEAC84E6788670402B58D8113"
             {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\BI4BI - Tableau.pbix"
-            "TargetName" = "8:BI4BI - Tableau.pbix"
+            "SourcePath" = "8:..\\GetMetaData\\Resources\\Accelerant Icon.ico"
+            "TargetName" = "8:Accelerant Icon.ico"
             "Tag" = "8:"
-            "Folder" = "8:_E2C675A5033840FB87FB675ECE929E2F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FA241B3FE359436189976EBE97B88D48"
-            {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\Report\\Template.pbix"
-            "TargetName" = "8:Template.pbix"
-            "Tag" = "8:"
-            "Folder" = "8:_518FF3160D9F4B3C8F85078B67FE6DA9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FA87B73DF3484B5EB6FAF768D88B4CDC"
-            {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Document_Generator_MS.py"
-            "TargetName" = "8:Document_Generator_MS.py"
-            "Tag" = "8:"
-            "Folder" = "8:_70AB1F2117164F6182FC9AEC78F12D47"
+            "Folder" = "8:_C0B9F8C64D0047028B6AFF4D5F3098CF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3900,26 +4128,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FDED27CE1D30456F8B0268E874E94BE3"
-            {
-            "SourcePath" = "8:..\\GetMetaData\\bin\\Debug\\PythonFile\\Qlikview_Python_File.py"
-            "TargetName" = "8:Qlikview_Python_File.py"
-            "Tag" = "8:"
-            "Folder" = "8:_70AB1F2117164F6182FC9AEC78F12D47"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FF262CB7D76160809B88AEE47D5631A2"
             {
             "AssemblyRegister" = "3:1"
@@ -4029,46 +4237,57 @@
                     "Property" = "8:_3B18071476BB4EF4BACAEFD20026E92A"
                         "Folders"
                         {
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_1381838CBCA54AB08A91B3554BCCB99E"
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_20010D3FA848422E92D70970EC226182"
                             {
                             "Name" = "8:Sample XML"
                             "AlwaysCreate" = "11:FALSE"
                             "Condition" = "8:"
                             "Transitive" = "11:FALSE"
-                            "Property" = "8:_D93BF7E42C47436CBC533E600E396380"
+                            "Property" = "8:_77DAB69DF63140DE982347D9D9492268"
                                 "Folders"
                                 {
                                 }
                             }
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_1EDE9214839145F5912CDA0BE019FCE0"
-                            {
-                            "Name" = "8:Scripts"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_D7DD1856B2364DEEA5389D08864A892F"
-                                "Folders"
-                                {
-                                }
-                            }
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_70AB1F2117164F6182FC9AEC78F12D47"
-                            {
-                            "Name" = "8:PythonFile"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_5E805636DB56480AB4958A67CFD2A6B3"
-                                "Folders"
-                                {
-                                }
-                            }
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_E2C675A5033840FB87FB675ECE929E2F"
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_6D004B990BEB445CA2FCE0DAFAB45A05"
                             {
                             "Name" = "8:Report"
                             "AlwaysCreate" = "11:FALSE"
                             "Condition" = "8:"
                             "Transitive" = "11:FALSE"
-                            "Property" = "8:_B03AD2A38BF5446B8BD29180C4D99645"
+                            "Property" = "8:_7249623AB19045F1AD317DA0C21A428F"
+                                "Folders"
+                                {
+                                }
+                            }
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_AA6E5B3FBE354984B276FA279D26025C"
+                            {
+                            "Name" = "8:PythonFile"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_0D6245DEC2F64C71ACB70DE58462D0E8"
+                                "Folders"
+                                {
+                                }
+                            }
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_C0B9F8C64D0047028B6AFF4D5F3098CF"
+                            {
+                            "Name" = "8:Resources"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_706AA97551E74BD48065E9F41F460CEE"
+                                "Folders"
+                                {
+                                }
+                            }
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_C49CDF720EC7485ABD8125D179AB58D9"
+                            {
+                            "Name" = "8:Scripts"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_A0348062A1EE45F6B17A0FC54DBFCE86"
                                 "Folders"
                                 {
                                 }
@@ -4117,7 +4336,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:BI4BI"
         "ProductCode" = "8:{6EACBDD2-7E09-4D43-AECB-D09BAF7B1C13}"
-        "PackageCode" = "8:{8849E905-5F5E-48E0-BF33-70D57DEF7C49}"
+        "PackageCode" = "8:{33EB7D2F-3FC3-4E4A-B060-DBD374EE470C}"
         "UpgradeCode" = "8:{614DF950-C23F-4D82-890D-F0AB13D2138C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -4237,7 +4456,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_560438EAC7324FDEBC4C949A3715B2C5"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B4B79A1B78FE4C668CD3E37C5A78DA54"
             {
             "Name" = "8:BI4BI"
             "Arguments" = "8:"
@@ -4245,24 +4464,24 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_9722C976E25C433B8F29A8A2430DC77D"
-            "Folder" = "8:_F13F27BF5E5E4F88AD63125131EDC43F"
-            "WorkingFolder" = "8:_24B8BC698D934DEBB89190A384810EDF"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7B0B587639244D298D5041FF3F5767E1"
-            {
-            "Name" = "8:BI4BI"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_9722C976E25C433B8F29A8A2430DC77D"
+            "Target" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
             "Folder" = "8:_E6B8AA8270FA4C879422A25E307EBE11"
             "WorkingFolder" = "8:_24B8BC698D934DEBB89190A384810EDF"
-            "Icon" = "8:"
+            "Icon" = "8:_6B1C538809D04933B7D91B96297387E4"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FA674B7A5103486A87CD57E77523B8E7"
+            {
+            "Name" = "8:BI4BI"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_30A114FC85FE4DECBB7839963B22A6A1"
+            "Folder" = "8:_F13F27BF5E5E4F88AD63125131EDC43F"
+            "WorkingFolder" = "8:_24B8BC698D934DEBB89190A384810EDF"
+            "Icon" = "8:_6B1C538809D04933B7D91B96297387E4"
             "Feature" = "8:"
             }
         }
@@ -4664,7 +4883,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9722C976E25C433B8F29A8A2430DC77D"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_30A114FC85FE4DECBB7839963B22A6A1"
             {
             "SourcePath" = "8:..\\GetMetaData\\obj\\Debug\\BI4BI.exe"
             "TargetName" = "8:"
