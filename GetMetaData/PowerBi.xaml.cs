@@ -2645,6 +2645,7 @@ namespace GetMetaData
             Show_by_Report.Visibility = Visibility.Visible;
             CallGraphButton.Visibility = Visibility.Visible;
             SignOutButton.Visibility = Visibility.Visible;
+            BorderSelected.Visibility = Visibility.Collapsed;
             itemCombo = items;
             workspacename = ResultText.Text.ToString();
             serverlabel = Server.Text.ToString();
@@ -2660,6 +2661,7 @@ namespace GetMetaData
                 CallGraphButton.Visibility = Visibility.Visible;
                 SignOutButton.Visibility = Visibility.Visible;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
+                BorderSelected.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 Output.IsEnabled = false;
                 //GenerateMetadata.IsEnabled = true;
@@ -2677,6 +2679,7 @@ namespace GetMetaData
                 CallGraphButton.Visibility = Visibility.Visible;
                 SignOutButton.Visibility = Visibility.Visible;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
+                BorderSelected.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 Output.IsEnabled = false;
             }
@@ -2690,6 +2693,7 @@ namespace GetMetaData
                 CallGraphButton.Visibility = Visibility.Collapsed;
                 SignOutButton.Visibility = Visibility.Collapsed;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
+                BorderSelected.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 Output.IsEnabled = false;
                 backgroundWorker3.RunWorkerAsync();
