@@ -40,8 +40,8 @@ namespace GetMetaData
         Cognos_Options cognos = new Cognos_Options();
         OBIEE ob = new OBIEE();
         MicStr mstr = new MicStr();
-        
-        
+        SSRS ssrs = new SSRS();
+
 
         // MainOptions  windowop = new MainOptions();
         public MainOptions()
@@ -173,7 +173,8 @@ namespace GetMetaData
 
         private void SSRS_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
+            ssrs.ShowDialog();
         }
 
         private void Crystal_Click(object sender, RoutedEventArgs e)
@@ -185,8 +186,7 @@ namespace GetMetaData
         {
 
         }
-
-
+       
         private void OBIEE_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

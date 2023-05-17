@@ -1,0 +1,394 @@
+﻿<Window x:Class="GetMetaData.Document_Generator_SSRS"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GetMetaData"
+         xmlns:control="clr-namespace:GetMetaData.control"
+        mc:Ignorable="d"
+        Title="BI4BI" ResizeMode="NoResize" AllowsTransparency="True" VerticalAlignment="Bottom" 
+        Height="703.334"
+        Width="1116"
+        WindowState="Maximized" 
+        WindowStyle="None"
+        Name="WindowMainName_DGMS" Background="#1C1C1F" 
+        MouseDoubleClick="Window_Mouse_Double"
+        MaxHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}}"
+        ShowInTaskbar="True"     
+        
+        >
+
+
+    <Window.Resources>
+        <Style x:Key="DGHeaderStyle" TargetType="{x:Type DataGrid}">
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DGCHeaderStyle}"/>
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+        </Style>
+        <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="#ffe600"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Callibri"/>
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="BorderThickness" Value="2"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,0.909" StartPoint="0.5,0.091">
+
+                        <GradientStop Color="#ffe600" Offset="0.488"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+    </Window.Resources>
+    <DockPanel Margin="0,33,0.333,0.333">
+
+
+        <Grid Margin="0,0,0,-0.333">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200*"/>
+                <ColumnDefinition Width="106"/>
+                <ColumnDefinition Width="128*"/>
+                <ColumnDefinition Width="467*"/>
+                <ColumnDefinition Width="44*"/>
+                <ColumnDefinition Width="165*"/>
+                <ColumnDefinition Width="0*"/>
+
+            </Grid.ColumnDefinitions>
+
+
+            <Grid  Background="#1E1E21"   VerticalAlignment="Top" Margin="0,-35,0,0" Height="30" Grid.ColumnSpan="6">
+
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Button  Click="Minimize_Click" Content="&#xE949;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,12,15,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" Margin="0,0,40,-0.333" Grid.RowSpan="2" Width="41" Foreground="#ffffff" />
+                <Button HorizontalAlignment="Right" Click="Close_Click" Content="&#xE106;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="12,9" Background="Transparent" BorderBrush="Transparent" Grid.RowSpan="2" Margin="0,0,0,-0.333" Width="42" Foreground="#ffffff" />
+                <Image  HorizontalAlignment="right" VerticalAlignment="Top" Height="25" Margin="0,2,81,-0.333" RenderTransformOrigin="0.5,0.5" Source="Images/Help_ACL_Transparent.png" Width="39" Grid.RowSpan="2">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                    <Image.ToolTip>
+                        <TextBox Name="ImageToolTip" Background="Black" Foreground="#ffe600"></TextBox>
+                    </Image.ToolTip>
+                </Image>
+            </Grid>
+            <Grid  Background="#2E2E38" Margin="-1,-134,0,577" Grid.ColumnSpan="7" Height="89">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="267*"/>
+                    <ColumnDefinition Width="16*"/>
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180*"/>
+                </Grid.RowDefinitions>
+                <Image  HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Source="Images/EY_Logo.png" Width="90" Margin="5,-16,0,-20" Grid.ColumnSpan="2">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Separator HorizontalAlignment="Left" Margin="88,20,0,22" Height="20" Grid.ColumnSpan="2" Width="27">
+                    <Separator.LayoutTransform>
+                        <RotateTransform Angle="90" />
+                    </Separator.LayoutTransform>
+                </Separator>
+                <Label  HorizontalAlignment="Left" Background="#2E2E38" Foreground="#ffffff" FontSize="36" Content="BI4BI" Margin="107,0,0,0" Width="261" FontFamily="EYInterstate" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                <Image Margin="1785,0,0,0" RenderTransformOrigin="0.5,0.5" Source="Images/Help_EY_Color.png" Width="40" Height="44" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                    <Image.ToolTip>
+                        <TextBox x:Name="ImageToolTip_DGMS" Background="Black" Foreground="Green"/>
+                    </Image.ToolTip>
+                </Image>
+                <Button x:Name="SignOutButton_DGMS" Content="Back" HorizontalAlignment="Left" Padding="5" Margin="1440,130,0,-80"  FontFamily="EYInterstate" Width="76" Click="SignOutButton_Click" Background="Black" Foreground="White" FontSize="14" Grid.ColumnSpan="2">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}" >
+
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="0"  BorderBrush="#ffffff" BorderThickness="1" Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#ffe600"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+
+            </Grid>
+            <Label Content="Home  &gt;  Document Generator SSRS" FontSize="14" Foreground="#ffffff" x:Name="LabelUser2_DGMS" Margin="22,100,0,505" FontFamily="EYInterstate" FontWeight="Bold" HorizontalAlignment="Left" Width="763" Grid.ColumnSpan="5" />
+            <Label Content="Document Generator SSRS" FontSize="24" Foreground="#ffe600" x:Name="LabelUser_DGMS" Margin="22,130,193,445" FontFamily="EYInterstate" Grid.ColumnSpan="4" />
+            <StackPanel  Name="StackBG_DGMS" Margin="0,5,-1,0.666" Grid.ColumnSpan="7">
+
+                <StackPanel  Name="ServerStack_DGMS"  Height="666" Background="#1C1C1F" Margin="20,180,0.333,0" Width="1824" >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                        <Button Visibility="Collapsed" x:Name="CallGraphButton_DGMS" FontWeight="Bold" Height="30" Content="Run for All Reports" HorizontalAlignment="Right" Padding="5"  Margin="5" FontFamily="Sergoe Ui" RenderTransformOrigin="0.431,-9.233" Width="127">
+                            <Button.Style >
+                                <Style TargetType="{x:Type Button}" >
+
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border CornerRadius="5"  BorderBrush="Black" BorderThickness="1" Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#ffe600"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                        </Button>
+
+                    </StackPanel>
+
+                    <Label Content="Report Path:" Foreground="White" x:Name="LabelServer_DGMS1" Margin="8,-0,865.667,-5" FontFamily="EYInterstate" Height="26" />
+                    <TextBox Visibility="Collapsed" Foreground="#ffe600" x:Name="SQLTB_DGMS1" Margin="8,0,865.667,-5" FontFamily="Sergoe Ui" FontWeight="Bold" Height="26" />
+
+                    <ComboBox  x:Name="ComboBoxZone_DGMS1" FontWeight="Bold" Tag="This Value" Height="22" ItemsSource="{Binding}" Margin="5,10,852,0" Width="570" HorizontalAlignment="Left"/>
+                    <Border Visibility="Collapsed" Height="28" Name="BorderPasswordShow_DGMS1" CornerRadius="5" BorderThickness="1" BorderBrush="#ffe600" Margin="5,-520,767.333,-281.333" Grid.Row="1">
+                        <TextBox  Height="20" Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="PasswordShow_DGMS1" FontWeight="Bold" MinHeight="10" Margin="4.667,2.667,8.667,8.667" FontFamily="Sergoe Ui"  />
+                    </Border>
+                    <Button x:Name="GetReports_DGMS1" Content="Get Projects" Margin="590,-25,283,181" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Width="101" Click="GetProjects_Click" Background="Black" Foreground="White" HorizontalAlignment="Left">
+                        <Button.Style >
+                            <Style TargetType="{x:Type Button}" >
+
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="0"  BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#ffe600"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+
+
+
+
+                    <Label Content="Report:" Foreground="White" x:Name="LabelServer_DGMS" Margin="8,-160,865.667,-5" FontFamily="EYInterstate" Height="26" VerticalAlignment="Top" />
+                    <TextBox Visibility="Collapsed" Foreground="#ffe600" x:Name="SQLTB_DGMS" Margin="8,0,865.667,-5" FontFamily="Sergoe Ui" FontWeight="Bold" Height="26" />
+
+                    <ComboBox  x:Name="ComboBoxZone_DGMS" FontWeight="Bold" Tag="This Value" Height="22" ItemsSource="{Binding}" Margin="5,-240,852,0" Width="570" HorizontalAlignment="Left"/>
+                    <Border Visibility="Collapsed" Height="28" Name="BorderPasswordShow_DGMS" CornerRadius="5" BorderThickness="1" BorderBrush="#ffe600" Margin="5,-520,767.333,-281.333" Grid.Row="1">
+                        <TextBox  Height="20" Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="PasswordShow_DGMS" FontWeight="Bold" MinHeight="10" Margin="4.667,2.667,8.667,8.667" FontFamily="Sergoe Ui"  />
+                    </Border>
+                    <Button x:Name="GetReports_DGMS" Content="Get Reports" Margin="590,-135,283,181" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Width="101" Click="GetReports_Click" Background="Black" Foreground="White" HorizontalAlignment="Left">
+                        <Button.Style >
+                            <Style TargetType="{x:Type Button}" >
+
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="0"  BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#ffe600"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+                    <Label Content="Python Path * " Foreground="White" x:Name="LabelPythonPath_DGMS" Margin="8,-170,723.667,139" FontFamily="EYInterstate" Height="26" RenderTransformOrigin="0.443,0.225" />
+                    <Border Name="BorderPythonPath_DGMS" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,-350,490.667,-100" Height="28" Width="570" HorizontalAlignment="Left">
+                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="PythonPathText_DGMS" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui" Width="570"/>
+                    </Border>
+                    <Button x:Name="Browse_Copy_DGMS" Content="Browse" Margin="590,-137,283,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Click="Browse_Click" Width="101" Background="Black" Foreground="White" HorizontalAlignment="Left">
+                        <Button.Style >
+                            <Style TargetType="{x:Type Button}" >
+
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="0"  BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#ffe600"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+                    <Label Content="Document Template Path\Template.docx* " Foreground="White" x:Name="TemplatePath_DGMS" Margin="8,-170,723.667,139" FontFamily="EYInterstate" Height="26" RenderTransformOrigin="0.443,0.225" />
+                    <Border Name="BorderTemplatePAth_DGMS" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,-350,490.667,-100" Height="28" Width="570" HorizontalAlignment="Left">
+                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="TemplatePathText_DGMS" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
+                    </Border>
+                    <Button x:Name="Template_Browse_DGMS" Content="Browse" Margin="590,-137,283,181" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Width="101" Click="Template_Browse_Click" Background="Black" Foreground="White" HorizontalAlignment="Left">
+                        <Button.Style >
+                            <Style TargetType="{x:Type Button}" >
+
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="0"  BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#ffe600"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+
+
+
+
+                    <Label Content="Destination Document Path * " Foreground="White" x:Name="DestinationPath_DGMS" Margin="8,-160,723.667,139" FontFamily="EYInterstate" Height="26" RenderTransformOrigin="0.443,0.225" />
+                    <Border Name="DestinationPathText_DGMS" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,-350,490.667,-100" Height="28" Width="570" HorizontalAlignment="left">
+                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="DestPath_DGMS" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui" Width="570" HorizontalAlignment="Left"/>
+                    </Border>
+
+
+                    <Border Name="Info_DGMS" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,-210,490.333,-100" Height="48" HorizontalAlignment="Left" Width="570">
+                        <TextBox IsEnabled="False"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="TokenInfo_DGMS" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,8.667,8.667,8.667" FontFamily="Sergoe Ui" HorizontalAlignment="Left"/>
+                    </Border>
+
+                    <Button x:Name="DestPath_Browse_DGMS" Content="Browse" Margin="590,-137,283,181" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Width="101" Click="DestPath_Browse_Click" Background="Black" Foreground="White" HorizontalAlignment="Left">
+                        <Button.Style >
+                            <Style TargetType="{x:Type Button}" >
+
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="0"  BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#ffe600"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+
+
+                    <Button x:Name="GenerateDoc_DGMS" Content="Generate Requirement Document for Selected Report" Margin="10,-50,283,181" Height="28" RenderTransformOrigin="0.475,1.355"  Width="400" FontFamily="EYInterstate" Click="GenerateDoc_Click" Background="Black" Foreground="White" FontSize="14" HorizontalAlignment="Left" >
+                        <Button.Style >
+                            <Style TargetType="{x:Type Button}" >
+
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="0"  BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#ffe600"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+
+                    <Button x:Name="GenerateDocAll_DGMS" Content="Generate Requirement Document for All Reports" Margin="420,-210,118.333,181" Height="28" RenderTransformOrigin="0.475,1.355" Width="400" FontFamily="EYInterstate" Click="GenerateDocAll_Click" FontSize="14" Background="Black" Foreground="White" HorizontalAlignment="Left" >
+                        <Button.Style >
+                            <Style TargetType="{x:Type Button}" >
+
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="0"  BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#ffe600"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+                    <Label Content="Label"/>
+
+                </StackPanel>
+
+
+                <control:LoadingAnimation Visibility="Collapsed"   x:Name="Animation_DGMS" VerticalAlignment="Top" Margin="450,-500,492,149.667" Grid.Column="1" />
+
+
+
+            </StackPanel>
+        </Grid>
+
+
+    </DockPanel>
+</Window>

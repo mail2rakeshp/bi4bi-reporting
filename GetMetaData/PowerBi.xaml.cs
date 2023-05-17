@@ -544,11 +544,11 @@ namespace GetMetaData
             }
             workspacename = ResultText.Text.ToString();
             serverlabel = Server.Text.ToString();
-            if (String.IsNullOrEmpty(serverlabel.ToString()))
+            if (String.IsNullOrEmpty(serverlabel.ToString()) || String.IsNullOrEmpty(TextPython.Text.ToString()))
             {
+                MessageBox.Show("Please enter the mandatory fields and try again");
 
-
-                MessageBox.Show("Enter the mandatory fields");
+                /*
                 Animation.Visibility = Visibility.Collapsed;
                 ServerStack.Visibility = Visibility.Visible;
                 button1.Visibility = Visibility.Visible;
@@ -561,7 +561,7 @@ namespace GetMetaData
                 Output.IsEnabled = false;
                 // GenerateMetadata.IsEnabled = true;
                 //  GenerateMetadata.IsChecked = false;
-
+                */
             }
             else
             {
@@ -577,9 +577,11 @@ namespace GetMetaData
                 ComboBoxZone.Text = "";
                 WindowMainName.Height = 766;
                 backgroundWorker1.RunWorkerAsync();
+                
 
             }
 
+        MessageBox.Show("Data loaded to the " + serverlabel.ToString());
         }
 
 
@@ -2082,7 +2084,7 @@ namespace GetMetaData
 
             try
             {
-                if (ResultText.Text != "" )
+                if (ResultText.Text != "")
                 {
                     AdomdConnection connection = new AdomdConnection();
                     connection.ConnectionString = GetConnectionStringForCombo(ResultText.Text);
@@ -2093,7 +2095,7 @@ namespace GetMetaData
                     AdomdDataAdapter ad = new AdomdDataAdapter(queryString, connection);
                     DataSet ds = new DataSet();
                     ad.Fill(ds, "DBSCHEMA_CATALOGS");
-                    comboBoxName.ItemsSource = ds.Tables["DBSCHEMA_CATALOGS"].DefaultView;                               
+                    comboBoxName.ItemsSource = ds.Tables["DBSCHEMA_CATALOGS"].DefaultView;
                     comboBoxName.DisplayMemberPath = ds.Tables[0].Columns["CATALOG_NAME"].ToString();
                     comboBoxName.SelectedValuePath = ds.Tables[0].Columns["CATALOG_NAME"].ToString();
 
@@ -2303,7 +2305,7 @@ namespace GetMetaData
 
         private async void CallDatabaseList(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(ResultText.Text) )
+            if (String.IsNullOrEmpty(ResultText.Text))
             {
                 MessageBox.Show("Enter valid workspace URL");
             }
@@ -2374,7 +2376,7 @@ namespace GetMetaData
                     //MessageBox.Show("Connection String should be valid");
                 }
             }
-            else 
+            else
             {
 
                 MessageBox.Show("Enter valid workspace URL");
@@ -2645,7 +2647,6 @@ namespace GetMetaData
             Show_by_Report.Visibility = Visibility.Visible;
             CallGraphButton.Visibility = Visibility.Visible;
             SignOutButton.Visibility = Visibility.Visible;
-            BorderSelected.Visibility = Visibility.Collapsed;
             itemCombo = items;
             workspacename = ResultText.Text.ToString();
             serverlabel = Server.Text.ToString();
@@ -2661,7 +2662,6 @@ namespace GetMetaData
                 CallGraphButton.Visibility = Visibility.Visible;
                 SignOutButton.Visibility = Visibility.Visible;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
-                BorderSelected.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 Output.IsEnabled = false;
                 //GenerateMetadata.IsEnabled = true;
@@ -2679,7 +2679,6 @@ namespace GetMetaData
                 CallGraphButton.Visibility = Visibility.Visible;
                 SignOutButton.Visibility = Visibility.Visible;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
-                BorderSelected.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 Output.IsEnabled = false;
             }
@@ -2693,12 +2692,14 @@ namespace GetMetaData
                 CallGraphButton.Visibility = Visibility.Collapsed;
                 SignOutButton.Visibility = Visibility.Collapsed;
                 GenerateMetadata.Visibility = Visibility.Collapsed;
-                BorderSelected.Visibility = Visibility.Collapsed;
                 Output.Visibility = Visibility.Collapsed;
                 Output.IsEnabled = false;
                 backgroundWorker3.RunWorkerAsync();
             }
+
+            MessageBox.Show("Data loaded to the " + serverlabel.ToString());
         }
+
 
 
 
@@ -3214,6 +3215,7 @@ namespace GetMetaData
             Server2Bord.Visibility = Visibility.Visible;
             Show_by_Report.Visibility = Visibility.Collapsed;
             WrapCheck.Visibility = Visibility.Collapsed;
+            
             BorderBox.Visibility = Visibility.Collapsed;
             RemoveServer.Visibility = Visibility.Visible;
             AddServer.Visibility = Visibility.Collapsed;

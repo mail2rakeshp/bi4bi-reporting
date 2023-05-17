@@ -180,6 +180,9 @@
     <Compile Include="Document_Generator_Ms.xaml.cs">
       <DependentUpon>Document_Generator_Ms.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Document_Generator_SSRS.xaml.cs">
+      <DependentUpon>Document_Generator_SSRS.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainOptions.xaml.cs">
       <DependentUpon>MainOptions.xaml</DependentUpon>
     </Compile>
@@ -191,6 +194,9 @@
     </Compile>
     <Compile Include="Qlikview.xaml.cs">
       <DependentUpon>Qlikview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SSRS.xaml.cs">
+      <DependentUpon>SSRS.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tableau.xaml.cs">
       <DependentUpon>Tableau.xaml</DependentUpon>
@@ -238,6 +244,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Document_Generator_SSRS.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -275,6 +285,10 @@
     <Page Include="Qlikview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SSRS.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Tableau.xaml">
       <SubType>Designer</SubType>
