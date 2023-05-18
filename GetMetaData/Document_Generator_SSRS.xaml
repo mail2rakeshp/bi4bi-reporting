@@ -180,7 +180,7 @@
 
                     </StackPanel>
 
-                    <Label Content="Report Path:" Foreground="White" x:Name="LabelServer_DGMS1" Margin="8,-0,865.667,-5" FontFamily="EYInterstate" Height="26" />
+                    <Label Content="Report Path *" Foreground="White" x:Name="LabelServer_DGMS1" Margin="8,-0,865.667,-5" FontFamily="EYInterstate" Height="26" />
                     <TextBox Visibility="Collapsed" Foreground="#ffe600" x:Name="SQLTB_DGMS1" Margin="8,0,865.667,-5" FontFamily="Sergoe Ui" FontWeight="Bold" Height="26" />
 
                     <ComboBox  x:Name="ComboBoxZone_DGMS1" FontWeight="Bold" Tag="This Value" Height="22" ItemsSource="{Binding}" Margin="5,10,852,0" Width="570" HorizontalAlignment="Left"/>
@@ -213,7 +213,7 @@
 
 
 
-                    <Label Content="Report:" Foreground="White" x:Name="LabelServer_DGMS" Margin="8,-160,865.667,-5" FontFamily="EYInterstate" Height="26" VerticalAlignment="Top" />
+                    <Label Content="Report *" Foreground="White" x:Name="LabelServer_DGMS" Margin="8,-160,865.667,-5" FontFamily="EYInterstate" Height="26" VerticalAlignment="Top" />
                     <TextBox Visibility="Collapsed" Foreground="#ffe600" x:Name="SQLTB_DGMS" Margin="8,0,865.667,-5" FontFamily="Sergoe Ui" FontWeight="Bold" Height="26" />
 
                     <ComboBox  x:Name="ComboBoxZone_DGMS" FontWeight="Bold" Tag="This Value" Height="22" ItemsSource="{Binding}" Margin="5,-240,852,0" Width="570" HorizontalAlignment="Left"/>

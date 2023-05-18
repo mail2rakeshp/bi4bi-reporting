@@ -9,7 +9,7 @@
         Title="BI4BI" ResizeMode="CanMinimize" AllowsTransparency="True" VerticalAlignment="Bottom" 
         Height="700"
         Width="1116"
-        WindowState="Maximized" 
+        WindowState="Maximized"
         WindowStyle="None"
         Name="WindowMainName" Background="#1E1E21" 
         MouseDoubleClick="Window_Mouse_Double"

@@ -581,7 +581,7 @@ namespace GetMetaData
 
             }
 
-        MessageBox.Show("Data loaded to the " + serverlabel.ToString());
+        
         }
 
 
@@ -1060,8 +1060,9 @@ namespace GetMetaData
                 SQLConnection.Close();
 
             }
-
-
+			
+		MessageBox.Show("Data loaded to the " + serverlabel.ToString());
+		
 
         }
 
