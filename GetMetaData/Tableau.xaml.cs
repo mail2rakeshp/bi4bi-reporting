@@ -63,6 +63,7 @@ namespace GetMetaData
             backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;  //Tell the user how the process went
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
+            PDF.IsEnabled = false;
         }
 
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
@@ -90,7 +91,8 @@ namespace GetMetaData
             SqlCommand CmdCnt = SQLConnection.CreateCommand();
             CmdCnt.CommandText = QueryDI;
             SQLConnection.Open();
-            int DataITemCnt = (Int32)CmdCnt.ExecuteScalar();
+            //int DataITemCnt = (Int32)CmdCnt.ExecuteScalar();
+            int DataITemCnt = Convert.ToInt32(CmdCnt.ExecuteScalar());
             SQLConnection.Close();
 
             string QueryFE = "select count(*) from dbo.TableauDatabaseServers";
@@ -224,6 +226,9 @@ namespace GetMetaData
                 Output.Visibility = Visibility.Collapsed;
                 Generate_Metadata.Visibility = Visibility.Collapsed;
                 PDF.Visibility = Visibility.Collapsed;
+                SQLServerL.Visibility = Visibility.Collapsed;
+                SQLServerLocal.Visibility = Visibility.Collapsed;
+                SQLServer.Visibility = Visibility.Collapsed;
                 MessageBox.Show("Metadata Generation in process");
                 backgroundWorker1.RunWorkerAsync();
             }
@@ -234,217 +239,345 @@ namespace GetMetaData
             string path = Directory.GetCurrentDirectory() + @"\PythonFile\Tableau_Python.py";
             //MessageBox.Show(path.ToString());
 
-            
-                string script = "import pandas as pd";
-                script += "\nimport urllib";
-                script += "\nfrom sqlalchemy import create_engine";
-                script += "\nfrom pandas import json_normalize";
-                script += "\nfrom tableau_api_lib import TableauServerConnection";
+
+                string script = "import pandas as pd                                                                                                                                                                                      ";
+                script += "\nimport numpy as np                                                                                                                                                                                       ";
+                script += "\nimport urllib                                                                                                                                                                                            ";
+                script += "\nfrom sqlalchemy import create_engine                                                                                                                                                                     ";
+                script += "\nimport pyodbc                                                                                                                                                                                            ";
+                script += "\nfrom tableau_api_lib import TableauServerConnection                                                                                                                                                      ";
                 script += "\nfrom tableau_api_lib.utils import flatten_dict_column, flatten_dict_list_column";
                 script += "\ntableau_server_config = {";
                 script += "\n         'tableau_prod': {";
                 script += "\n                 'server': '" + Tableausite.ToString() + "',";
                 script += "\n                 'api_version': '" + apiver.ToString() + "',";
-                script += "\n                 'username': '" + username.ToString() + "',";
-                script += "\n                 'password': '" + password + "',"; ;
+                script += "\n                 'personal_access_token_name': '" + username.ToString() + "',";
+                script += "\n                 'personal_access_token_secret': '" + password + "',"; ;
                 script += "\n                 'site_name': '" + sitename.ToString() + "',";
                 script += "\n                 'site_url':  '" + siteurl.ToString() + "'";
                 script += "\n         }";
-                script += "\n}";
-                script += "\nconn = TableauServerConnection(tableau_server_config)";
-                script += "\nconn.sign_in()";
-                script += "\nquery_workbooks = \"\"\"";
-                script += "\nquery workbooks{";
-                script += "\n  workbooks ";
-                script += "\n  {";
-                script += "\n    id";
-                script += "\n    name";
-                script += "\n    }";
-                script += "\n}";
-                script += "\n\"\"\"";
-                script += "\nquery_servers = \"\"\"";
-                script += "\nquery Embedded";
-                script += "\n{";
-                script += "\n  databaseServers";
-                script += "\n  {";
-                script += "\n    name";
-                script += "\n  	hostName";
-                script += "\n    connectionType";
-                script += "\n    isEmbedded ";
-                script += "\n    downstreamWorkbooks";
-                script += "\n    {";
-                script += "\n      id";
-                script += "\n      name";
-                script += "\n      upstreamDatabases";
-                script += "\n      {";
-                script += "\n        name";
-                script += "\n        tables";
-                script += "\n        {";
-                script += "\n          fullName";
-                script += "\n          columns";
-                script += "\n          {";
-                script += "\n            name";
-                script += "\n            remoteType";
-                script += "\n            isNullable";
-                script += "\n          }";
-                script += "\n        }";
-                script += "\n      }";
-                script += "\n    }";
-                script += "\n  }";
-                script += "\n}";
-                script += "\n\"\"\"";
-                script += "\nquery_refreshtime = \"\"\"";
-                script += "\nquery RefreshTime";
-                script += "\n{";
-                script += "\n  datasources";
-                script += "\n  {";
-                script += "\n    name     ";
-                script += "\n    extractLastRefreshTime";
-                script += "\n    createdAt";
-                script += "\n    updatedAt";
-                script += "\n    __typename";
-                script += "\n    downstreamWorkbooks";
-                script += "\n    {";
-                script += "\n      id";
-                script += "\n      name";
-                script += "\n    }    ";
-                script += "\n  }";
-                script += "\n}";
-                script += "\n\"\"\"";
-                script += "\nquery_files_2 = \"\"\"";
-                script += "\nquery files";
-                script += "\n{";
-                script += "\ndatabases";
-                script += "\n  {";
-                script += "\n    name";
-                script += "\n    __typename";
-                script += "\n    downstreamWorkbooks";
-                script += "\n    {";
-                script += "\n      name";
-                script += "\n    }";
-                script += "\n    tables";
-                script += "\n    {";
-                script += "\n      fullName";
-                script += "\n      columns";
-                script += "\n      {";
-                script += "\n        name";
-                script += "\n        remoteType";
-                script += "\n        isNullable";
-                script += "\n      }";
-                script += "\n    }";
-                script += "\n  }";
-                script += "\n}";
-                script += "\n\"\"\"";
-                script += "\nquery_calculations = \"\"\"";
-                script += "\nquery query_Calculations_info";
-                script += "\n{";
-                script += "\ncalculatedFields";
-                script += "\n{";
-                script += "\ncalculatedfield_id: id";
-                script += "\nname";
-                script += "\nformula";
-                script += "\nrole";
-                script += "\nisHidden";
-                script += "\ndownstreamDashboards";
-                script += "\n{";
-                script += "\nworkbook";
-                script += "\n{";
-                script += "\nname";
-                script += "\n}";
-                script += "\n}";
-                script += "\n}";
-                script += "\n}";
-                script += "\n\"\"\"";
-                script += "\nwb_query_results = conn.metadata_graphql_query(query_workbooks)";
-                script += "\nwb_query_results_json = wb_query_results.json()";
-                script += "\ninner = wb_query_results_json['data']['workbooks']";
-                script += "\nresult = []";
-                script += "\nfor each_workbook in inner:";
-                script += "\n    result.append([each_workbook['id'], each_workbook['name']])";
-                script += "\nresult_df=pd.DataFrame(result, columns =['Workbook ID','Workbook Name'])";
-                script += "\nwb_query_results = conn.metadata_graphql_query(query_servers)";
-                script += "\nwb_query_results_json = wb_query_results.json()";
-                script += "\ninner_1 = wb_query_results_json['data']['databaseServers']";
-                script += "\nresult_1 = []";
-                script += "\nfor each in inner_1:";
-                script += "\n    for each_downstreamWorkbooks in each['downstreamWorkbooks']:";
-                script += "\n        for each_upstreamDatabases in each_downstreamWorkbooks['upstreamDatabases']:";
-                script += "\n            for each_tables in each_upstreamDatabases['tables']:";
-                script += "\n                for each_columns in each_tables['columns']:";
-                script += "\n                    result_1.append([each['name'], each['hostName'] ,each['connectionType'], each['isEmbedded'], ";
-                script += "\n                                  each_downstreamWorkbooks['id'], each_downstreamWorkbooks['name'], ";
-                script += "\n                                  each_upstreamDatabases['name'], each_tables['fullName'], ";
-                script += "\n                                  each_columns['name'], each_columns['remoteType'], each_columns['isNullable']])";
-                script += "\nresult_1_df = pd.DataFrame(result_1, columns =['databaseServersName', 'Server Name', 'Connection Type', 'Is Embedded Source', ";
-                script += "\n                                           'Workbook ID', 'Workbook Name', ";
-                script += "\n                                           'Database Name', 'Table Name', ";
-                script += "\n                                           'Column Name', 'Datatype', 'Is Null'])";
-                script += "\nwb_query_results = conn.metadata_graphql_query(query_refreshtime)";
-                script += "\nwb_query_results_json = wb_query_results.json()";
-                script += "\ninner_4 = wb_query_results_json['data']['datasources']";
-                script += "\nresult_4 = []";
-                script += "\nfor each in inner_4:";
-                script += "\n    if each['downstreamWorkbooks'] != []:";
-                script += "\n        result_4.append([each['name'], each['extractLastRefreshTime'], each['createdAt'], each['updatedAt'], each['__typename'], ";
-                script += "\n                       each['downstreamWorkbooks'][0]['id'], each['downstreamWorkbooks'][0]['name']])";
-                script += "\n    else:";
-                script += "\n        result_4.append([each['name'], each['extractLastRefreshTime'], each['createdAt'], each['updatedAt'], each['__typename'], ";
-                script += "\n                       '', ''])";
-                script += "\nresult_4_df = pd.DataFrame(result_4, columns =['Datasource Name', 'Last Refresh Time', 'createdAt', 'updatedAt', ";
-                script += "\n                                          'Connection Type', 'Workbook ID', 'Workbook Name'])";
-                script += "\nwb_query_results = conn.metadata_graphql_query(query_files_2)";
-                script += "\nwb_query_results_json = wb_query_results.json()";
-                script += "\ninner_5 = wb_query_results_json['data']['databases']";
-                script += "\nresult_5 = []";
-                script += "\nfor each in inner_5:";
-                script += "\n    inter = []";
-                script += "\n    if each['downstreamWorkbooks'] != []:";
-                script += "\n        for each_downstreamWorkbooks in each['downstreamWorkbooks']:";
-                script += "\n            inter.append(each_downstreamWorkbooks['name'])";
-                script += "\n    for each_table in each['tables']:";
-                script += "\n        for each_column in each_table['columns']:";
-                script += "\n            result_5.append([each['name'], each['__typename'], inter, each_table['fullName'],";
-                script += "\n                           each_column['name'], each_column['remoteType'], each_column['isNullable']])  ";
-                script += "\nresult_5_df = pd.DataFrame(result_5, columns =['File Name', 'Type', 'Workbook Name', 'Table Name', ";
-                script += "\n                                          'Column Name', 'Data Type', 'Is Null'])";
-                script += "\nresult_5_df[\"Workbook Name\"]= result_5_df[\"Workbook Name\"].astype(str)";
-                script += "\nresult_5_df=result_5_df.loc[result_5_df[\"Type\"] != 'DatabaseServer'] ";
-                script += "\nwb_query_results = conn.metadata_graphql_query(query_calculations)";
-                script += "\nwb_query_results_json = wb_query_results.json()";
-                script += "\ninner_6 = wb_query_results_json['data']['calculatedFields']";
-                script += "\nresult_6 = []";
-                script += "\nfor each in inner_6:";
-                script += "\n    if each['downstreamDashboards'] != []:";
-                script += "\n        for each_downstreamDashboards in each['downstreamDashboards']:";
-                script += "\n            result_6.append([each['calculatedfield_id'], each['name'], each['formula'], each['role'], each['isHidden'],";
-                script += "\n                          each_downstreamDashboards['workbook']['name']])";
-                script += "\n    else:";
-                script += "\n        result_6.append([each['calculatedfield_id'], each['name'], each['formula'], each['role'], each['isHidden'],";
-                script += "\n                          ''])";
-                script += "\nresult_6_df = pd.DataFrame(result_6, columns =['calculatedfield_id', 'Calculated Fields Name', 'Formula', 'Role', 'Is Hidden', ";
-                script += "\n                                            'Workbook Name'])";
+                script += "\n}"; 
+                script += "\nconn = TableauServerConnection(tableau_server_config, ssl_verify = False)                                                                                                                                ";
+                script += "\nconn.sign_in()                                                                                                                                                                                           ";
+                script += "\nquery_workbooks =  \"\"\"                                                                                                                                                                               ";
+                script += "\n{                                                                                                                                                                                                        ";
+                script += "\nworkbooks {                                                                                                                                                                                              ";
+                script += "\n    id                                                                                                                                                                                                   ";
+                script += "\n    luid                                                                                                                                                                                                 ";
+                script += "\n    name                                                                                                                                                                                                 ";
+                script += "\n    description                                                                                                                                                                                          ";
+                script += "\n    createdAt                                                                                                                                                                                            ";
+                script += "\n    updatedAt                                                                                                                                                                                            ";
+                script += "\n    site {                                                                                                                                                                                               ";
+                script += "\n        luid                                                                                                                                                                                             ";
+                script += "\n        name                                                                                                                                                                                             ";
+                script += "\n      }                                                                                                                                                                                                  ";
+                script += "\n    projectName                                                                                                                                                                                          ";
+                script += "\n    projectVizportalUrlId                                                                                                                                                                                ";
+                script += "\n    owner {                                                                                                                                                                                              ";
+                script += "\n        id                                                                                                                                                                                               ";
+                script += "\n        name                                                                                                                                                                                             ";
+                script += "\n        }                                                                                                                                                                                                ";
+                script += "\n    uri                                                                                                                                                                                                  ";
+                script += "\n    upstreamDatasources {                                                                                                                                                                                ";
+                script += "\n        id                                                                                                                                                                                               ";
+                script += "\n        luid                                                                                                                                                                                             ";
+                script += "\n        name                                                                                                                                                                                             ";
+                script += "\n        }                                                                                                                                                                                                ";
+                script += "\n    }                                                                                                                                                                                                    ";
+                script += "\n}                                                                                                                                                                                                        ";
+                script += "\n\"\"\"                                                                                                                                                                                                      ";
+                script += "\nquery_servers = \"\"\"                                                                                                                                                                                    ";
+                script += "\nquery Embedded                                                                                                                                                                                           ";
+                script += "\n{                                                                                                                                                                                                        ";
+                script += "\n  databaseServers                                                                                                                                                                                        ";
+                script += "\n  {                                                                                                                                                                                                      ";
+                script += "\n    name                                                                                                                                                                                                 ";
+                script += "\n  	hostName                                                                                                                                                                                              ";
+                script += "\n    connectionType                                                                                                                                                                                       ";
+                script += "\n    isEmbedded                                                                                                                                                                                           ";
+                script += "\n    downstreamWorkbooks                                                                                                                                                                                  ";
+                script += "\n    {                                                                                                                                                                                                    ";
+                script += "\n      id                                                                                                                                                                                                 ";
+                script += "\n      name                                                                                                                                                                                               ";
+                script += "\n      upstreamDatabases                                                                                                                                                                                  ";
+                script += "\n      {                                                                                                                                                                                                  ";
+                script += "\n        name                                                                                                                                                                                             ";
+                script += "\n        tables                                                                                                                                                                                           ";
+                script += "\n        {                                                                                                                                                                                                ";
+                script += "\n          fullName                                                                                                                                                                                       ";
+                script += "\n          columns                                                                                                                                                                                        ";
+                script += "\n          {                                                                                                                                                                                              ";
+                script += "\n            name                                                                                                                                                                                         ";
+                script += "\n            remoteType                                                                                                                                                                                   ";
+                script += "\n            isNullable                                                                                                                                                                                   ";
+                script += "\n          }                                                                                                                                                                                              ";
+                script += "\n        }                                                                                                                                                                                                ";
+                script += "\n      }                                                                                                                                                                                                  ";
+                script += "\n    }                                                                                                                                                                                                    ";
+                script += "\n  }                                                                                                                                                                                                      ";
+                script += "\n}                                                                                                                                                                                                        ";
+                script += "\n\"\"\"                                                                                                                                                                                                     ";
+                script += "\nquery_refreshtime = \"\"\"                                                                                                                                                                                  ";
+                script += "\nquery RefreshTime                                                                                                                                                                                        ";
+                script += "\n{                                                                                                                                                                                                        ";
+                script += "\n  datasources                                                                                                                                                                                            ";
+                script += "\n  {                                                                                                                                                                                                      ";
+                script += "\n    name                                                                                                                                                                                                 ";
+                script += "\n    extractLastRefreshTime                                                                                                                                                                               ";
+                script += "\n    createdAt                                                                                                                                                                                            ";
+                script += "\n    updatedAt                                                                                                                                                                                            ";
+                script += "\n    __typename                                                                                                                                                                                           ";
+                script += "\n    downstreamWorkbooks                                                                                                                                                                                  ";
+                script += "\n    {                                                                                                                                                                                                    ";
+                script += "\n      id                                                                                                                                                                                                 ";
+                script += "\n      name                                                                                                                                                                                               ";
+                script += "\n    }                                                                                                                                                                                                    ";
+                script += "\n  }                                                                                                                                                                                                      ";
+                script += "\n}                                                                                                                                                                                                        ";
+                script += "\n\"\"\"                                                                                                                                                                                                      ";
+                script += "\nquery_files_2 = \"\"\"                                                                                                                                                                                  ";
+                script += "\nquery files                                                                                                                                                                                              ";
+                script += "\n{                                                                                                                                                                                                        ";
+                script += "\ndatabases                                                                                                                                                                                                ";
+                script += "\n  {                                                                                                                                                                                                      ";
+                script += "\n    name                                                                                                                                                                                                 ";
+                script += "\n    __typename                                                                                                                                                                                           ";
+                script += "\n    downstreamWorkbooks                                                                                                                                                                                  ";
+                script += "\n    {                                                                                                                                                                                                    ";
+                script += "\n      name                                                                                                                                                                                               ";
+                script += "\n    }                                                                                                                                                                                                    ";
+                script += "\n    tables                                                                                                                                                                                               ";
+                script += "\n    {                                                                                                                                                                                                    ";
+                script += "\n      fullName                                                                                                                                                                                           ";
+                script += "\n      columns                                                                                                                                                                                            ";
+                script += "\n      {                                                                                                                                                                                                  ";
+                script += "\n        name                                                                                                                                                                                             ";
+                script += "\n        remoteType                                                                                                                                                                                       ";
+                script += "\n        isNullable                                                                                                                                                                                       ";
+                script += "\n      }                                                                                                                                                                                                  ";
+                script += "\n    }                                                                                                                                                                                                    ";
+                script += "\n  }                                                                                                                                                                                                      ";
+                script += "\n}                                                                                                                                                                                                        ";
+                script += "\n\"\"\"                                                                                                                                                                                                     ";
+                script += "\nquery_calculations = \"\"\"                                                                                                                                                                                 ";
+                script += "\nquery query_Calculations_info                                                                                                                                                                            ";
+                script += "\n{                                                                                                                                                                                                        ";
+                script += "\ncalculatedFields                                                                                                                                                                                         ";
+                script += "\n{                                                                                                                                                                                                        ";
+                script += "\ncalculatedfield_id: id                                                                                                                                                                                   ";
+                script += "\nname                                                                                                                                                                                                     ";
+                script += "\nformula                                                                                                                                                                                                  ";
+                script += "\nrole                                                                                                                                                                                                     ";
+                script += "\nisHidden                                                                                                                                                                                                 ";
+                script += "\ndownstreamDashboards                                                                                                                                                                                     ";
+                script += "\n{                                                                                                                                                                                                        ";
+                script += "\nworkbook                                                                                                                                                                                                 ";
+                script += "\n{                                                                                                                                                                                                        ";
+                script += "\nname                                                                                                                                                                                                     ";
+                script += "\n}                                                                                                                                                                                                        ";
+                script += "\n}                                                                                                                                                                                                        ";
+                script += "\n}                                                                                                                                                                                                        ";
+                script += "\n}                                                                                                                                                                                                        ";
+                script += "\n\"\"\"                                                                                                                                                                                                      ";
+                script += "\nwb_query_results = conn.metadata_graphql_query(query_workbooks)                                                                                                                                          ";
+                script += "\nwb_query_results_json = wb_query_results.json()                                                                                                                                                          ";
+                script += "\ninner = wb_query_results_json['data']['workbooks']                                                                                                                                                       ";
+                script += "\nresult = []                                                                                                                                                                                              ";
+                script += "\nfor each_workbook in inner:                                                                                                                                                                              ";
+                script += "\n    result.append([each_workbook['id'], each_workbook['name'], each_workbook['createdAt'], each_workbook['updatedAt'],                                                                                   ";
+                script += "\n                   each_workbook['projectVizportalUrlId'], each_workbook['projectName'],                                                                                                                 ";
+                script += "\n                   each_workbook['owner']['id'], each_workbook['owner']['name'],                                                                                                                         ";
+                script += "\n                   each_workbook['site']['luid'], each_workbook['site']['name']])                                                                                                                        ";
+                script += "\nresult_df = pd.DataFrame(result, columns=['Workbook ID', 'Workbook Name', 'Workbook Created At', 'Workbook updated At',                                                                                  ";
+                script += "\n                                          'Project Vizportal Url ID', 'Project Name', 'Owner ID', 'Owner Name', 'Site LUID', 'Site Name'])                                                               ";
+                script += "\nwb_query_results = conn.metadata_graphql_query(query_servers)                                                                                                                                            ";
+                script += "\nwb_query_results_json = wb_query_results.json()                                                                                                                                                          ";
+                script += "\ninner_1 = wb_query_results_json['data']['databaseServers']                                                                                                                                               ";
+                script += "\nresult_1 = []                                                                                                                                                                                            ";
+                script += "\nfor each in inner_1:                                                                                                                                                                                     ";
+                script += "\n    for each_downstreamWorkbooks in each['downstreamWorkbooks']:                                                                                                                                         ";
+                script += "\n        for each_upstreamDatabases in each_downstreamWorkbooks['upstreamDatabases']:                                                                                                                     ";
+                script += "\n            for each_tables in each_upstreamDatabases['tables']:                                                                                                                                         ";
+                script += "\n                for each_columns in each_tables['columns']:                                                                                                                                              ";
+                script += "\n                    result_1.append([each['name'], each['hostName'] ,each['connectionType'], each['isEmbedded'],                                                                                         ";
+                script += "\n                                  each_downstreamWorkbooks['id'], each_downstreamWorkbooks['name'],                                                                                                      ";
+                script += "\n                                  each_upstreamDatabases['name'], each_tables['fullName'],                                                                                                               ";
+                script += "\n                                  each_columns['name'], each_columns['remoteType'], each_columns['isNullable']])                                                                                         ";
+                script += "\nresult_1_df = pd.DataFrame(result_1, columns =['databaseServersName', 'Server Name', 'Connection Type', 'Is Embedded Source',                                                                            ";
+                script += "\n                                           'Workbook ID', 'Workbook Name',                                                                                                                               ";
+                script += "\n                                           'Database Name', 'Table Name',                                                                                                                                ";
+                script += "\n                                           'Column Name', 'Datatype', 'Is Null'])                                                                                                                        ";
+                script += "\nwb_query_results = conn.metadata_graphql_query(query_refreshtime)                                                                                                                                        ";
+                script += "\nwb_query_results_json = wb_query_results.json()                                                                                                                                                          ";
+                script += "\ninner_4 = wb_query_results_json['data']['datasources']                                                                                                                                                   ";
+                script += "\nresult_4 = []                                                                                                                                                                                            ";
+                script += "\nfor each in inner_4:                                                                                                                                                                                     ";
+                script += "\n    if each['downstreamWorkbooks'] != []:                                                                                                                                                                ";
+                script += "\n        result_4.append([each['name'], each['extractLastRefreshTime'], each['createdAt'], each['updatedAt'], each['__typename'],                                                                         ";
+                script += "\n                       each['downstreamWorkbooks'][0]['id'], each['downstreamWorkbooks'][0]['name']])                                                                                                    ";
+                script += "\n    else:                                                                                                                                                                                                ";
+                script += "\n        result_4.append([each['name'], each['extractLastRefreshTime'], each['createdAt'], each['updatedAt'], each['__typename'],                                                                         ";
+                script += "\n                       '', ''])                                                                                                                                                                          ";
+                script += "\nresult_4_df = pd.DataFrame(result_4, columns =['Datasource Name', 'Last Refresh Time', 'createdAt', 'updatedAt',                                                                                         ";
+                script += "\n                                          'Connection Type', 'Workbook ID', 'Workbook Name'])                                                                                                            ";
+                script += "\nwb_query_results = conn.metadata_graphql_query(query_files_2)                                                                                                                                            ";
+                script += "\nwb_query_results_json = wb_query_results.json()                                                                                                                                                          ";
+                script += "\ninner_5 = wb_query_results_json['data']['databases']                                                                                                                                                     ";
+                script += "\nresult_5 = []                                                                                                                                                                                            ";
+                script += "\nfor each in inner_5:                                                                                                                                                                                     ";
+                script += "\n    inter = ''                                                                                                                                                                                           ";
+                script += "\n    if each['downstreamWorkbooks'] != []:                                                                                                                                                                ";
+                script += "\n        for each_downstreamWorkbooks in each['downstreamWorkbooks']:                                                                                                                                     ";
+                script += "\n            inter = each_downstreamWorkbooks['name']                                                                                                                                                     ";
+                script += "\n    for each_table in each['tables']:                                                                                                                                                                    ";
+                script += "\n        for each_column in each_table['columns']:                                                                                                                                                        ";
+                script += "\n            result_5.append([each['name'], each['__typename'], inter, each_table['fullName'],                                                                                                            ";
+                script += "\n                           each_column['name'], each_column['remoteType'], each_column['isNullable']])                                                                                                   ";
+                script += "\nresult_5_df = pd.DataFrame(result_5, columns =['File Name', 'Type', 'Workbook Name', 'Table Name',                                                                                                       ";
+                script += "\n                                          'Column Name', 'Data Type', 'Is Null'])                                                                                                                        ";
+                script += "\nresult_5_df=result_5_df.loc[result_5_df[\"Type\"] != 'DatabaseServer']                                                                                                                                     ";
+                script += "\nwb_query_results = conn.metadata_graphql_query(query_calculations)                                                                                                                                       ";
+                script += "\nwb_query_results_json = wb_query_results.json()                                                                                                                                                          ";
+                script += "\ninner_6 = wb_query_results_json['data']['calculatedFields']                                                                                                                                              ";
+                script += "\nresult_6 = []                                                                                                                                                                                            ";
+                script += "\nfor each in inner_6:                                                                                                                                                                                     ";
+                script += "\n    if each['downstreamDashboards'] != []:                                                                                                                                                               ";
+                script += "\n        for each_downstreamDashboards in each['downstreamDashboards']:                                                                                                                                   ";
+                script += "\n            result_6.append([each['calculatedfield_id'], each['name'], each['formula'], each['role'], each['isHidden'],                                                                                  ";
+                script += "\n                          each_downstreamDashboards['workbook']['name']])                                                                                                                                ";
+                script += "\n    else:                                                                                                                                                                                                ";
+                script += "\n        result_6.append([each['calculatedfield_id'], each['name'], each['formula'], each['role'], each['isHidden'],                                                                                      ";
+                script += "\n                          ''])                                                                                                                                                                           ";
+                script += "\nresult_6_df = pd.DataFrame(result_6, columns =['calculatedfield_id', 'Calculated Fields Name', 'Formula', 'Role', 'Is Hidden',                                                                           ";
+                script += "\n                                            'Workbook Name'])                                                                                                                                            ";
                 script += "\nquoted = urllib.parse.quote_plus(\"DRIVER={SQL Server Native Client 11.0};SERVER=" + server.ToString() + ";DATABASE=Tableau Metadata;Trusted_Connection=yes; \")";
-                script += "\nengine = create_engine('mssql+pyodbc:///?odbc_connect={}'.format(quoted))";
-                script += "\nresult_df.to_sql('TableauWorkbooks', schema='dbo',if_exists = 'append', con = engine)";
-                script += "\nresult_1_df.to_sql('TableauDatabaseServers', schema='dbo',if_exists = 'append', con = engine)";
-                script += "\nresult_5_df.to_sql('TableauFileSources', schema='dbo',if_exists = 'append', con = engine)";
-                script += "\nresult_4_df.to_sql('TableauRefreshTime', schema='dbo',if_exists = 'append', con = engine)";
-                script += "\nresult_6_df.to_sql('TableauCalculations', schema='dbo',if_exists = 'append', con = engine)";
+                //script += "\nquoted = urllib.parse.quote_plus("DRIVER={ SQL Server Native Client 11.0}; SERVER = IN3087262W1\SQLEXPRESS; DATABASE = Tableau Metadata; Trusted_Connection = yes; ")                                              ";
+                script += "\nengine = create_engine('mssql+pyodbc:///?odbc_connect={}'.format(quoted))                                                                                                                                ";
+                script += "\nresult_df.to_sql('TableauWorkbooks', schema='dbo',if_exists = 'append', con = engine)                                                                                                                    ";
+                script += "\nresult_1_df.to_sql('TableauDatabaseServers', schema='dbo',if_exists = 'append', con = engine)                                                                                                            ";
+                script += "\nresult_5_df.to_sql('TableauFileSources', schema='dbo',if_exists = 'append', con = engine)                                                                                                                ";
+                script += "\nresult_4_df.to_sql('TableauRefreshTime', schema='dbo',if_exists = 'append', con = engine)                                                                                                                ";
+                script += "\nresult_6_df.to_sql('TableauCalculations', schema='dbo',if_exists = 'append', con = engine)                                                                                                               ";
+                script += "\nconn_str = (\"DRIVER={SQL Server Native Client 11.0};SERVER=" + server.ToString() + ";DATABASE=Tableau Metadata;Trusted_Connection=yes; \")                                                          ";
+                script += "\ncnxn = pyodbc.connect(conn_str)                                                                                                                                                                          ";
+                script += "\ncursor = cnxn.cursor()                                                                                                                                                                                   ";
+                script += "\nresult_df = pd.read_sql('select * from TableauWorkbooks', cnxn)                                                                                                                                          ";
+                script += "\nresult_df = result_df.drop_duplicates()                                                                                                                                                                  ";
+                script += "\nresult_df.to_sql('TableauWorkbooks', schema='dbo', if_exists = 'replace', con = engine, index=False)                                                                                                     ";
+                script += "\nresult_1_df = pd.read_sql('select * from TableauDatabaseServers', cnxn)                                                                                                                                  ";
+                script += "\nresult_1_df = result_1_df.drop_duplicates()                                                                                                                                                              ";
+                script += "\nresult_1_df.to_sql('TableauDatabaseServers', schema='dbo', if_exists = 'replace', con = engine, index=False)                                                                                             ";
+                script += "\nresult_5_df = pd.read_sql('select * from TableauFileSources', cnxn)                                                                                                                                      ";
+                script += "\nresult_5_df = result_5_df.drop_duplicates()                                                                                                                                                              ";
+                script += "\nresult_5_df.to_sql('TableauFileSources', schema='dbo', if_exists = 'replace', con = engine, index=False)                                                                                                 ";
+                script += "\nresult_4_df = pd.read_sql('select * from TableauRefreshTime', cnxn)                                                                                                                                      ";
+                script += "\nresult_4_df = result_4_df.drop_duplicates()                                                                                                                                                              ";
+                script += "\nresult_4_df.to_sql('TableauRefreshTime', schema='dbo', if_exists = 'replace', con = engine, index=False)                                                                                                 ";
+                script += "\nresult_6_df = pd.read_sql('select * from TableauCalculations', cnxn)                                                                                                                                     ";
+                script += "\nresult_6_df = result_6_df.drop_duplicates()                                                                                                                                                              ";
+                script += "\nresult_6_df.to_sql('TableauCalculations', schema='dbo', if_exists = 'replace', con = engine, index=False)                                                                                                ";
+                script += "\nserver_wb = result_1_df['Workbook Name'].unique().tolist()                                                                                                                                               ";
+                script += "\nfile_source_wb = result_5_df['Workbook Name'].unique().tolist()                                                                                                                                          ";
+                script += "\nserver_wb_result = []                                                                                                                                                                                    ";
+                script += "\nfor each_server_wb in server_wb:                                                                                                                                                                         ";
+                script += "\n    database_name = []                                                                                                                                                                                   ";
+                script += "\n    table_name = []                                                                                                                                                                                      ";
+                script += "\n    column_name = []                                                                                                                                                                                     ";
+                script += "\n    temp_data = result_1_df[result_1_df['Workbook Name'] == each_server_wb]                                                                                                                              ";
+                script += "\n    for _, each_row in temp_data.iterrows():                                                                                                                                                             ";
+                script += "\n        database_name.append(each_row['Database Name'])                                                                                                                                                  ";
+                script += "\n        table_name.append(each_row['Table Name'])                                                                                                                                                        ";
+                script += "\n        column_name.append(each_row['Column Name'])                                                                                                                                                      ";
+                script += "\n    database_name = [i for i in database_name if i is not None]                                                                                                                                          ";
+                script += "\n    table_name = [i for i in table_name if i is not None]                                                                                                                                                ";
+                script += "\n    column_name = [i for i in column_name if i is not None]                                                                                                                                              ";
+                script += "\n    server_wb_result.append([each_server_wb, database_name, table_name, column_name])                                                                                                                    ";
+                script += "\nserver_wb_percentage_table = []                                                                                                                                                                          ";
+                script += "\nfor i in range(0, len(server_wb_result)):                                                                                                                                                                ";
+                script += "\n    for j in range(i+1, len(server_wb_result)):                                                                                                                                                          ";
+                script += "\n        database_name_per = 0                                                                                                                                                                            ";
+                script += "\n        table_name_per = 0                                                                                                                                                                               ";
+                script += "\n        column_name_per = 0                                                                                                                                                                              ";
+                script += "\n        if server_wb_result[i][1] == [] and server_wb_result[j][1] == []:                                                                                                                                ";
+                script += "\n            database_name_per = np.nan                                                                                                                                                                   ";
+                script += "\n        elif server_wb_result[i][1] != [] or server_wb_result[j][1] != []:                                                                                                                               ";
+                script += "\n            database_name_per = len(set(server_wb_result[i][1]).intersection(set(server_wb_result[j][1]))) / float(len(set(server_wb_result[i][1] + server_wb_result[j][1]))) * 100                      ";
+                script += "\n        if server_wb_result[i][2] == [] and server_wb_result[j][2] == []:                                                                                                                                ";
+                script += "\n            table_name_per = np.nan                                                                                                                                                                      ";
+                script += "\n        elif server_wb_result[i][2] != [] or server_wb_result[j][2] != []:                                                                                                                               ";
+                script += "\n            table_name_per = len(set(server_wb_result[i][2]).intersection(set(server_wb_result[j][2]))) / float(len(set(server_wb_result[i][2] + server_wb_result[j][2]))) * 100                         ";
+                script += "\n        if server_wb_result[i][3] == [] and server_wb_result[j][3] == []:                                                                                                                                ";
+                script += "\n            column_name_per = np.nan                                                                                                                                                                     ";
+                script += "\n        elif server_wb_result[i][3] != [] or server_wb_result[j][3] != []:                                                                                                                               ";
+                script += "\n            column_name_per = len(set(server_wb_result[i][3]).intersection(set(server_wb_result[j][3]))) / float(len(set(server_wb_result[i][3] + server_wb_result[j][3]))) * 100                        ";
+                script += "\n        server_wb_percentage_table.append([server_wb_result[i][0], server_wb_result[j][0], database_name_per, table_name_per, column_name_per])                                                          ";
+                script += "\nserver_wb_percentage_table_df = pd.DataFrame(server_wb_percentage_table, columns=['Report A', 'Report B', 'Database/ File Name', 'Table Name', 'Column Name'])                                           ";
+                script += "\nfile_source_wb_result = []                                                                                                                                                                               ";
+                script += "\nfor each_file_source_wb in file_source_wb:                                                                                                                                                               ";
+                script += "\n    file_name = []                                                                                                                                                                                       ";
+                script += "\n    table_name = []                                                                                                                                                                                      ";
+                script += "\n    column_name = []                                                                                                                                                                                     ";
+                script += "\n    if each_file_source_wb != '':                                                                                                                                                                        ";
+                script += "\n        temp_data = result_5_df[result_5_df['Workbook Name'] == each_file_source_wb]                                                                                                                     ";
+                script += "\n        for _, each_row in temp_data.iterrows():                                                                                                                                                         ";
+                script += "\n            file_name.append(each_row['File Name'])                                                                                                                                                      ";
+                script += "\n            table_name.append(each_row['Table Name'])                                                                                                                                                    ";
+                script += "\n            column_name.append(each_row['Column Name'])                                                                                                                                                  ";
+                script += "\n        file_name = [i for i in file_name if i is not None]                                                                                                                                              ";
+                script += "\n        table_name = [i for i in table_name if i is not None]                                                                                                                                            ";
+                script += "\n        column_name = [i for i in column_name if i is not None]                                                                                                                                          ";
+                script += "\n        file_source_wb_result.append([each_file_source_wb, file_name, table_name, column_name])                                                                                                          ";
+                script += "\nfile_source_wb_percentage_table = []                                                                                                                                                                     ";
+                script += "\nfor i in range(0, len(file_source_wb_result)):                                                                                                                                                           ";
+                script += "\n    for j in range(i+1, len(file_source_wb_result)):                                                                                                                                                     ";
+                script += "\n        file_name_per = 0                                                                                                                                                                                ";
+                script += "\n        table_name_per = 0                                                                                                                                                                               ";
+                script += "\n        column_name_per = 0                                                                                                                                                                              ";
+                script += "\n        if file_source_wb_result[i][1] == [] and file_source_wb_result[j][1] == []:                                                                                                                      ";
+                script += "\n            file_name_per = np.nan                                                                                                                                                                       ";
+                script += "\n        elif file_source_wb_result[i][1] != [] or file_source_wb_result[j][1] != []:                                                                                                                     ";
+                script += "\n            file_name_per = len(set(file_source_wb_result[i][1]).intersection(set(file_source_wb_result[j][1]))) / float(len(set(file_source_wb_result[i][1] + file_source_wb_result[j][1]))) * 100      ";
+                script += "\n        if file_source_wb_result[i][2] == [] and file_source_wb_result[j][2] == []:                                                                                                                      ";
+                script += "\n            table_name_per = np.nan                                                                                                                                                                      ";
+                script += "\n        elif file_source_wb_result[i][2] != [] or file_source_wb_result[j][2] != []:                                                                                                                     ";
+                script += "\n            table_name_per = len(set(file_source_wb_result[i][2]).intersection(set(file_source_wb_result[j][2]))) / float(len(set(file_source_wb_result[i][2] + file_source_wb_result[j][2]))) * 100     ";
+                script += "\n        if file_source_wb_result[i][3] == [] and file_source_wb_result[j][3] == []:                                                                                                                      ";
+                script += "\n            column_name_per = np.nan                                                                                                                                                                     ";
+                script += "\n        elif file_source_wb_result[i][3] != [] or file_source_wb_result[j][3] != []:                                                                                                                     ";
+                script += "\n            column_name_per = len(set(file_source_wb_result[i][3]).intersection(set(file_source_wb_result[j][3]))) / float(len(set(file_source_wb_result[i][3] + file_source_wb_result[j][3]))) * 100    ";
+                script += "\n        file_source_wb_percentage_table.append([file_source_wb_result[i][0], file_source_wb_result[j][0], file_name_per, table_name_per, column_name_per])                                               ";
+                script += "\nfile_source_wb_percentage_table_df = pd.DataFrame(file_source_wb_percentage_table, columns=['Report A', 'Report B', 'Database/ File Name', 'Table Name', 'Column Name'])                                 ";
+                script += "\ncross_percentage_table = []                                                                                                                                                                              ";
+                script += "\nfor i in range(0, len(server_wb_result)):                                                                                                                                                                ";
+                script += "\n    for j in range(0, len(file_source_wb_result)):                                                                                                                                                       ";
+                script += "\n        column_name_per = 0                                                                                                                                                                              ";
+                script += "\n        if server_wb_result[i][3] == [] and file_source_wb_result[j][3] == []:                                                                                                                           ";
+                script += "\n            column_name_per = np.nan                                                                                                                                                                     ";
+                script += "\n        elif server_wb_result[i][3] != [] or file_source_wb_result[j][3] != []:                                                                                                                          ";
+                script += "\n            column_name_per = len(set(server_wb_result[i][3]).intersection(set(file_source_wb_result[j][3]))) / float(len(set(server_wb_result[i][3] + file_source_wb_result[j][3]))) * 100              ";
+                script += "\n        cross_percentage_table.append([server_wb_result[i][0], file_source_wb_result[j][0], np.nan, np.nan, column_name_per])                                                                            ";
+                script += "\ncross_percentage_table_df = pd.DataFrame(cross_percentage_table, columns=['Report A', 'Report B', 'Database/ File Name', 'Table Name', 'Column Name'])                                                   ";
+                script += "\npercentage_table_df = pd.concat([server_wb_percentage_table_df, file_source_wb_percentage_table_df, cross_percentage_table_df])                                                                          ";
+                script += "\npercentage_table_df.reset_index(inplace = True, drop = True)                                                                                                                                             ";
+                script += "\npercentage_table_df.to_sql('Tableau_report_percentage_match', schema='dbo',if_exists = 'append', con = engine)                                                                                           ";
+                
 
-                /* string script = "import sys";
-                 script += "\nimport numpy";
-                 script += "\ndef add_numbers(x,y):";
-                 script += "\n   sum = x + y";
-                 script += "\n   return sum";
-                 script += "\n";
-                 script += "\nnum1 = int(sys.argv[1])";
-                 script += "\nnum2 = int(sys.argv[2])";
-                 script += "\nprint(add_numbers(num1, num2))";
-                */
 
-                File.SetAttributes(path, FileAttributes.Normal);
+            /* string script = "import sys";
+             script += "\nimport numpy";
+             script += "\ndef add_numbers(x,y):";
+             script += "\n   sum = x + y";
+             script += "\n   return sum";
+             script += "\n";
+             script += "\nnum1 = int(sys.argv[1])";
+             script += "\nnum2 = int(sys.argv[2])";
+             script += "\nprint(add_numbers(num1, num2))";
+            */
 
-                if (File.Exists(path))
+            //File.SetAttributes(path, FileAttributes.Normal);
+
+            if (File.Exists(path))
                 {
                     File.Delete(path);
                 }
@@ -459,10 +592,10 @@ namespace GetMetaData
 
 
 
-                // ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
+            // ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
-                createsqlDatabase();
-                createsqltableUsage();
+             createsqlDatabase();
+             //createsqltableUsage();
                 run_cmd();
 
                 
@@ -561,7 +694,7 @@ namespace GetMetaData
                         // Activate your environment
                         // sw.WriteLine("conda activate py3.9.7");
                         // run your script. You can also pass in arguments
-                        sw.WriteLine("py Tableau_Python.py");
+                        sw.WriteLine("python Tableau_Python.py");
                     }
                 }
                 //string output = process.StandardOutput.ReadToEnd();
@@ -700,7 +833,7 @@ namespace GetMetaData
                 table += " TRUNCATE TABLE TableauDatabaseServers ";
                 table += " TRUNCATE TABLE TableauRefreshTime ";
                 table += " TRUNCATE TABLE TableauCalculations ";
-                InsertQuery(table, strconnection);
+                InsertQuery1(table, strconnection);
                
             }
             catch
@@ -719,7 +852,22 @@ namespace GetMetaData
             string strconnection = "Data Source = " + server.ToString() + "; Integrated Security=true";
 
             string table = "IF NOT EXISTS(SELECT name FROM master.dbo.sysdatabases WHERE Name='Tableau Metadata') CREATE DATABASE [Tableau Metadata]";
-            InsertQuery(table, strconnection);
+
+            InsertQuery1(table, strconnection);
+            run_cmd();
+        }
+
+        public void InsertQuery1(string qry, string connection)
+        {
+            SqlConnection _connection = new SqlConnection(connection);
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = qry;
+            cmd.Connection = _connection;
+            _connection.Open();
+            cmd.ExecuteNonQuery();
+            _connection.Close();
+
         }
 
         public async void InsertQuery(string qry, string connection)
@@ -759,12 +907,121 @@ namespace GetMetaData
 
         }
 
+        //private void Req_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //}
+        
+        
+
+
+
         private void Req_Click(object sender, RoutedEventArgs e)
+
+        {
+
+            int result = 0;
+
+
+
+            string connectionstring = "Data Source=" + server.ToString() + "; Integrated Security=true; Initial Catalog=Tableau Metadata"; ; //your connectionstring    
+
+
+
+            if (server.Equals(""))
+
+            {
+
+                MessageBox.Show("Click Load Data to populate the data base-> Then click the document generator");
+
+            }
+
+            else
+
+            {
+
+                using (SqlConnection conn = new SqlConnection(connectionstring))
+
+                {
+
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("select COUNT(*) from dbo.Tableau_report_percentage_match", conn);
+
+                    result = (int)cmd.ExecuteScalar();
+
+                    conn.Close();
+
+                }
+
+                if (server.ToString().Equals("") || result == 0)
+
+                {
+
+                    MessageBox.Show("Either the Metadata is not extracted or the SQL Server details is blank");
+
+                }
+
+                else
+
+                {
+
+                    Document_Generator_Tableau objWelcome = new Document_Generator_Tableau();
+
+                    objWelcome.SQLTB_DGMS.Text = server;
+
+                    objWelcome.Show(); //Sending value from one form to another form.
+
+                    Close();
+
+                }
+
+            }
+
+        }
+
+
+
+
+
+
+
+        private void PDF_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void PDF_Click(object sender, RoutedEventArgs e)
+        private void ResultText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void apiversion_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void USerName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void SiteName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void SiteURL_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void SQLServer_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void PythonPathText_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

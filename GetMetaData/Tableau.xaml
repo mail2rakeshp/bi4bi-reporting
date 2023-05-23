@@ -71,7 +71,7 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
-                
+
                 <Button  Click="Minimize_Click" Content="&#xE949;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,15,15,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" Margin="0,0,40,-0.333" Grid.RowSpan="2" Width="41" Foreground="#ffffff" />
                 <Button HorizontalAlignment="Right" Click="Close_Click" Content="&#xE106;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,0" Background="Transparent" BorderBrush="Transparent" Grid.RowSpan="2" Margin="0,0,0,-0.333" Width="42" Foreground="#ffffff" />
                 <Image  HorizontalAlignment="right" VerticalAlignment="Top" Height="25" Margin="0,5,81,-0.333" RenderTransformOrigin="0.5,0.5" Source="Images/Help_ACL_Transparent.png" Width="39" Grid.RowSpan="2">
@@ -171,18 +171,18 @@
                     </StackPanel>
                     <Label Content="Tableau Cloud *" Foreground="White" x:Name="LabelServer" Margin="30,-60,865.667,-5" FontFamily="EYInterstate" FontWeight="Bold" Height="26" />
                     <Border Name="Border1" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="30,-15,491,5" Height="27">
-                        <TextBox   Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="ResultText" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.667,-1.667" FontFamily="Sergoe Ui"  Height="19"/>
+                        <TextBox   Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="ResultText" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.667,-1.667" FontFamily="Sergoe Ui"  Height="19" TextChanged="ResultText_TextChanged"/>
                     </Border>
 
 
                     <Label Content="API Version * " Foreground="White" x:Name="Labelapiversion" Margin="30,-5,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
                     <Border Name="Borderapiversion" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="30,-350,767.667,-100" Height="28">
-                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="apiversion" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
+                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="apiversion" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui" TextChanged="apiversion_TextChanged"/>
                     </Border>
 
                     <Label Content="User Name *" Foreground="White" x:Name="LabelUserName" Margin="30,-110,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
                     <Border Name="BorderUserName" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="30,-350,767.667,-100" Height="28">
-                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="USerName" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
+                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="USerName" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui" TextChanged="USerName_TextChanged"/>
                     </Border>
 
                     <Label Content="Password * " Foreground="White" x:Name="LabelPassword" Margin="30,-110,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
@@ -192,28 +192,28 @@
                     <Border Visibility="Collapsed" Height="28" Name="BorderPasswordShow" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,-520,767.333,-281.333" Grid.Row="1">
                         <TextBox  Height="20" Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="PasswordShow" FontWeight="Bold" MinHeight="10" Margin="4.667,2.667,8.667,8.667" FontFamily="Sergoe Ui"  />
                     </Border>
-                    <CheckBox Name="PasswordChek" Content="Show Password" Foreground="White" Grid.Column="3" HorizontalAlignment="Left" Margin="340,-130,8.667,8.667" VerticalAlignment="Top" Height="39" Checked="CheckBox_Checked" FontWeight="Bold" Unchecked="CheckBox_Unchecked" />
+                    <CheckBox Name="PasswordChek" Content="Show Password" Foreground="White" Grid.Column="3" HorizontalAlignment="Left" Margin="840,-130,8.667,8.667" VerticalAlignment="Top" Height="39" Checked="CheckBox_Checked" FontWeight="Bold" Unchecked="CheckBox_Unchecked" />
                     <Label Content="Site Name * " Foreground="White" x:Name="LabelSiteName" Margin="30,-110,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
                     <Border Name="BorderSiteName" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="30,-350,767.667,-100" Height="28">
-                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="SiteName" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
+                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="SiteName" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui" TextChanged="SiteName_TextChanged"/>
                     </Border>
 
                     <Label Content="Site URL * " Foreground="White" x:Name="LabelSiteURL" Margin="30,-110,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
                     <Border Name="BorderSiteURL" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="30,-350,767.667,-100" Height="28">
-                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="SiteURL" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
+                        <TextBox Height="20"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="SiteURL" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui" TextChanged="SiteURL_TextChanged"/>
                     </Border>
 
 
 
                     <Label Content="Target SQL Server * " Foreground="White" x:Name="SQLServerL" Margin="30,-110,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
                     <Border Name="SQLServerLocal" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="30,-350,490.667,-100" Height="28">
-                        <TextBox Height="16"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="SQLServer" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
+                        <TextBox Height="16"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="SQLServer" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui" TextChanged="SQLServer_TextChanged"/>
                     </Border>
                     <StackPanel>
                         <Grid Height="241" Margin="0,-100,0.333,0" >
                             <Label Content="Python Path * " Foreground="White" x:Name="LabelPythonPath" Margin="30,-95,723.667,139" FontFamily="EYInterstate" FontWeight="Bold" Height="26" RenderTransformOrigin="0.443,0.225" />
                             <Border Name="BorderPythonPath" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="30,-280,490.667,-100" Height="28">
-                                <TextBox Height="16"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="PythonPathText" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui"/>
+                                <TextBox Height="16"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="PythonPathText" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui" TextChanged="PythonPathText_TextChanged"/>
                             </Border>
                             <Button x:Name="Browse_Copy" Content="Browse" Margin="980,0,283,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Click="Browse_Click" Width="101" Background="Black" Foreground="White">
                                 <Button.Style >
