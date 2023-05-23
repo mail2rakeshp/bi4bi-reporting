@@ -381,14 +381,14 @@
 
                         </Button>
 
-                        <Button x:Name="PDF" Width="200" Content="Rationalization Output" Margin="600,-35,302.333,0" FontWeight="Bold" Height="36" RenderTransformOrigin="0.475,1.355" Click="PDF_Click" FontFamily="Callibri">
+                        <Button  x:Name="PDF" Visibility="Collapsed" Width="0" Content="Rationalization Output" Margin="600,-35,302.333,0" FontWeight="Bold" Height="0" RenderTransformOrigin="0.475,1.355" Click="PDF_Click" FontFamily="Callibri">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border CornerRadius="5"  BorderBrush="Black" BorderThickness="1" Background="{TemplateBinding Background}">
+                                                <Border Visibility="Collapsed" CornerRadius="5"  BorderBrush="Black" BorderThickness="1" Background="{TemplateBinding Background}">
                                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                 </Border>
                                             </ControlTemplate>

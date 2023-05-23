@@ -11,7 +11,7 @@
         Width="1400"
         WindowState="Maximized" 
         WindowStyle="None"
-        Name="WindowMainName" Background="#2E2E38" 
+        Name="WindowMainName" Background="#1E1E21" 
         MouseDoubleClick="Window_Mouse_Double"
         MaxHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}}"
         ShowInTaskbar="True"
@@ -83,7 +83,7 @@
                     </Image.ToolTip>
                 </Image>
             </Grid>
-            <Grid Grid.ColumnSpan="5" Margin="0,8,0,565" Background="#FF2E2E38" Height="89" HorizontalAlignment="Left" Width="1116">
+            <Grid Grid.ColumnSpan="7" Background="#FF2E2E38" Height="89" HorizontalAlignment="Left" Width="1757" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0*"/>
                     <ColumnDefinition Width="557*"/>
@@ -93,7 +93,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="180*"/>
                 </Grid.RowDefinitions>
-                <Image  HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Source="Images/EY_Logo.png" Width="90" Margin="5,-31,0,-5" Grid.ColumnSpan="2">
+                <Image  HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Source="Images/EY_Logo.png" Width="90" Margin="5,-22,0,-14" Grid.ColumnSpan="2">
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform />
@@ -103,12 +103,12 @@
                         </TransformGroup>
                     </Image.RenderTransform>
                 </Image>
-                <Separator HorizontalAlignment="Left" Margin="88,22,0,47" Height="20" Grid.ColumnSpan="2" Width="27">
+                <Separator HorizontalAlignment="Left" Margin="82,31,0,38" Height="20" Grid.ColumnSpan="2" Width="27">
                     <Separator.LayoutTransform>
                         <RotateTransform Angle="90" />
                     </Separator.LayoutTransform>
                 </Separator>
-                <Label  HorizontalAlignment="Left" Background="#2E2E38" Foreground="#ffffff" FontSize="36" Content="BI4BI" Margin="107,6,0,0" Width="261" FontFamily="EYInterstate" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <Label  HorizontalAlignment="Left" Background="#2E2E38" Foreground="#ffffff" FontSize="36" Content="BI4BI" Margin="107,12,0,0" Width="261" FontFamily="EYInterstate" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
 
             </Grid>
@@ -148,16 +148,6 @@
                     <StackPanel Name="Stack1" HorizontalAlignment="Left" Margin="10,0,-0.667,0" Width="1392">
                         <Label Content="Welcome to BI4BI" FontSize="40" Foreground="#ffe600" x:Name="LabelUser2" Margin="20,40,0,2" FontFamily="EYInterstate" Height="60" HorizontalAlignment="Left" />
                         <Label Content="Please Choose the Visualization tool for which the analysis needs to be done" FontSize="20" Foreground="White" x:Name="LabelUser" Margin="20,18,329,586" FontFamily="EYInterstate" Height="40" HorizontalAlignment="Left" />
-                        <Image  Height="70" Margin="189,-1050,1083,0" RenderTransformOrigin="10.219,0.557" Source="Images/SAP_Logo.PNG" Stretch="Fill">
-                            <Image.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform />
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Image.RenderTransform>
-                        </Image>
 
 
                         <Image VerticalAlignment="Top" Height="70" Margin="0,-560,1200,10" RenderTransformOrigin="0.5,0.5" Source="Images/Cognos_Logo.png" Width="120" Stretch="Fill">
@@ -214,6 +204,16 @@
                             </Button.Style>
 
                         </Button>
+                        <Image Width="120"  Height="70" Margin="-329,-1050,562,0" RenderTransformOrigin="10.219,0.557" Source="Images/SAP_Logo.PNG" Stretch="Fill">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform />
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
                         <Button Width="120" x:Name="button2_Copy1" FontSize="14" Content="Qlikview" Margin="630,-500,296,345.333" RenderTransformOrigin="0.475,1.355" Click="button2_Copy1_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
@@ -237,7 +237,7 @@
 
                         </Button>
 
-                        <Image  Height="70" Margin="345,-1050,929,0" RenderTransformOrigin="10.219,0.557" Source="Images/Crystal_Reports_Logo.PNG" Stretch="Fill">
+                        <Image Width="120"  Height="70" Margin="-10,-1050,572,0" RenderTransformOrigin="10.219,0.557" Source="Images/Crystal_Reports_Logo.PNG" Stretch="Fill">
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform />
@@ -380,6 +380,38 @@
 
                         </Button>
 
+                        <Image Height="70" Margin="1160,-1050,-98,0" Width="120" RenderTransformOrigin="0.674,0.544" Source="Images/Microstrategylogo.png" Stretch="Fill">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform />
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                        <Button x:Name="MicroStrategyButton" FontSize="14" Content="MicroStrategy" Margin="1270,-500,7,345.333" RenderTransformOrigin="0.475,1.355" Click="mstr_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
+                            <Button.Style >
+                                <Style TargetType="{x:Type Button}" >
+
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border CornerRadius="0"  BorderBrush="white" BorderThickness="1" Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#ffe600"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                        </Button>
 
 
 
@@ -416,31 +448,6 @@
                             </Button.Style>
 
                         </Button>
-
-                        <Button x:Name="DBM" FontSize="18" Content="Database Metadata" Margin="487,-350,692,345.333" FontWeight="Bold" RenderTransformOrigin="0.475,1.355" Click="DBM_Click" FontFamily="EYInterstate" Height="47" Background="Black" Foreground="White">
-                            <Button.Style >
-                                <Style TargetType="{x:Type Button}" >
-
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border CornerRadius="0"  BorderBrush="White" BorderThickness="1" Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#ffe600"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-
-                        </Button>
-
-                        <Label Content="Analyze and Rationalize Database Metadata" FontSize="18" Foreground="#FFFFE600" x:Name="LabelDBM" Margin="720,-390,132,586" FontFamily="EYInterstate" Height="40" Background="#FF1C1C1F" />
                         <Image Visibility="Collapsed" Height="152" Margin="495,-1010,258,0" RenderTransformOrigin="0.674,0.544" Source="Images/Qlik_Transparent_Logo.PNG">
                             <Image.RenderTransform>
                                 <TransformGroup>
