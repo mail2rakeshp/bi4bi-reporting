@@ -35,13 +35,14 @@ namespace GetMetaData
 
         Tableau Tableau = new Tableau();
         PowerBi PowerBIDialog = new PowerBi();
-        Qlikview Qlikview = new Qlikview();
+        //Qlikview Qlikview = new Qlikview();
 
-        Cognos_Options cognos = new Cognos_Options();
-        OBIEE ob = new OBIEE();
-        MicStr mstr = new MicStr();
-        SSRS ssrs = new SSRS();
-
+        //Cognos_Options cognos = new Cognos_Options();
+        //OBIEE ob = new OBIEE();
+        //MicStr mstr = new MicStr();
+        //SSRS ssrs = new SSRS();
+        
+        
 
         // MainOptions  windowop = new MainOptions();
         public MainOptions()
@@ -133,8 +134,8 @@ namespace GetMetaData
         {
             
             
-            this.Close();
-            cognos.ShowDialog();
+            //this.Close();
+            //cognos.ShowDialog();
         }
 
         private void button2_Copy_Click(object sender, RoutedEventArgs e)
@@ -146,8 +147,8 @@ namespace GetMetaData
 
         private void button2_Copy1_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            Qlikview.ShowDialog();
+        //    this.Close();
+        //    Qlikview.ShowDialog();
         }
 
         private void SignOutButton_Click(object sender, RoutedEventArgs e)
@@ -173,8 +174,7 @@ namespace GetMetaData
 
         private void SSRS_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            ssrs.ShowDialog();
+
         }
 
         private void Crystal_Click(object sender, RoutedEventArgs e)
@@ -186,17 +186,18 @@ namespace GetMetaData
         {
 
         }
-       
+
+
         private void OBIEE_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            ob.ShowDialog();
+        //    this.Close();
+        //    ob.ShowDialog();
         }
 
         private void mstr_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            mstr.ShowDialog();
+        //    this.Close();
+        //    mstr.ShowDialog();
         }
     }
 }

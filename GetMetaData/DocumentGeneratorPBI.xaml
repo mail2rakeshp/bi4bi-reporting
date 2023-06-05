@@ -1,4 +1,4 @@
-﻿<Window x:Class="GetMetaData.Document_Generator"
+﻿<Window x:Class="GetMetaData.DocumentGeneratorPBI"
          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -117,7 +117,7 @@
 
 
             </Grid>
-            <StackPanel VerticalAlignment="Top" Name="StackBG" Margin="5,0,-10,0" Grid.ColumnSpan="7">
+            <StackPanel VerticalAlignment="Top" Name="StackBG" Margin="5,-70,-10,10" Grid.ColumnSpan="7">
 
                 <StackPanel  Name="ServerStack"  Height="666" Background="#1E1E21"  VerticalAlignment="Top" Margin="5,170,0,0" >
                     <Label Content="Home  >  Document Generator" FontSize="14" Foreground="White" x:Name="LabelUser2" Margin="0,5,0,2" FontFamily="EYInterstate" Height="27" HorizontalAlignment="Left" />
@@ -261,7 +261,7 @@
                     
 
                     <Border Name="Info" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="5,-160,490.333,-100" Height="48">
-                        <TextBox IsEnabled="False"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="TokenInfo" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,8.667,8.667,8.667" FontFamily="Sergoe Ui"/>
+                        <TextBox IsEnabled="False"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="TokenInfo" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,8.667,8.667,8.667" FontFamily="Sergoe Ui" TextChanged="TokenInfo_TextChanged"/>
                     </Border>
 
                     <Button x:Name="DestPath_Browse" Content="Browse" HorizontalAlignment="Left" Margin="640,-125,150,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="EYInterstate" Click="DestPath_Browse_Click"  Foreground="White" Background="Black">

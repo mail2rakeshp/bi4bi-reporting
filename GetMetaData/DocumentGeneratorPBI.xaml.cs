@@ -21,16 +21,16 @@ using System.Windows.Shapes;
 namespace GetMetaData
 {
     /// <summary>
-    /// Interaction logic for Document_Generator.xaml
+    /// Interaction logic for DocumentGeneratorPBI.xaml
     /// </summary>
-    public partial class Document_Generator : Window
+    public partial class DocumentGeneratorPBI : Window
     {
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
 
         private static string PythonPath1;
         private static string TemplatePathString;
         private static string DestinationPathString;
-        public Document_Generator()
+        public DocumentGeneratorPBI()
         {
             //Document_Generator_Load();
             InitializeComponent();
@@ -220,7 +220,7 @@ namespace GetMetaData
             string DestinationPathvar = DestPath.Text.ToString().Replace("\\","\\\\");
             //string SQLServervar = "IN3040866W1\\SQLEXPRESS";
             string SQLServervar = SQLTB.Text.ToString();//.Replace("\\", "\\\\");
-            string path = Directory.GetCurrentDirectory() + @"\PythonFile\Document_Generator.py";
+            string path = Directory.GetCurrentDirectory() + @"\PythonFile\DocumentGeneratorPBI.py";
             if (PythonPathText.Text.Equals("") || TemplatePathText.Text.Equals("") || DestPath.Text.Equals("") || String.IsNullOrEmpty(ComboBoxZone.Text))
             {
                 MessageBox.Show("Please enter the mandatory fields and try again");
@@ -508,7 +508,7 @@ namespace GetMetaData
             try
             {
                 string workingDirectory = Environment.CurrentDirectory + @"\PythonFile";
-                string fileName = workingDirectory + @"\Document_Generator.py";
+                string fileName = workingDirectory + @"\DocumentGeneratorPBI.py";
 
                 Process p = new Process();
                 p.StartInfo = new ProcessStartInfo(@"C:\Users\UT481LN\Anaconda3\python.exe" , fileName)
@@ -551,7 +551,7 @@ namespace GetMetaData
                         // Activate your environment
                         // sw.WriteLine("conda activate py3.9.7");
                         // run your script. You can also pass in arguments
-                        sw.WriteLine("python Document_Generator.py");
+                        sw.WriteLine("python DocumentGeneratorPBI.py");
                     }
                 }
                 process.WaitForExit();
@@ -569,7 +569,7 @@ namespace GetMetaData
             string DestinationPathvar = DestPath.Text.ToString().Replace("\\", "\\\\");
             //string SQLServervar = "IN3040866W1\\SQLEXPRESS";
             string SQLServervar = SQLTB.Text.ToString();//.Replace("\\", "\\\\");
-            string path = Directory.GetCurrentDirectory() + @"\PythonFile\Document_Generator.py";
+            string path = Directory.GetCurrentDirectory() + @"\PythonFile\DocumentGeneratorPBI.py";
             if (PythonPathText.Text.Equals("") || TemplatePathText.Text.Equals("") || DestPath.Text.Equals("") || String.IsNullOrEmpty(ComboBoxZone.Text))
             {
                 MessageBox.Show("Please enter the mandatory fields and try again");
@@ -873,6 +873,11 @@ namespace GetMetaData
             this.Close();
             PowerBi window1 = new PowerBi();
             window1.ShowDialog();
+        }
+
+        private void TokenInfo_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

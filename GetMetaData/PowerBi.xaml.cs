@@ -3932,7 +3932,7 @@ namespace GetMetaData
                 }
                 else
                 {
-                    Document_Generator objWelcome = new Document_Generator();
+                    DocumentGeneratorPBI objWelcome = new DocumentGeneratorPBI();
                     objWelcome.SQLTB.Text = serverlabel.ToString();
                     objWelcome.Show(); //Sending value from one form to another form.
                     Close();

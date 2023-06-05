@@ -452,16 +452,31 @@ namespace GetMetaData
                 script += "\nresult_6_df = pd.DataFrame(result_6, columns =['calculatedfield_id', 'Calculated Fields Name', 'Formula', 'Role', 'Is Hidden',                                                                           ";
                 script += "\n                                            'Workbook Name'])                                                                                                                                            ";
                 script += "\nquoted = urllib.parse.quote_plus(\"DRIVER={SQL Server Native Client 11.0};SERVER=" + server.ToString() + ";DATABASE=Tableau Metadata;Trusted_Connection=yes; \")";
-                //script += "\nquoted = urllib.parse.quote_plus("DRIVER={ SQL Server Native Client 11.0}; SERVER = IN3087262W1\SQLEXPRESS; DATABASE = Tableau Metadata; Trusted_Connection = yes; ")                                              ";
-                script += "\nengine = create_engine('mssql+pyodbc:///?odbc_connect={}'.format(quoted))                                                                                                                                ";
-                script += "\nresult_df.to_sql('TableauWorkbooks', schema='dbo',if_exists = 'append', con = engine)                                                                                                                    ";
-                script += "\nresult_1_df.to_sql('TableauDatabaseServers', schema='dbo',if_exists = 'append', con = engine)                                                                                                            ";
-                script += "\nresult_5_df.to_sql('TableauFileSources', schema='dbo',if_exists = 'append', con = engine)                                                                                                                ";
-                script += "\nresult_4_df.to_sql('TableauRefreshTime', schema='dbo',if_exists = 'append', con = engine)                                                                                                                ";
-                script += "\nresult_6_df.to_sql('TableauCalculations', schema='dbo',if_exists = 'append', con = engine)                                                                                                               ";
+            //script += "\nquoted = urllib.parse.quote_plus("DRIVER={ SQL Server Native Client 11.0}; SERVER = IN3087262W1\SQLEXPRESS; DATABASE = Tableau Metadata; Trusted_Connection = yes; ")                                              ";
+                script += "\nif result_df.empty:                                                                                            ";
+                script += "\n    result_df.to_sql('TableauWorkbooks', schema='dbo',if_exists = 'append', con = engine, index=False)         ";
+                script += "\nelse:                                                                                                          ";
+                script += "\n    result_df.to_sql('TableauWorkbooks', schema='dbo',if_exists = 'append', con = engine)                      ";
+                script += "\nif result_1_df.empty:                                                                                          ";
+                script += "\n    result_1_df.to_sql('TableauDatabaseServers', schema='dbo',if_exists = 'append', con = engine, index=False) ";
+                script += "\nelse:                                                                                                          ";
+                script += "\n    result_1_df.to_sql('TableauDatabaseServers', schema='dbo',if_exists = 'append', con = engine)              ";
+                script += "\nif result_5_df.empty:                                                                                          ";
+                script += "\n    result_5_df.to_sql('TableauFileSources', schema='dbo',if_exists = 'append', con = engine, index=False)     ";
+                script += "\nelse:                                                                                                          ";
+                script += "\n    result_5_df.to_sql('TableauFileSources', schema='dbo',if_exists = 'append', con = engine)                  ";
+                script += "\nif result_4_df.empty:                                                                                          ";
+                script += "\n    result_4_df.to_sql('TableauRefreshTime', schema='dbo',if_exists = 'append', con = engine, index=False)     ";
+                script += "\nelse:                                                                                                          ";
+                script += "\n    result_4_df.to_sql('TableauRefreshTime', schema='dbo',if_exists = 'append', con = engine)                  ";
+                script += "\nif result_6_df.empty:                                                                                          ";
+                script += "\n    result_6_df.to_sql('TableauCalculations', schema='dbo',if_exists = 'append', con = engine, index=False)    ";
+                script += "\nelse:                                                                                                          ";
+                script += "\n    result_6_df.to_sql('TableauCalculations', schema='dbo',if_exists = 'append', con = engine)                 "; 
                 script += "\nconn_str = (\"DRIVER={SQL Server Native Client 11.0};SERVER=" + server.ToString() + ";DATABASE=Tableau Metadata;Trusted_Connection=yes; \")                                                          ";
                 script += "\ncnxn = pyodbc.connect(conn_str)                                                                                                                                                                          ";
                 script += "\ncursor = cnxn.cursor()                                                                                                                                                                                   ";
+                script += "\nengine = create_engine('mssql+pyodbc:///?odbc_connect={}'.format(quoted), fast_executemany=True)";
                 script += "\nresult_df = pd.read_sql('select * from TableauWorkbooks', cnxn)                                                                                                                                          ";
                 script += "\nresult_df = result_df.drop_duplicates()                                                                                                                                                                  ";
                 script += "\nresult_df.to_sql('TableauWorkbooks', schema='dbo', if_exists = 'replace', con = engine, index=False)                                                                                                     ";
@@ -560,7 +575,10 @@ namespace GetMetaData
                 script += "\ncross_percentage_table_df = pd.DataFrame(cross_percentage_table, columns=['Report A', 'Report B', 'Database/ File Name', 'Table Name', 'Column Name'])                                                   ";
                 script += "\npercentage_table_df = pd.concat([server_wb_percentage_table_df, file_source_wb_percentage_table_df, cross_percentage_table_df])                                                                          ";
                 script += "\npercentage_table_df.reset_index(inplace = True, drop = True)                                                                                                                                             ";
-                script += "\npercentage_table_df.to_sql('Tableau_report_percentage_match', schema='dbo',if_exists = 'append', con = engine)                                                                                           ";
+                script += "\nif percentage_table_df.empty:                                                                                                    ";
+                script += "\n    percentage_table_df.to_sql('Tableau_report_percentage_match', schema='dbo',if_exists = 'replace', con = engine, index=False) ";
+                script += "\nelse:                                                                                                                            ";
+                script += "\n    percentage_table_df.to_sql('Tableau_report_percentage_match', schema='dbo',if_exists = 'replace', con = engine)              ";
                 
 
 

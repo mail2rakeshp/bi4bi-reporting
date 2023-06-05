@@ -88,7 +88,7 @@
                     </Image.ToolTip>
                 </Image>
             </Grid>
-            <Grid Grid.ColumnSpan="7" Margin="-2,-146,0,588" Background="#FF2E2E38" Height="80" HorizontalAlignment="Left" Width="1719">
+            <Grid Grid.ColumnSpan="7" Margin="-2,-116,0,588" Background="#FF2E2E38" Height="80" HorizontalAlignment="Left" Width="1719">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0*"/>
                     <ColumnDefinition Width="557*"/>
@@ -117,7 +117,7 @@
 
 
             </Grid>
-            <StackPanel  Name="StackBG" Margin="0,5,-1,0.666" Grid.ColumnSpan="7">
+            <StackPanel  Name="StackBG" Margin="0,10,-1,0.666" Grid.ColumnSpan="7">
 
                 <StackPanel  Name="ServerStack"  Height="666" Background="#1E1E21"  VerticalAlignment="Top" Margin="0,60,0.333,0" >
                     <Label Content="Home  >  Tableau" FontSize="14" Foreground="White" x:Name="LabelUser2" Margin="30,5,0,2" FontFamily="EYInterstate" Height="27" HorizontalAlignment="Left" />
