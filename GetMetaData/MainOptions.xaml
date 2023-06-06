@@ -67,9 +67,9 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
-                <Button  Click="Minimize_Click" Content="&#xE949;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,15,15,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" Margin="0,0,40,-0.333" Grid.RowSpan="2" Width="41" Foreground="#ffffff" />
-                <Button HorizontalAlignment="Right" Click="Close_Click" Content="&#xE106;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,10" Background="Transparent" BorderBrush="Transparent" Grid.RowSpan="2" Margin="0,0,0,-0.333" Width="42" Foreground="#ffffff" />
-                <Image  HorizontalAlignment="right" VerticalAlignment="Top" Height="25" Margin="0,5,81,-0.333" RenderTransformOrigin="0.5,0.5" Source="Images/Help_ACL_Transparent.png" Width="39" Grid.RowSpan="2">
+                <Button  Click="Minimize_Click" Cursor="Hand" ToolTip="Minimize Click" Content="&#xE949;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,15,15,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" Margin="0,0,40,-0.333" Grid.RowSpan="2" Width="41" Foreground="#ffffff" />
+                <Button HorizontalAlignment="Right" Click="Close_Click" Cursor="Hand" ToolTip="Close Click" Content="&#xE106;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,10" Background="Transparent" BorderBrush="Transparent" Grid.RowSpan="2" Margin="0,0,0,-0.333" Width="42" Foreground="#ffffff" />
+                <Image Visibility="Collapsed" HorizontalAlignment="right" VerticalAlignment="Top" Height="25" Margin="0,5,81,-0.333" RenderTransformOrigin="0.5,0.5" Source="Images/Help_ACL_Transparent.png" Width="39" Grid.RowSpan="2">
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform />
@@ -160,7 +160,7 @@
                                 </TransformGroup>
                             </Image.RenderTransform>
                         </Image>
-                        <Button x:Name="button2" Width="120" FontSize="14" Content="Cognos" Margin="-99,-500,1102,345.333" RenderTransformOrigin="0.475,1.355" Click="button1_Click" FontFamily="EYInterstate" Height="47" Background="Black" Foreground="White" FontWeight="Bold">
+                        <Button x:Name="button2" Width="120" Cursor="Hand"  FontSize="14" Content="Cognos" Margin="-99,-500,1102,345.333" RenderTransformOrigin="0.475,1.355" Click="button1_Click" FontFamily="EYInterstate" Height="47" Background="Black" Foreground="White" FontWeight="Bold">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -182,7 +182,7 @@
                             </Button.Style>
 
                         </Button>
-                        <Button x:Name="button2_Copy" FontSize="14" Width="120" Content="Business Objects" Margin="130,-500,1024,345.333" RenderTransformOrigin="0.475,1.355" Click="button2_Copy_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
+                        <Button x:Name="button2_Copy" Cursor="Hand"  FontSize="14" Width="120" Content="Business Objects" Margin="130,-500,1024,345.333" RenderTransformOrigin="0.475,1.355" Click="button2_Copy_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -214,7 +214,7 @@
                                 </TransformGroup>
                             </Image.RenderTransform>
                         </Image>
-                        <Button Width="120" x:Name="button2_Copy1" FontSize="14" Content="Qlikview" Margin="630,-500,296,345.333" RenderTransformOrigin="0.475,1.355" Click="button2_Copy1_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
+                        <Button Width="120" x:Name="button2_Copy1" FontSize="14" Cursor="Hand" Content="Qlikview" Margin="630,-500,296,345.333" RenderTransformOrigin="0.475,1.355" Click="button2_Copy1_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -247,7 +247,7 @@
                                 </TransformGroup>
                             </Image.RenderTransform>
                         </Image>
-                        <Button Width="120" x:Name="Crystal" FontSize="14" Content="Crystal Reports" Margin="-290,-500,296,345.333" RenderTransformOrigin="0.475,1.355" Click="Crystal_Click" FontFamily="EYInterstate" Height="47" Background="Black" Foreground="White" FontWeight="Bold">
+                        <Button Width="120" x:Name="Crystal" Cursor="Hand" FontSize="14" Content="Crystal Reports" Margin="-290,-500,296,345.333" RenderTransformOrigin="0.475,1.355" Click="Crystal_Click" FontFamily="EYInterstate" Height="47" Background="Black" Foreground="White" FontWeight="Bold">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -280,7 +280,7 @@
                                 </TransformGroup>
                             </Image.RenderTransform>
                         </Image>
-                        <Button Width="120" x:Name="OBIEE" FontSize="14" Content="OBIEE" Margin="21,-500,296,345.333" RenderTransformOrigin="0.475,1.355" Click="OBIEE_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
+                        <Button Width="120" x:Name="OBIEE" FontSize="14" Cursor="Hand"  Content="OBIEE" Margin="21,-500,296,345.333" RenderTransformOrigin="0.475,1.355" Click="OBIEE_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -324,7 +324,7 @@
                                 </TransformGroup>
                             </Image.RenderTransform>
                         </Image>
-                        <Button Width="120" x:Name="TableauImg" FontSize="14" Content="Tableau" Margin="710,-500,68,345.333" RenderTransformOrigin="0.475,1.355" Click="Tableau_Click" FontFamily="EYInterstate" Height="47" Background="Black" Foreground="White" FontWeight="Bold">
+                        <Button Width="120" x:Name="TableauImg" Cursor="Hand"  FontSize="14" Content="Tableau" Margin="710,-500,68,345.333" RenderTransformOrigin="0.475,1.355" Click="Tableau_Click" FontFamily="EYInterstate" Height="47" Background="Black" Foreground="White" FontWeight="Bold">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -357,7 +357,7 @@
                                 </TransformGroup>
                             </Image.RenderTransform>
                         </Image>
-                        <Button x:Name="PowerBIButton" Width="120" FontSize="14" Content="Power BI" Margin="970,-500,22,345.333" RenderTransformOrigin="0.475,1.355" Click="PowerBI_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
+                        <Button x:Name="PowerBIButton" Cursor="Hand"  Width="120" FontSize="14" Content="Power BI" Margin="970,-500,22,345.333" RenderTransformOrigin="0.475,1.355" Click="PowerBI_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -390,7 +390,7 @@
                                 </TransformGroup>
                             </Image.RenderTransform>
                         </Image>
-                        <Button x:Name="MicroStrategyButton" FontSize="14" Content="MicroStrategy" Margin="1270,-500,7,345.333" RenderTransformOrigin="0.475,1.355" Click="mstr_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
+                        <Button x:Name="MicroStrategyButton" Cursor="Hand"  FontSize="14" Content="MicroStrategy" Margin="1270,-500,7,345.333" RenderTransformOrigin="0.475,1.355" Click="mstr_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -426,7 +426,7 @@
                             </Image.RenderTransform>
                         </Image>
 
-                        <Button x:Name="SSRS"  Width="120" FontSize="14" Content="SSRS" Margin="80,-500,42,345.333" RenderTransformOrigin="0.475,1.355" Click="SSRS_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
+                        <Button x:Name="SSRS"  Width="120" FontSize="14" Content="SSRS" Cursor="Hand"  Margin="80,-500,42,345.333" RenderTransformOrigin="0.475,1.355" Click="SSRS_Click" FontFamily="EYInterstate" Height="47" Foreground="White" Background="Black" FontWeight="Bold">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 

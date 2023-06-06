@@ -41,6 +41,7 @@ namespace GetMetaData
         OBIEE ob = new OBIEE();
         MicStr mstr = new MicStr();
         SSRS ssrs = new SSRS();
+        SAPBO sapbo = new SAPBO();
 
 
         // MainOptions  windowop = new MainOptions();

@@ -85,7 +85,7 @@ namespace GetMetaData
         {
 
             SqlConnection SQLConnection = new SqlConnection();
-            SQLConnection.ConnectionString = "Data Source =" + server.ToString() + "; Initial Catalog =Tableau Metadata; " + "Integrated Security=true;";
+            SQLConnection.ConnectionString = "Data Source =" + server.ToString() + ";Initial Catalog=Tableau Metadata; " + "Integrated Security=true;";
             string QueryDI = "select count(*) from dbo.TableauWorkbooks";
             //Execute Queries and save results into variables
             SqlCommand CmdCnt = SQLConnection.CreateCommand();
@@ -93,6 +93,7 @@ namespace GetMetaData
             SQLConnection.Open();
             //int DataITemCnt = (Int32)CmdCnt.ExecuteScalar();
             int DataITemCnt = Convert.ToInt32(CmdCnt.ExecuteScalar());
+            
             SQLConnection.Close();
 
             string QueryFE = "select count(*) from dbo.TableauDatabaseServers";
@@ -452,7 +453,8 @@ namespace GetMetaData
                 script += "\nresult_6_df = pd.DataFrame(result_6, columns =['calculatedfield_id', 'Calculated Fields Name', 'Formula', 'Role', 'Is Hidden',                                                                           ";
                 script += "\n                                            'Workbook Name'])                                                                                                                                            ";
                 script += "\nquoted = urllib.parse.quote_plus(\"DRIVER={SQL Server Native Client 11.0};SERVER=" + server.ToString() + ";DATABASE=Tableau Metadata;Trusted_Connection=yes; \")";
-            //script += "\nquoted = urllib.parse.quote_plus("DRIVER={ SQL Server Native Client 11.0}; SERVER = IN3087262W1\SQLEXPRESS; DATABASE = Tableau Metadata; Trusted_Connection = yes; ")                                              ";
+                script += "\nengine = create_engine('mssql+pyodbc:///?odbc_connect={}'.format(quoted))";
+                //script += "\nquoted = urllib.parse.quote_plus("DRIVER={ SQL Server Native Client 11.0}; SERVER = IN3087262W1\SQLEXPRESS; DATABASE = Tableau Metadata; Trusted_Connection = yes; ")                                              ";
                 script += "\nif result_df.empty:                                                                                            ";
                 script += "\n    result_df.to_sql('TableauWorkbooks', schema='dbo',if_exists = 'append', con = engine, index=False)         ";
                 script += "\nelse:                                                                                                          ";

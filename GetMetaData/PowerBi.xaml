@@ -67,8 +67,8 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
-                <Button  Click="Minimize_Click" Content="&#xE949;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,15,15,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" Margin="0,0,40,-0.333" Grid.RowSpan="2" Width="41" Foreground="#ffffff" />
-                <Button HorizontalAlignment="Right" Click="Close_Click" Content="&#xE106;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,10" Background="Transparent" BorderBrush="Transparent" Grid.RowSpan="2" Margin="0,0,0,-0.333" Width="42" Foreground="#ffffff" />
+                <Button  Click="Minimize_Click" Cursor="Hand" Content="&#xE949;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,15,15,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" Margin="0,0,40,-0.333" Grid.RowSpan="2" Width="41" Foreground="#ffffff" />
+                <Button HorizontalAlignment="Right" Cursor="Hand" Click="Close_Click" Content="&#xE106;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,10" Background="Transparent" BorderBrush="Transparent" Grid.RowSpan="2" Margin="0,0,0,-0.333" Width="42" Foreground="#ffffff" />
                 <Image  HorizontalAlignment="right" VerticalAlignment="Top" Height="25" Margin="0,5,81,-0.333" RenderTransformOrigin="0.5,0.5" Source="Images/Help_ACL_Transparent.png" Width="39" Grid.RowSpan="2">
                     <Image.RenderTransform>
                         <TransformGroup>
@@ -275,7 +275,7 @@
 
 
 
-                        <Button  x:Name="Get_Database" Padding="5" Content="Get Reports" Height="25"   FontWeight="Bold" HorizontalAlignment="Left" Click="CallDatabaseList" Margin="430,-23,4,5" FontFamily="EYInterstate"  Width="135" Background="Black" Foreground="White">
+                        <Button  x:Name="Get_Database" Cursor="Hand" Padding="5" Content="Get Reports" Height="25"   FontWeight="Bold" HorizontalAlignment="Left" Click="CallDatabaseList" Margin="430,-23,4,5" FontFamily="EYInterstate"  Width="135" Background="Black" Foreground="White">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -332,7 +332,7 @@
                     <Border Name="BorderServer1" Width="610" CornerRadius="0" BorderThickness="1" BorderBrush="#ffffff" Margin="7,-380,491,-130" Height="28" HorizontalAlignment="Left">
                         <TextBox Height="20" ToolTip="(Users\Username\...)"  Foreground="White" Background="#2E2E38" BorderThickness="0" x:Name="TextPython" FontWeight="Bold" TextWrapping="Wrap" MinHeight="10" Margin="4.667,-1.333,8.333,-1.333" FontFamily="Sergoe Ui" TextChanged="TextPython_TextChanged" />
                     </Border>
-                    <Button x:Name="Browse" Content="Browse" Margin="640,-140,3,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="Callibri" Click="Browse_Click" Width="135" Foreground="White" Background="Black" HorizontalAlignment="Left">
+                    <Button x:Name="Browse" Content="Browse" Cursor="Hand" Margin="640,-140,3,181" FontWeight="Bold" Height="28" RenderTransformOrigin="0.475,1.355"  FontFamily="Callibri" Click="Browse_Click" Width="135" Foreground="White" Background="Black" HorizontalAlignment="Left">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}" >
 
@@ -398,7 +398,7 @@
                             </Button.Style>
 
                         </Button>
-                        <Button  x:Name="CallGraphButton"   Width="150" FontWeight="Bold" Height="22" Content="Load Data for All Reports"  Click="CallGraphButton_Click" Margin="25,10,9,10" FontFamily="EYInterstate"  Background="Black" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Hidden" Padding="1,1,1,1" HorizontalAlignment="Left" >
+                        <Button  x:Name="CallGraphButton" Cursor="Hand"  Width="150" FontWeight="Bold" Height="22" Content="Load Data for All Reports"  Click="CallGraphButton_Click" Margin="25,10,9,10" FontFamily="EYInterstate"  Background="Black" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Hidden" Padding="1,1,1,1" HorizontalAlignment="Left" >
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -420,7 +420,7 @@
                             </Button.Style>
 
                         </Button>
-                        <Button x:Name="button1" Margin="190,-33,0,10" Content="Generate Power BI Report" FontWeight="Bold" Width="150" Height="23" Click="button1_Click" FontFamily="EYInterstate" Background="Black" Foreground="White" HorizontalAlignment="Left">
+                        <Button x:Name="button1" Margin="190,-33,0,10" Cursor="Hand" Content="Generate Power BI Report" FontWeight="Bold" Width="150" Height="23" Click="button1_Click" FontFamily="EYInterstate" Background="Black" Foreground="White" HorizontalAlignment="Left">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -443,7 +443,7 @@
 
                         </Button>
 
-                        <Button x:Name="ReqButton" Margin="355,-33,-370,10" Content="Requirement Document Generator" Width="200" FontWeight="Bold" Height="23"   FontFamily="EYInterstate" Click="ReqButton_Click" Background="Black" Foreground="White" HorizontalAlignment="Left">
+                        <Button x:Name="ReqButton" Margin="355,-33,-370,10" Cursor="Hand" Content="Requirement Document Generator" Width="200" FontWeight="Bold" Height="23"   FontFamily="EYInterstate" Click="ReqButton_Click" Background="Black" Foreground="White" HorizontalAlignment="Left">
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 
@@ -465,7 +465,7 @@
                             </Button.Style>
 
                         </Button>
-                        <Button x:Name="SignOutButton" FontWeight="Bold" Height="23" Content="Reset" HorizontalAlignment="Left" Padding="5" Click="SignOutButton_Click" Margin="573,-35,0,10"   FontFamily="EYInterstate" Width="65" Background="Black" Foreground="White" >
+                        <Button x:Name="SignOutButton" Cursor="Hand" FontWeight="Bold" Height="23" Content="Reset" HorizontalAlignment="Left" Padding="5" Click="SignOutButton_Click" Margin="573,-35,0,10"   FontFamily="EYInterstate" Width="65" Background="Black" Foreground="White" >
                             <Button.Style >
                                 <Style TargetType="{x:Type Button}" >
 

@@ -40,7 +40,8 @@ namespace GetMetaData
         //Cognos_Options cognos = new Cognos_Options();
         //OBIEE ob = new OBIEE();
         //MicStr mstr = new MicStr();
-        //SSRS ssrs = new SSRS();
+        SSRS ssrs = new SSRS();
+       // SAPBO sapbo = new SAPBO();
         
         
 
@@ -140,9 +141,9 @@ namespace GetMetaData
 
         private void button2_Copy_Click(object sender, RoutedEventArgs e)
         {
-            /*
+            
             this.Close();
-            cognos.ShowDialog();*/
+            //sapbo.ShowDialog();
         }
 
         private void button2_Copy1_Click(object sender, RoutedEventArgs e)
@@ -174,7 +175,8 @@ namespace GetMetaData
 
         private void SSRS_Click(object sender, RoutedEventArgs e)
         {
-
+            //this.Close();
+            //ssrs.ShowDialog();
         }
 
         private void Crystal_Click(object sender, RoutedEventArgs e)
@@ -199,5 +201,7 @@ namespace GetMetaData
         //    this.Close();
         //    mstr.ShowDialog();
         }
+
+        
     }
 }

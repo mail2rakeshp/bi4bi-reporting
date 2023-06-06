@@ -521,7 +521,7 @@ namespace GetMetaData
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Please entenr the valid input Exception:-" + ex.Message);
+                MessageBox.Show("Please enter the valid input Exception:-" + ex.Message);
             }
         }
 
@@ -634,23 +634,23 @@ namespace GetMetaData
             }
             else
             {*/
-            LabelServer_DGMS.Visibility = Visibility.Visible;
-            ComboBoxZone_DGMS.Visibility = Visibility.Visible;
-            LabelPythonPath_DGMS.Visibility = Visibility.Visible;
-            BorderPythonPath_DGMS.Visibility = Visibility.Visible;
-            TemplatePath_DGMS.Visibility = Visibility.Visible;
-            BorderTemplatePAth_DGMS.Visibility = Visibility.Visible;
-            DestinationPath_DGMS.Visibility = Visibility.Visible;
-            DestinationPathText_DGMS.Visibility = Visibility.Visible;
-            Browse_Copy_DGMS.Visibility = Visibility.Visible;
-            Template_Browse_DGMS.Visibility = Visibility.Visible;
-            DestPath_Browse_DGMS.Visibility = Visibility.Visible;
-            SignOutButton_DGMS.Visibility = Visibility.Visible;
-            GetReports_DGMS.Visibility = Visibility.Visible;
-            Info_DGMS.Visibility = Visibility.Visible;
-            GenerateDoc_DGMS.Visibility = Visibility.Visible;
-            GenerateDocAll_DGMS.Visibility = Visibility.Visible;
-            Animation_DGMS.Visibility = Visibility.Collapsed;
+            LabelServer_DGMS.Visibility = Visibility.Collapsed;
+            ComboBoxZone_DGMS.Visibility = Visibility.Collapsed;
+            LabelPythonPath_DGMS.Visibility = Visibility.Collapsed;
+            BorderPythonPath_DGMS.Visibility = Visibility.Collapsed;
+            TemplatePath_DGMS.Visibility = Visibility.Collapsed;
+            BorderTemplatePAth_DGMS.Visibility = Visibility.Collapsed;
+            DestinationPath_DGMS.Visibility = Visibility.Collapsed;
+            DestinationPathText_DGMS.Visibility = Visibility.Collapsed;
+            Browse_Copy_DGMS.Visibility = Visibility.Collapsed;
+            Template_Browse_DGMS.Visibility = Visibility.Collapsed;
+            DestPath_Browse_DGMS.Visibility = Visibility.Collapsed;
+            SignOutButton_DGMS.Visibility = Visibility.Collapsed;
+            GetReports_DGMS.Visibility = Visibility.Collapsed;
+            Info_DGMS.Visibility = Visibility.Collapsed;
+            GenerateDoc_DGMS.Visibility = Visibility.Collapsed;
+            GenerateDocAll_DGMS.Visibility = Visibility.Collapsed;
+            Animation_DGMS.Visibility = Visibility.Visible;
             ComboBoxZone_DGMS.Text = "";
 
             MessageBox.Show("Requirement Document Generation in process. Average Wait Time less than 5 minutes.");

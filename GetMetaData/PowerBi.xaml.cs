@@ -691,7 +691,7 @@ namespace GetMetaData
 
 
 
-                string scriptp = "\nimport urllib";
+                string scriptp = "import urllib";
                 scriptp += "\nimport pandas as pd";
                 scriptp += "\nimport numpy as np";
                 scriptp += "\nfrom sqlalchemy import create_engine";
@@ -994,7 +994,7 @@ namespace GetMetaData
 
                 string pathp = Directory.GetCurrentDirectory() + @"\PythonFile\PowerBI_Process_Python.py";
 
-                File.SetAttributes(pathp, FileAttributes.Normal);
+                //File.SetAttributes(pathp, FileAttributes.Normal);
                 if (File.Exists(pathp))
                 {
                     File.Delete(pathp);
@@ -3144,7 +3144,7 @@ namespace GetMetaData
                 SqlConnection SQLConnection = new SqlConnection();
                 SQLConnection.ConnectionString = "Data Source =" + serverlabel.ToString() + "; Initial Catalog =Power BI Metadata; " + "Integrated Security=true;";
 
-                string script = File.ReadAllText(@"C:\Users\Rakesh.P\B4Bi-V1\GetMetaData\GetMetaData\GetMetaData\GetMetaData\bin\Debug\Scripts\vw_Metadata.sql");
+                string script = File.ReadAllText(@"C:\Users\SL613HQ\BI4BI\GetMetaData\GetMetaData\GetMetaData\GetMetaData\bin\Debug\Scripts\vw_Metadata.sql");
 
                 SqlCommand cmdView = new SqlCommand();
                 cmd.CommandType = CommandType.Text;
