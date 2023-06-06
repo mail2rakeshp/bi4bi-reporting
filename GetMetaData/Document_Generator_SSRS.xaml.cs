@@ -22,7 +22,7 @@ namespace GetMetaData
 {
     /// <summary>
     /// Interaction logic for Document_Generator_SSRS.xaml
-    //// </summary>
+    /// </summary>
     public partial class Document_Generator_SSRS : Window
     {
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
