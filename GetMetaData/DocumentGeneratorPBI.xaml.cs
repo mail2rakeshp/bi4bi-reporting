@@ -38,7 +38,7 @@ namespace GetMetaData
         private static string DestinationPathString;
         public Document_GeneratorPBI()
         {
-            //Document_Generator_Load();
+            ////Document_Generator_Load();
             InitializeComponent();
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
             MyNotifyIcon.Icon = new System.Drawing.Icon(
