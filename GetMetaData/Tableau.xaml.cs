@@ -714,7 +714,8 @@ namespace GetMetaData
                         // Activate your environment
                         // sw.WriteLine("conda activate py3.9.7");
                         // run your script. You can also pass in arguments
-                        sw.WriteLine("python Tableau_Python.py");
+                        sw.WriteLine("python " + '"' + workingDirectory + @"\Tableau_Python.py" + '"');
+                      //  sw.WriteLine("python Tableau_Python.py");
                     }
                 }
                 //string output = process.StandardOutput.ReadToEnd();
