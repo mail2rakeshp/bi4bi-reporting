@@ -1940,7 +1940,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:BI4BI"
         "ProductCode" = "8:{6EACBDD2-7E09-4D43-AECB-D09BAF7B1C13}"
-        "PackageCode" = "8:{F7C6D1B5-23D0-4465-BBD9-62D6AC965777}"
+        "PackageCode" = "8:{4151658E-80DF-49E8-B078-564219BCA15E}"
         "UpgradeCode" = "8:{614DF950-C23F-4D82-890D-F0AB13D2138C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -2071,7 +2071,7 @@
             "Target" = "8:_A3199756CF4D4827B0AAA26B33929BA8"
             "Folder" = "8:_F13F27BF5E5E4F88AD63125131EDC43F"
             "WorkingFolder" = "8:_24B8BC698D934DEBB89190A384810EDF"
-            "Icon" = "8:"
+            "Icon" = "8:_E89D4EA539D14223979C9A5B7099514F"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B32AB7AD35A34B049E340494CD047000"
@@ -2085,7 +2085,7 @@
             "Target" = "8:_A3199756CF4D4827B0AAA26B33929BA8"
             "Folder" = "8:_E6B8AA8270FA4C879422A25E307EBE11"
             "WorkingFolder" = "8:_24B8BC698D934DEBB89190A384810EDF"
-            "Icon" = "8:"
+            "Icon" = "8:_E89D4EA539D14223979C9A5B7099514F"
             "Feature" = "8:"
             }
         }
