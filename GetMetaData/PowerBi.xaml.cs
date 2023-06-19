@@ -320,7 +320,6 @@ namespace GetMetaData
                 int pos = ResultText.Text.LastIndexOf("/") + 1;
                 conditions.Add(" '" + ResultText.Text.Substring(pos, ResultText.Text.Length - pos).Replace("%20", " ").Replace("'", "''").Replace("\"", "") + "' AS [Workspace]");
 
-
             }
             if (ReportsCheck.IsChecked == true)
             {
