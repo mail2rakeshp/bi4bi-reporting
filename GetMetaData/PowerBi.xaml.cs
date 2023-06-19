@@ -36,7 +36,10 @@ using static Community.CsharpSqlite.Sqlite3;
 using IronPython.Modules;
 using static IronPython.Modules._ast;
 using static IronPython.SQLite.PythonSQLite;
-
+using Path = System.IO.Path;
+using Newtonsoft.Json;
+using System.Runtime.Serialization.Json;
+using System.IO.Compression;
 
 namespace GetMetaData
 {
@@ -47,6 +50,10 @@ namespace GetMetaData
 
     public partial class PowerBi : Window
     {
+        private List<string> fileNames = new List<string>();
+        private List<string> selectedFiles = new List<string>();
+        private string folderPath = " ";
+
 
         string[] scopes = new string[] { "user.read" };
 
@@ -112,8 +119,8 @@ namespace GetMetaData
 
 
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
-            MyNotifyIcon.Icon = new System.Drawing.Icon(
-                            @"Final.ico");
+            //MyNotifyIcon.Icon = new System.Drawing.Icon(
+            //                @"Final.ico");
             MyNotifyIcon.MouseDoubleClick +=
                 new System.Windows.Forms.MouseEventHandler(MyNotifyIcon_MouseDoubleClick);
             WrapCheck.Visibility = Visibility.Collapsed;
@@ -577,11 +584,11 @@ namespace GetMetaData
                 ComboBoxZone.Text = "";
                 WindowMainName.Height = 766;
                 backgroundWorker1.RunWorkerAsync();
-                
+
 
             }
 
-        
+
         }
 
 
@@ -1060,9 +1067,9 @@ namespace GetMetaData
                 SQLConnection.Close();
 
             }
-			
-		MessageBox.Show("Data loaded to the " + serverlabel.ToString());
-		
+
+            MessageBox.Show("Data loaded to the " + serverlabel.ToString());
+
 
         }
 
@@ -3216,7 +3223,7 @@ namespace GetMetaData
             Server2Bord.Visibility = Visibility.Visible;
             Show_by_Report.Visibility = Visibility.Collapsed;
             WrapCheck.Visibility = Visibility.Collapsed;
-            
+
             BorderBox.Visibility = Visibility.Collapsed;
             RemoveServer.Visibility = Visibility.Visible;
             AddServer.Visibility = Visibility.Collapsed;
@@ -3980,6 +3987,417 @@ namespace GetMetaData
         private void TextPython_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void FetchPBITFilesButton_Click(object sender, RoutedEventArgs e)
+        {
+            folderPath = FolderPathTextBox.Text;
+            string[] pbitFiles = Directory.GetFiles(folderPath, "*.pbit");
+
+            // Clear the ComboBox items source and the List
+            FileSelectionComboBox.ItemsSource = null;
+            fileNames.Clear();
+
+            // Populate the List with file names
+            foreach (string pbitFile in pbitFiles)
+            {
+                string fileName = Path.GetFileName(pbitFile);
+                fileNames.Add(fileName);
+            }
+
+            // Set the ComboBox items source to the List
+            FileSelectionComboBox.ItemsSource = fileNames;
+            MessageBox.Show("Report Fetched Successfully");
+
+
+        }
+
+
+        private void AllReportsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            StringBuilder messageBuilder = new StringBuilder();
+            string folderPath = FolderPathTextBox.Text;
+
+            ProFinalReportGenerator(fileNames);
+
+
+        }
+
+
+
+
+
+        private void GenerateMetadataButton_Click_ForPro(object sender, RoutedEventArgs e)
+        {
+
+            foreach (object item in FileSelectionComboBox.Items)
+            {
+                // Check if the item is a string
+                if (item is string fileName)
+                {
+                    // Find the CheckBox control in the item container
+                    ComboBoxItem comboBoxItem = FileSelectionComboBox.ItemContainerGenerator.ContainerFromItem(item) as ComboBoxItem;
+                    if (comboBoxItem != null)
+                    {
+                        CheckBox checkBox = FindVisualChild<CheckBox>(comboBoxItem);
+                        if (checkBox != null && checkBox.IsChecked == true)
+                        {
+                            selectedFiles.Add(fileName);
+                        }
+                    }
+                }
+            }
+
+            ProFinalReportGenerator(selectedFiles);
+        }
+
+        private T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+                if (child is T t)
+                {
+                    return t;
+                }
+                else
+                {
+                    T found = FindVisualChild<T>(child);
+                    if (found != null)
+                        return found;
+                }
+            }
+            return null;
+        }
+
+
+
+        private void ProToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            PremiumToggleButton.IsChecked = false; // Uncheck Premium toggle button
+
+            // Show Pro functionality
+            FetchPBITFilesButton.Visibility = Visibility.Visible;
+            FolderPathTextBox.Visibility = Visibility.Visible;
+
+
+            // Hide Premium functionality
+            StackBG.Visibility = Visibility.Collapsed;
+
+            // Show tick button
+            ProToggleButton.Content = " ✓ ";
+
+            // Show newStackBG's and FolderPathTextBlock
+            newStackBG1.Visibility = Visibility.Visible;
+            newStackBG2.Visibility = Visibility.Visible;
+            //StackBG.Visibility = Visibility.Visible;
+
+        }
+
+        private void ProToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            // Hide Pro functionality
+            FetchPBITFilesButton.Visibility = Visibility.Collapsed;
+            FolderPathTextBox.Visibility = Visibility.Collapsed;
+            PBITFilesListBox.Visibility = Visibility.Collapsed;
+
+            // Hide tick button
+            ProToggleButton.Content = "     ";
+
+            // Hide newStackBG1 and FolderPathTextBlock
+            newStackBG1.Visibility = Visibility.Collapsed;
+            newStackBG2.Visibility = Visibility.Collapsed;
+            FolderPathTextBlock.Visibility = Visibility.Collapsed;
+        }
+
+
+        private void PremiumToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            // Uncheck ProToggleButton
+            ProToggleButton.IsChecked = false;
+
+
+            // Show tick button
+            PremiumToggleButton.Content = " ✓ ";
+
+
+            // Hide Pro functionality
+            FolderPathTextBox.Visibility = Visibility.Collapsed;
+            FetchPBITFilesButton.Visibility = Visibility.Collapsed;
+            PBITFilesListBox.Visibility = Visibility.Collapsed;
+
+            // Show tick button for checked toggle button and hide for unchecked toggle button
+            if (PremiumToggleButton.IsChecked == true)
+            {
+                PremiumToggleButton.Content = " ✓ ";
+            }
+            else
+            {
+                PremiumToggleButton.Content = "     ";
+            }
+
+            // Show StackBG
+            StackBG.Visibility = Visibility.Visible;
+        }
+
+        private void PremiumToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+            //SQLToggleButton.IsChecked = false;
+            // Hide tick button
+            ProToggleButton.Content = "    ";
+
+
+            // Show tick button for checked toggle button and hide for unchecked toggle button
+            if (PremiumToggleButton.IsChecked == true)
+            {
+                PremiumToggleButton.Content = " ✓ ";
+            }
+            else
+            {
+                PremiumToggleButton.Content = "     ";
+            }
+
+            // Hide StackBG
+            StackBG.Visibility = Visibility.Collapsed;
+        }
+
+        public void ProFinalReportGenerator(dynamic filenamelist)
+        {
+
+            try
+            {
+                List<string> selectedfilelist = new List<string>();
+                selectedfilelist = filenamelist;
+
+                string folderName = @"Temp_folder";
+                Directory.CreateDirectory(folderName);
+                string newFolderPath = Path.Combine(Environment.CurrentDirectory, @"Temp_folder\");
+
+                foreach (string filePath in Directory.GetFiles(folderPath, "*.pbit"))
+                {
+                    if (selectedfilelist.Contains(Path.GetFileName(filePath)))
+                    {
+                        try
+                        {
+                            // Create a copy of the file with a new name
+                            string copyFilePath = Path.Combine(folderPath, Path.GetFileNameWithoutExtension(filePath) + "_copy.pbit");
+                            File.Copy(filePath, copyFilePath);
+
+                            // Rename the copy with .zip extension
+                            string newFilePath = Path.Combine(folderPath, Path.GetFileNameWithoutExtension(filePath) + ".zip");
+                            File.Move(copyFilePath, newFilePath);
+
+                            // Unzip the file
+                            string extractPath = Path.Combine(folderPath, Path.GetFileNameWithoutExtension(filePath));
+                            ZipFile.ExtractToDirectory(newFilePath, extractPath);
+
+                            // Copy the datamodelschema file to the new folder path
+                            string schemaFilePath = Path.Combine(extractPath, "DataModelSchema");
+                            string newSchemaFilePath = Path.Combine(newFolderPath, Path.GetFileNameWithoutExtension(filePath) + ".datamodelschema");
+                            File.Copy(schemaFilePath, newSchemaFilePath);
+
+                            // Delete the extracted folder and the zip file
+                            Directory.Delete(extractPath, true);
+                            File.Delete(newFilePath);
+                        }
+                        catch
+                        {
+                            continue;
+                        }
+                    }
+                }
+                foreach (string filePath in Directory.GetFiles(newFolderPath))
+                {
+                    string newFilePath = Path.ChangeExtension(filePath, ".json");
+                    File.Move(filePath, newFilePath);
+                }
+
+
+                List<dynamic> relationshipsList = new List<dynamic>();
+                List<dynamic> hierarchiesList = new List<dynamic>();
+                List<dynamic> tableList = new List<dynamic>();
+
+                foreach (string file in Directory.GetFiles(newFolderPath, "*.json"))
+                {
+
+                    string jsonString = File.ReadAllText(file);
+                    try
+                    {
+                        using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
+                        {
+                            // Create a new DataContractJsonSerializer instance
+                            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(JsonObject));
+
+
+                            //// Deserialize the JSON data into a MyJsonObject instance
+                            JsonObject jsonObj = (JsonObject)serializer.ReadObject(ms);
+                            // Access the values in the MyJsonObject instance
+
+
+                            //relationships extraction
+
+                            foreach (dynamic node in jsonObj.model.relationships)
+                            {
+                                node.report_name = Path.GetFileNameWithoutExtension(file);
+                                relationshipsList.Add(node);
+                            }
+
+
+
+                            foreach (dynamic table in jsonObj.model.tables)
+                            {
+                                table.report_name = Path.GetFileNameWithoutExtension(file);
+
+                                if (table.hierarchies != null)
+                                {
+                                    foreach (dynamic node in table.hierarchies)
+                                    {
+                                        node.report_name = Path.GetFileNameWithoutExtension(file);
+                                    }
+                                    hierarchiesList.Add(table.hierarchies);
+                                    table.hierarchies = null; // Optional: remove the hierarchies from the table
+                                }
+                            }
+
+
+                            foreach (dynamic node in jsonObj.model.tables)
+                            {
+                                node.report_name = Path.GetFileNameWithoutExtension(file);
+                                tableList.Add(node);
+                            }
+
+
+
+                        }
+                    }
+                    catch
+                    {
+                        continue;
+                    }
+                }
+
+                Directory.Delete(newFolderPath, true);
+
+                if (Directory.Exists(Path.Combine(Environment.CurrentDirectory, @"Pro Json Output Files\")))
+                {
+                    Directory.Delete(Path.Combine(Environment.CurrentDirectory, @"Pro Json Output Files\"), true);
+                }
+
+                folderName = @"Pro Json Output Files";
+                Directory.CreateDirectory(folderName);
+
+                string outputfilePath = Path.Combine(Environment.CurrentDirectory, @"Pro Json Output Files\", "relationships.json");
+                dynamic jsonRelationships = JsonConvert.SerializeObject(relationshipsList);
+                File.WriteAllText(outputfilePath, jsonRelationships);
+
+                dynamic jsonHierarchies = JsonConvert.SerializeObject(hierarchiesList);
+                outputfilePath = Path.Combine(Environment.CurrentDirectory, @"Pro Json Output Files\", "hierarchies.json");
+                File.WriteAllText(outputfilePath, jsonHierarchies);
+
+
+                dynamic jsonTables = JsonConvert.SerializeObject(tableList);
+                outputfilePath = Path.Combine(Environment.CurrentDirectory, @"Pro Json Output Files\", "tables.json");
+                File.WriteAllText(outputfilePath, jsonTables);
+
+                string variableName = "BI4BIPathVaribale";
+                string variableValue = Path.Combine(Environment.CurrentDirectory, @"Pro Json Output Files\");
+                Environment.SetEnvironmentVariable(variableName, variableValue, EnvironmentVariableTarget.User);
+                string fileName = "Output Pro Workspace.pbix";
+                string path = Path.Combine(Environment.CurrentDirectory, @"Report\", fileName);
+                MessageBox.Show("Generating Report. Please Wait ....");
+
+
+
+
+                string sourceFilePath = path;
+
+                MessageBox.Show("If the file 'Output Pro Workspace' already exists in downloads, it will be overwritten");
+                string destinationFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+                string destinationFilePath = Path.Combine(destinationFolderPath, "Output Pro Workspace.pbix");
+
+                File.Copy(sourceFilePath, destinationFilePath, true);
+                MessageBox.Show("Reports downloaded successfully in downloads!! \n 1) Open the file 'Output Pro Workspace' and refresh it  \n 2) Save the file before you close");
+                Process.Start(destinationFolderPath);
+
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show("Pro Json Report Generation Failed");
+
+            }
+
+        }
+        public partial class JsonObject
+        {
+            public string name { get; set; }
+            public Model model { get; set; }
+        }
+
+        public partial class Model
+        {
+            public Table[] tables { get; set; }
+            public Relationship[] relationships { get; set; }
+
+        }
+
+
+        public partial class Relationship
+        {
+            public string report_name { get; set; }
+            public string name { get; set; }
+            public string fromTable { get; set; }
+            public string fromColumn { get; set; }
+            public string toTable { get; set; }
+            public string toColumn { get; set; }
+            public string joinOnDateBehavior { get; set; }
+            public string state { get; set; }
+        }
+
+        public partial class Table
+        {
+            public string report_name { get; set; }
+            public string name { get; set; }
+            public ColumnElement[] columns { get; set; }
+            public bool? isHidden { get; set; }
+            public bool? isPrivate { get; set; }
+            public Hierarchy[] hierarchies { get; set; }
+            public Measures[] measures { get; set; }
+
+        }
+
+        public partial class ColumnElement
+        {
+            public string type { get; set; }
+            public string name { get; set; }
+            public string dataType { get; set; }
+            public bool? isHidden { get; set; }
+            public string sourceColumn { get; set; }
+            public dynamic expression { get; set; }
+        }
+
+        public partial class Hierarchy
+        {
+            public string report_name { get; set; }
+            public string name { get; set; }
+            public string state { get; set; }
+            public Level[] levels { get; set; }
+        }
+
+        public partial class Measures
+        {
+            public string name { get; set; }
+            public dynamic expression { get; set; }
+            public string dataType { get; set; }
+        }
+        public partial class Level
+        {
+            public string name { get; set; }
+            public long ordinal { get; set; }
+            public string column { get; set; }
         }
     }
 
